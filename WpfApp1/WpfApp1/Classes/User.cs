@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -14,6 +15,8 @@ namespace Test_Task_WPF_Table.Classes
         public DateTime CreatedOn { get; set; }
         public DateTime SubcriedTo { get; set; }
         public string Decription { get; set; }
+        [NotMapped]
+        public bool IsOverdue { get; set; }
 
         public User()
         {

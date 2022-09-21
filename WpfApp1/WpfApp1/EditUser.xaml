@@ -1,0 +1,26 @@
+﻿<Page x:Class="WpfApp1.EditUser"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:WpfApp1"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="800"
+      Title="EditUser">
+
+    <Grid Background="White" >
+        <Label Content="Edit User" HorizontalAlignment="Left" Margin="368,23,0,0" VerticalAlignment="Top" Height="34" Width="77" FontSize="14"/>
+        <Label Content="Enter Name" HorizontalAlignment="Left" Margin="267,69,0,0" VerticalAlignment="Top" Height="34" Width="95" FontSize="14"/>
+        <TextBox  Name="NameTbx" HorizontalAlignment="Left" Text="{ Binding SelectedUser.Name }" Margin="414,74,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="158" Height="24"/>
+
+        <Label Content="Enter SurName" HorizontalAlignment="Left" Margin="267,120,0,0" VerticalAlignment="Top" Height="34" Width="118" FontSize="14"/>
+        <TextBox Name="SurNameTbx" HorizontalAlignment="Left" Text="{ Binding SelectedUser.SurName, Mode=Default }" Margin="414,125,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="158" Height="24"/>
+
+        <Label Content="Enter Description" HorizontalAlignment="Left" Margin="267,169,0,0" VerticalAlignment="Top" Height="34" Width="132" FontSize="14"/>
+        <TextBox  Name="DescriptionTbx" HorizontalAlignment="Left" Text="{ Binding SelectedUser.Decription, Mode=Default }" Margin="414,174,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="158" Height="24"/>
+
+        <Button Name="SaveBtn" Content="Save" Command="{ Binding EditCommand }"
+                CommandParameter="{ Binding SelectedUser, Mode = Default }" HorizontalAlignment="Left" Margin="417,225,0,0" VerticalAlignment="Top" Height="43" Width="78"/>
+        <Button Name="ResetBtn" Content="Reset" HorizontalAlignment="Left" Margin="310,225,0,0" VerticalAlignment="Top" Height="43" Width="90"/>
+    </Grid>
+</Page>

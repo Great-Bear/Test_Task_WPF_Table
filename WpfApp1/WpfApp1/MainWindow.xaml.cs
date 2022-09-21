@@ -15,6 +15,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using Test_Task_WPF_Table.Classes;
+using WpfApp1.Classes;
 
 namespace WpfApp1
 {
@@ -23,32 +24,33 @@ namespace WpfApp1
     /// </summary>
     public partial class MainWindow : Window
     {
-        public ApplicationContext Db { get; private set; }
-        public ObservableCollection<User> Users { get; set; }
-
+        public ApplicationViewModel applicationContext { get; set; }
         public MainWindow()
         {
             InitializeComponent();
-
-            Db = new ApplicationContext();
          
             AddUserBtn.Click += AddUserClick;
             ListUsersBtn.Click += ListUsersClick;
+            applicationContext = new ApplicationViewModel();
+            EditUserBtn.Click += EditUserClick;
 
-            Db.Users.Load();
-            Users = Db.Users.Local.ToObservableCollection();
 
-            frame.Navigate(new ListUsers(Db, Users));
-
+            frame.Navigate(new ListUsers(applicationContext));
         }
 
         private void AddUserClick(object sender, RoutedEventArgs e)
         {
-            frame.Navigate(new AddUser(Db,Users));
+            frame.Navigate(new AddUser(applicationContext));
         }
         private void ListUsersClick(object sender, RoutedEventArgs e)
         {
-            frame.Navigate(new ListUsers(Db,Users));
+            frame.Navigate(new ListUsers(applicationContext));
         }
+
+        private void EditUserClick(object sender, RoutedEventArgs e)
+        {
+            frame.Navigate(new EditUser(applicationContext));
+        }
+
     }
 }

@@ -8,10 +8,6 @@ namespace WpfApp1
     {
         public DbSet<User> Users { get; set; } = null!;
 
-        public ApplicationContext()
-        {
-            Database.EnsureCreated();
-        }
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             optionsBuilder.UseMySql(
