@@ -10,18 +10,22 @@
 
     <Grid Background="White" >
         <Label Content="Add User" HorizontalAlignment="Left" Margin="368,23,0,0" VerticalAlignment="Top" Height="34" Width="77" FontSize="14"/>
-        <Label Content="Enter Name" HorizontalAlignment="Left" Margin="267,69,0,0" VerticalAlignment="Top" Height="34" Width="95" FontSize="14"/>
-        <TextBox  Name="NameTbx" HorizontalAlignment="Left" Text="{ Binding NewUser.Name }" Margin="414,74,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="158" Height="24"/>
-        
-        <Label Content="Enter SurName" HorizontalAlignment="Left" Margin="267,120,0,0" VerticalAlignment="Top" Height="34" Width="118" FontSize="14"/>
-        <TextBox Name="SurNameTbx" HorizontalAlignment="Left" Text="{ Binding NewUser.SurName, Mode=Default }" Margin="414,125,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="158" Height="24"/>
-        
-        <Label Content="Enter Description" HorizontalAlignment="Left" Margin="267,169,0,0" VerticalAlignment="Top" Height="34" Width="132" FontSize="14"/>
-        <TextBox  Name="DescriptionTbx" HorizontalAlignment="Left" Text="{ Binding NewUser.Decription, Mode=Default }" Margin="414,174,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="158" Height="24"/>
+
+        <Label Content="Enter Name" HorizontalAlignment="Left" Margin="270,60,0,0" VerticalAlignment="Top" Height="25" Width="95" FontSize="14"/>
+        <TextBox  Name="NameTbx" HorizontalAlignment="Left" Text="{ Binding NewUser.Name }" Margin="410,60,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="150" Height="25"/>
+
+        <Label Content="Enter SurName" HorizontalAlignment="Left" Margin="270,100,0,0" VerticalAlignment="Top" Height="25" Width="118" FontSize="14"/>
+        <TextBox Name="SurNameTbx" HorizontalAlignment="Left" Text="{ Binding NewUser.SurName, Mode=Default }" Margin="410,100,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="150" Height="25"/>
+
+        <Label Content="Enter Description" HorizontalAlignment="Left" Margin="270,140,0,0" VerticalAlignment="Top" Height="25" Width="132" FontSize="14"/>
+        <TextBox  Name="DescriptionTbx" HorizontalAlignment="Left" Text="{ Binding NewUser.Decription, Mode=Default }" Margin="410,140,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="150" Height="25"/>
+
+        <Label Content="Surbscribe To" HorizontalAlignment="Left" Margin="270,180,0,0" VerticalAlignment="Top" Height="25" Width="132" FontSize="14"/>
+        <DatePicker HorizontalAlignment="Left" SelectedDate="{Binding NewUser.SubcriedTo}" VerticalAlignment="Top" Margin="410,180,0,0" Width="150" Height="25" ></DatePicker>
 
         <Button Name="SaveBtn" Content="Save" Command="{Binding AddCommand}"
-                CommandParameter="{ Binding NewUser, Mode=Default }" HorizontalAlignment="Left" Margin="417,225,0,0" VerticalAlignment="Top" Height="43" Width="78"/>
-        <Button Name="ResetBtn" Content="Reset" HorizontalAlignment="Left" Margin="310,225,0,0" VerticalAlignment="Top" Height="43" Width="90"/>
+                CommandParameter="{ Binding NewUser, Mode=Default }" HorizontalAlignment="Left" Margin="417,277,0,0" VerticalAlignment="Top" Height="43" Width="78"/>
+        <Button Name="ResetBtn" Content="Reset" HorizontalAlignment="Left" Margin="310,277,0,0" VerticalAlignment="Top" Height="43" Width="90"/>
 
     </Grid>
 </Page>

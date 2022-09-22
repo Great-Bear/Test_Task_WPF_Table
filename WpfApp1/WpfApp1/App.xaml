@@ -11,4 +11,5 @@
             <Setter Property="Control.Margin" Value="10" />
         </Style>
     </Application.Resources>
+
 </Application>

@@ -3,10 +3,12 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
+using System.Windows.Data;
 using Test_Task_WPF_Table.Classes;
 
 namespace WpfApp1.Classes
@@ -21,6 +23,7 @@ namespace WpfApp1.Classes
 
         public User NewUser { get; set; } = new User();
         public User SelectedUser { get; set; } = new User();
+
 
         public ApplicationViewModel()
         {
@@ -37,17 +40,15 @@ namespace WpfApp1.Classes
                 return deleteCommand ??
                   (deleteCommand = new RelayCommand((selectedItems) =>
                   {
-                      var selectedUsers = selectedItems as ObservableCollection<User>  ;
+                    
 
-                      /*  while (selectedUsers.Count > 0)
-                        {
-                            var objectForDele = (User)selectedUsers[0]!;
-                            db.Users.Remove(objectForDele);
-                            db.Users.RemoveRange(selectedUsers);
-                        }
-                        */
-                      db.Users.RemoveRange(selectedUsers);
-                      db.SaveChangesAsync();                  
+                 //    var q = selectedItems as IList<User>;
+
+                //  var selectedUsers = q.Cast<User>().ToList();
+
+
+             //   db.Users.RemoveRange(selectedUsers);
+               //       db.SaveChangesAsync();                  
                   }));
             }
         }
