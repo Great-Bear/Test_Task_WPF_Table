@@ -18,24 +18,27 @@ namespace WpfApp1.Classes
             Style st = new Style();
             st.TargetType = typeof(ListViewItem);
             Setter backGroundSetter = new Setter();
+            Setter height = new Setter();
+
             backGroundSetter.Property = ListViewItem.BackgroundProperty;
-            ListView listView =
-                ItemsControl.ItemsControlFromItemContainer(container)
-                  as ListView;
-            int index =
-                listView.ItemContainerGenerator.IndexFromContainer(container);
+            height.Property = ListViewItem.HeightProperty;
+
+            ListView listView = ItemsControl.ItemsControlFromItemContainer(container) as ListView ;
 
             var user = item as User;
 
+            double heightValue = 30;
+            height.Value = heightValue;
             if (user.SubcriedTo < DateTime.Now)
             {
                 backGroundSetter.Value = Brushes.Red;
             }
             else
             {
-                backGroundSetter.Value = Brushes.Beige;
+                 backGroundSetter.Value = Brushes.AntiqueWhite;
             }
             st.Setters.Add(backGroundSetter);
+            st.Setters.Add(height);
             return st;
         }
     }

@@ -25,7 +25,7 @@
 
         <Button Name="SaveBtn" Content="Save" Command="{Binding AddCommand}"
                 CommandParameter="{ Binding NewUser, Mode=Default }" HorizontalAlignment="Left" Margin="417,277,0,0" VerticalAlignment="Top" Height="43" Width="78"/>
-        <Button Name="ResetBtn" Content="Reset" HorizontalAlignment="Left" Margin="310,277,0,0" VerticalAlignment="Top" Height="43" Width="90"/>
+        <Button Name="ResetBtn" Content="Reset" HorizontalAlignment="Left" Margin="264,277,0,0" VerticalAlignment="Top" Height="43" Width="90"/>
 
     </Grid>
 </Page>

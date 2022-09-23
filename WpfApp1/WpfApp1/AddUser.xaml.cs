@@ -24,6 +24,8 @@ namespace WpfApp1
     /// 
     public partial class AddUser : Page
     {
+
+        public User NewUser { get; set; } = new User();
         public AddUser(ApplicationViewModel _applicationContext)
         {
             InitializeComponent();

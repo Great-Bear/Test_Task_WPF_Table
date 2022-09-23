@@ -15,8 +15,6 @@ namespace Test_Task_WPF_Table.Classes
         public DateTime CreatedOn { get; set; }
         public DateTime SubcriedTo { get; set; }
         public string Decription { get; set; }
-        [NotMapped]
-        public bool IsOverdue { get; set; }
 
         public User()
         {

@@ -6,11 +6,11 @@
         xmlns:local="clr-namespace:WpfApp1"
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
-    <Grid>
-        <Frame Name="frame"  Margin="92,0,0,0" NavigationUIVisibility="Hidden" />
-        <Button Name="AddUserBtn" Content="Add_User" HorizontalAlignment="Left" Margin="10,53,0,0" VerticalAlignment="Top" Height="33" Width="81" FontSize="14" Style="{StaticResource BlackAndWhite}" />
-        <Button Name="ListUsersBtn" Content="List_Users" HorizontalAlignment="Left" Margin="10,12,0,0" VerticalAlignment="Top" Height="33" Width="83" FontSize="14"/>
-        <Button Name="EditUserBtn" Content="Edit_User" HorizontalAlignment="Left" Margin="10,91,0,0" VerticalAlignment="Top" Height="33" Width="81" FontSize="14"/>
+    <Grid Background="#FFE2E2E2">
+        <Frame Name="frame"  Margin="150,0,0,0" NavigationUIVisibility="Hidden" />
+        <Button Name="AddUserBtn" Content="Add_User" HorizontalAlignment="Left" Margin="10,51,0,0" VerticalAlignment="Top" Height="33" Width="81" FontSize="14" />
+        <Button Name="ListUsersBtn" Content="List_Users" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Height="33" Width="83" FontSize="14"/>
+        <Button Name="EditUserBtn" Content="Edit_User" HorizontalAlignment="Left" Margin="10,89,0,0" VerticalAlignment="Top" Height="33" Width="81" FontSize="14"/>
 
 
     </Grid>

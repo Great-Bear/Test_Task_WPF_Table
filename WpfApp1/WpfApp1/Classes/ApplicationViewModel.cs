@@ -60,12 +60,18 @@ namespace WpfApp1.Classes
             {
            
             return addCommand ??
-                (addCommand = new RelayCommand( (newUser) =>
+                (addCommand = new RelayCommand( (newUserForm) =>
                 {
-                    User user = newUser as User;
-                    user.CreatedOn = DateTime.Now;
-                    user.SubcriedTo = user.CreatedOn.AddDays(1);
-                    db.Users.Add(user);
+                    User user = newUserForm as User;
+
+                    db.Users.Add( new User
+                    {
+                        Name = user.Name,
+                        SurName = user.SurName,
+                        Decription = user.Decription,
+                        SubcriedTo = user.SubcriedTo,
+                        CreatedOn = DateTime.Now
+                    });
                     db.SaveChanges();
                         
                 }));
