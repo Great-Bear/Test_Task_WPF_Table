@@ -26,6 +26,7 @@ namespace WpfApp1
     {
 
         public User NewUser { get; set; } = new User();
+        public ApplicationViewModel ApplicationContext { get; set; }
         public AddUser(ApplicationViewModel _applicationContext)
         {
             InitializeComponent();
@@ -33,7 +34,9 @@ namespace WpfApp1
             SaveBtn.Click += SaveUserClick;
             ResetBtn.Click += ResetUserClick;
 
-            DataContext = _applicationContext;
+            ApplicationContext = _applicationContext;
+
+            DataContext = this;
         }
 
         private void SaveUserClick(object sender, RoutedEventArgs e)

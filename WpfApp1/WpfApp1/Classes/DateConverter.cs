@@ -27,7 +27,7 @@ namespace WpfApp1.Classes
             {
                 return resultDateTime;
             }
-            return DependencyProperty.UnsetValue;
+            return System.Windows.DependencyProperty.UnsetValue;
         }
     }
 }

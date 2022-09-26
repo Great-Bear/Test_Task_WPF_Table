@@ -1,23 +1,13 @@
-﻿using Microsoft.EntityFrameworkCore;
-using System;
-using System.Collections.Generic;
-using System.Collections.ObjectModel;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
+
 using Test_Task_WPF_Table.Classes;
-using System.Windows;
 using WpfApp1.Classes;
 using System.ComponentModel;
+
+using WpfApp1.Classes.DependencyProperty;
 
 namespace WpfApp1
 {
@@ -26,17 +16,31 @@ namespace WpfApp1
     /// </summary>
     public partial class ListUsers : Page
     {
+        public ApplicationViewModel ApplicationContext { get; set; }
         public ListUsers(ApplicationViewModel _applicationContext)
         {
             InitializeComponent();
             //  DataContext = _applicationContext;
-            
-            DataContext = _applicationContext;
+
+            ApplicationContext = _applicationContext;
             usersList.ItemsSource = _applicationContext.Users;
+
+            DataContext = ApplicationContext;
 
             CollectionView view = (CollectionView)CollectionViewSource.GetDefaultView(usersList.ItemsSource);
             view.Filter = UserFilter;
-   
+
+            var ButtonActive = new ButtonActive();
+
+
+            var a = new Binding
+            {
+                Path = new PropertyPath(nameof(ButtonActive.IsSpinning)),
+                Source = this,
+                Converter = new BooleanToVisibilityConverter()
+            };
+            DeleteBtn.SetBinding(VisibilityProperty, a);
+
 
         }
 
@@ -53,13 +57,6 @@ namespace WpfApp1
             CollectionViewSource.GetDefaultView(usersList.ItemsSource).Refresh();
         }
 
-        private void usersList_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        {
-            ((ApplicationViewModel)DataContext).SelectedUser = (User)usersList.SelectedItem;
-
-           //var a = usersList.SelectedItems.Cast<User>().ToList();
-
-        }
 
         GridViewColumnHeader _lastHeaderClicked = null;
         ListSortDirection _lastDirection = ListSortDirection.Ascending;
@@ -130,5 +127,6 @@ namespace WpfApp1
             dataView.SortDescriptions.Add(sd);
             dataView.Refresh();
         }
+
     }
 }

@@ -8,10 +8,27 @@
         Title="MainWindow" Height="450" Width="800">
     <Grid Background="#FFE2E2E2">
         <Frame Name="frame"  Margin="150,0,0,0" NavigationUIVisibility="Hidden" />
-        <Button Name="AddUserBtn" Content="Add_User" HorizontalAlignment="Left" Margin="10,51,0,0" VerticalAlignment="Top" Height="33" Width="81" FontSize="14" />
-        <Button Name="ListUsersBtn" Content="List_Users" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Height="33" Width="83" FontSize="14"/>
-        <Button Name="EditUserBtn" Content="Edit_User" HorizontalAlignment="Left" Margin="10,89,0,0" VerticalAlignment="Top" Height="33" Width="81" FontSize="14"/>
 
+        <Button Name="ListUsersBtn" Tag="{StaticResource ListSVG}" Content="List_Users"  HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Height="33" Width="135" FontSize="14"/>
+
+        <Button Name="AddUserBtn" Content="Add_User" Tag="{StaticResource PlusSVG}" HorizontalAlignment="Left" Margin="10,51,0,0" VerticalAlignment="Top" Height="33" Width="135" FontSize="14" />
+
+        <Button Name="EditUserBtn" Content="Edit_User" Tag="{StaticResource EditSVG}" IsEnabled="False" HorizontalAlignment="Left" Margin="10,89,0,0" VerticalAlignment="Top" Height="33" Width="135" FontSize="14"/>
+       
+
+
+        <!--<Button Margin="10,264,685,78">
+            <Rectangle Width="100" Height="100">
+                <Rectangle.Fill>
+                    <DrawingBrush>
+                        <DrawingBrush.Drawing>
+
+                            <ImageDrawing Rect="150,0,25,25" ImageSource="/test2.png" ></ImageDrawing>
+                        </DrawingBrush.Drawing>
+                    </DrawingBrush>
+                </Rectangle.Fill>
+            </Rectangle>
+        </Button> -->
 
     </Grid>
 </Window>

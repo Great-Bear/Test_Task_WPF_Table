@@ -34,6 +34,8 @@ namespace WpfApp1
             applicationContext = new ApplicationViewModel();
             EditUserBtn.Click += EditUserClick;
 
+            
+
 
             frame.Navigate(new ListUsers(applicationContext));
         }

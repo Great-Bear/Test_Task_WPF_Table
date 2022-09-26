@@ -21,8 +21,9 @@ namespace WpfApp1.Classes
         RelayCommand? deleteCommand;
         public ObservableCollection<User> Users { get; set; }
 
-        public User NewUser { get; set; } = new User();
         public User SelectedUser { get; set; } = new User();
+
+        public User SelectedUsers { get; set; } = new User();
 
 
         public ApplicationViewModel()
@@ -40,15 +41,12 @@ namespace WpfApp1.Classes
                 return deleteCommand ??
                   (deleteCommand = new RelayCommand((selectedItems) =>
                   {
-                    
+                      
+                      var selectedUsers = selectedItems as ICollection<User>;
 
-                 //    var q = selectedItems as IList<User>;
-
-                //  var selectedUsers = q.Cast<User>().ToList();
-
-
-             //   db.Users.RemoveRange(selectedUsers);
-               //       db.SaveChangesAsync();                  
+                      db.Users.RemoveRange(selectedUsers);
+                      db.SaveChangesAsync();
+                      
                   }));
             }
         }
@@ -62,6 +60,7 @@ namespace WpfApp1.Classes
             return addCommand ??
                 (addCommand = new RelayCommand( (newUserForm) =>
                 {
+
                     User user = newUserForm as User;
 
                     db.Users.Add( new User
