@@ -9,27 +9,10 @@ using System.Windows.Media;
 using Test_Task_WPF_Table.Classes;
 
 
-namespace WpfApp1.Classes.DependencyProperty
+namespace WpfApp1.ClassesConverter.DependencyProperty
 {
     public class CustomButton : Button
     {
-        public static readonly System.Windows.DependencyProperty dependencyProperty =
-             System.Windows.DependencyProperty.Register("SetBackGroundRed", typeof(bool), typeof(CustomButton),
-                 new PropertyMetadata(false, new PropertyChangedCallback(ChangeBackGround)));
-        public bool SetBackGroundRed
-        {
-            get => (bool)GetValue(dependencyProperty);
-            set => SetValue(dependencyProperty, value);
-        }
-
-        private static void ChangeBackGround(DependencyObject d, DependencyPropertyChangedEventArgs e)
-        {
-            if ((bool)e.NewValue)
-                (d as CustomButton).Background = Brushes.Red;
-        }
-
-
-
         public static readonly System.Windows.DependencyProperty dependencyPropertyAbility =
              System.Windows.DependencyProperty.Register("SetAbility", typeof(User), typeof(CustomButton),
                  new PropertyMetadata(null, new PropertyChangedCallback(ChangeAbility)));
@@ -41,8 +24,6 @@ namespace WpfApp1.Classes.DependencyProperty
 
         private static void ChangeAbility(DependencyObject d, DependencyPropertyChangedEventArgs e)
         {
-           //MessageBox.Show(d.GetType().ToString());
-
             if ( ((User)e.NewValue) == null)
             {
                 (d as Button).IsEnabled = false;
@@ -51,13 +32,11 @@ namespace WpfApp1.Classes.DependencyProperty
             {
                 (d as Button).IsEnabled = true;
             }
-
         }
 
         public CustomButton()
         {
           IsEnabled = false;
         }
-
     }
 }

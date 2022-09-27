@@ -18,14 +18,49 @@
         <TextBox Name="SurNameTbx" HorizontalAlignment="Left" Text="{ Binding NewUser.SurName, Mode=Default }" Margin="410,100,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="150" Height="25"/>
 
         <Label Content="Enter Description" HorizontalAlignment="Left" Margin="270,140,0,0" VerticalAlignment="Top" Height="25" Width="132" FontSize="14"/>
-        <TextBox  Name="DescriptionTbx" HorizontalAlignment="Left" Text="{ Binding NewUser.Decription, Mode=Default }" Margin="410,140,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="150" Height="25"/>
+        <TextBox Name="DescriptionTbx" 
+                 HorizontalAlignment="Left" 
+                 Text="{ Binding NewUser.Decription, Mode=Default }" 
+                 Margin="410,140,0,0" 
+                 TextWrapping="Wrap" 
+                 VerticalAlignment="Top" 
+                 Width="150" 
+                 Height="25"/>
 
-        <Label Content="Surbscribe To" HorizontalAlignment="Left" Margin="270,180,0,0" VerticalAlignment="Top" Height="25" Width="132" FontSize="14"/>
-        <DatePicker HorizontalAlignment="Left" SelectedDate="{Binding NewUser.SubcriedTo}" VerticalAlignment="Top" Margin="410,180,0,0" Width="150" Height="25" ></DatePicker>
+        <Label Content="Surbscribe To"
+               HorizontalAlignment="Left"
+               Margin="270,180,0,0"
+               VerticalAlignment="Top"
+               Height="25"
+               Width="132"
+               FontSize="14"/>
+        
+        <DatePicker HorizontalAlignment="Left"
+                    SelectedDate="{Binding NewUser.SubcriedTo}"
+                    VerticalAlignment="Top"
+                    Margin="410,180,0,0"
+                    Width="150"
+                    Height="25"/>
 
-        <Button Name="SaveBtn" Content="Save" Command="{Binding ApplicationContext.AddCommand}"
-                CommandParameter="{ Binding NewUser, Mode=Default }" HorizontalAlignment="Left" Margin="417,277,0,0" VerticalAlignment="Top" Height="43" Width="78"/>
-        <Button Name="ResetBtn" Content="Reset" HorizontalAlignment="Left" Margin="264,277,0,0" VerticalAlignment="Top" Height="43" Width="90"/>
+        <Button Style="{StaticResource GeneralButton}"
+                Name="SaveBtn"
+                Content="Save"
+                Command="{Binding ApplicationContext.AddCommand}"
+                CommandParameter="{ Binding NewUser, Mode=Default }"
+                HorizontalAlignment="Left"
+                Margin="412,225,0,0"
+                VerticalAlignment="Top"
+                Height="43"
+                Width="78"/>
+
+        <Button Style="{StaticResource GeneralButton}"
+                Name="ResetBtn"
+                Content="Reset"
+                HorizontalAlignment="Left"
+                Margin="316,225,0,0"
+                VerticalAlignment="Top"
+                Height="43"
+                Width="90"/>
 
     </Grid>
 </Page>

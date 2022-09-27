@@ -15,7 +15,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using Test_Task_WPF_Table.Classes;
-using WpfApp1.Classes;
+using WpfApp1.ClassesConverter;
 
 namespace WpfApp1
 {

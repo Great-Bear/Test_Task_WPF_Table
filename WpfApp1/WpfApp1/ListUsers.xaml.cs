@@ -4,10 +4,10 @@ using System.Windows.Controls;
 using System.Windows.Data;
 
 using Test_Task_WPF_Table.Classes;
-using WpfApp1.Classes;
+using WpfApp1.ClassesConverter;
 using System.ComponentModel;
 
-using WpfApp1.Classes.DependencyProperty;
+using WpfApp1.ClassesConverter.DependencyProperty;
 
 namespace WpfApp1
 {

@@ -12,7 +12,7 @@ using System.Windows;
 using System.Windows.Data;
 using Test_Task_WPF_Table.Classes;
 
-namespace WpfApp1.Classes
+namespace WpfApp1.ClassesConverter
 {
     public class ApplicationViewModel : INotifyPropertyChanged
     {
@@ -30,16 +30,14 @@ namespace WpfApp1.Classes
             set
             {
                 _selectedUser = value;
-                OnPropertyChanged("SelectedUser");
+                OnPropertyChanged();
             }
         }
 
 
         public ApplicationViewModel()
         {
-            db.Database.EnsureCreated();
             db.Users.Load();
-           
             Users = db.Users.Local.ToObservableCollection();
         }
         // команда удаления
@@ -47,27 +45,20 @@ namespace WpfApp1.Classes
         {
             get
             {
-             
                 return deleteCommand ??
                   (deleteCommand = new RelayCommand((selectedItems) =>
                   {
-                      // Delete code
-                      /*
-                            var selectedUsers = selectedItems as ICollection<User>;
+                    var selectedUsersIE = (selectedItems as IEnumerable).Cast<User>();
 
-                            db.Users.RemoveRange(selectedUsers);
-                            db.SaveChangesAsync();
-                        */
+                    while(selectedUsersIE.Count() > 0)
+                    {
+                        db.Users.Remove(selectedUsersIE.FirstOrDefault());
+                    }
+                    db.SaveChangesAsync();
 
-                      // If delete completed
                       SelectedUser = null;
-                      
-
-
                   }));
-                    
-
-                  }
+            }
         }
 
 
@@ -75,7 +66,6 @@ namespace WpfApp1.Classes
         {
             get
             {
-           
             return addCommand ??
                 (addCommand = new RelayCommand( (newUserForm) =>
                 {
@@ -91,7 +81,6 @@ namespace WpfApp1.Classes
                         CreatedOn = DateTime.Now
                     });
                     db.SaveChanges();
-                        
                 }));
             }
         }
@@ -104,7 +93,7 @@ namespace WpfApp1.Classes
                 return editCommand ??
                     (editCommand = new RelayCommand((selectedItem) =>
                     {
-                        var modifiedUser = selectedItem as User;                       
+                        var modifiedUser = selectedItem as User;
                         db.Entry(modifiedUser).State = EntityState.Modified;
                         db.SaveChanges();
                         SelectedUser = null;

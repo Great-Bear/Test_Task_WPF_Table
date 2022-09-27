@@ -8,7 +8,7 @@ using System.Windows.Controls;
 using System.Windows.Media;
 using Test_Task_WPF_Table.Classes;
 
-namespace WpfApp1.Classes
+namespace WpfApp1.ClassesConverter
 {
     public class ListViewItemStyleSelector : StyleSelector
     {

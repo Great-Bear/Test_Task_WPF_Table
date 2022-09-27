@@ -1,0 +1,23 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" 
+                    xmlns:local3="clr-namespace:WpfApp1.ClassesConverter"
+                    xmlns:local4="clr-namespace:WpfApp1.ClassesConverter.DependencyProperty">
+
+
+    <Style TargetType="{x:Type GridViewColumnHeader}" x:Key="MyHeaderStyle" >
+        <Setter Property="Background" Value="LightBlue"/>
+    </Style>
+
+    <Style TargetType="{x:Type ListViewItem}" x:Key="ItemContrainerStyle"  >
+        <Setter Property="Margin" Value="1"/>
+        <Setter Property="Padding" Value="100"/>
+        <Setter Property="Height" Value="30"></Setter>
+        <Style.Triggers>
+            <Trigger Property="IsSelected" Value="True">
+                <Setter Property="Foreground" Value="White"/>
+                <Setter Property="BorderThickness" Value="1"/>
+                <Setter Property="BorderBrush" Value="Black"/>
+            </Trigger>
+        </Style.Triggers>
+    </Style>
+</ResourceDictionary>

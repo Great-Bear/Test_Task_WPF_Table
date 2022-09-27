@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Data;
 
-namespace WpfApp1.Classes
+namespace WpfApp1.ClassesConverter
 {
     [ValueConversion(typeof(DateTime), typeof(String))]
     public class DateConverter : IValueConverter

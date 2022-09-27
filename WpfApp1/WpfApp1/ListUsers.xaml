@@ -2,54 +2,68 @@
       xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
-      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" xmlns:local3="clr-namespace:WpfApp1.Classes"
-      xmlns:fa="http://schemas.fontawesome.io/icons/" xmlns:col="clr-namespace:System.Collections;assembly=mscorlib" xmlns:local="clr-namespace:Test_Task_WPF_Table.Classes" xmlns:sys="clr-namespace:System;assembly=mscorlib" xmlns:local1="clr-namespace:WpfApp1.Classes.DependencyProperty"
-      xmlns:local2="clr-namespace:WpfApp1.Classes.DependencyProperty"  
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+      xmlns:col="clr-namespace:System.Collections;assembly=mscorlib" 
+      xmlns:local="clr-namespace:Test_Task_WPF_Table.Classes"  
+      xmlns:local4="clr-namespace:WpfApp1.ClassesConverter.DependencyProperty" 
+      xmlns:local3="clr-namespace:WpfApp1.ClassesConverter" 
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="800"
       Title="ListUsers">
     <Page.Resources>
+
         <local3:DateConverter x:Key="DateConverter" />
         <local3:ListViewItemStyleSelector x:Key="myStyleSelector"/>
-        <local3:PathIconProperty x:Key="PathIconProperty"/>
+        <local4:CustomButton x:Key="CustomButton"/>
 
-        <Style x:Key="MyHeaderStyle" TargetType="{x:Type GridViewColumnHeader}">
-            <Setter Property="Background" Value="LightBlue"/>
-        </Style>
-
-        <Style x:Key="TestTemplate" TargetType="{x:Type DataGridCell}" >
-            <Setter Property="Background" Value="Black"></Setter>
-        </Style>
-
-        <Style x:Key="ItemContrainerStyle" TargetType="{x:Type ListViewItem}" >
-            <Setter Property="Margin" Value="1"/>
-            <Setter Property="Padding" Value="100"/>
-            <Setter Property="Height" Value="30"></Setter>
-            <Style.Triggers>
-                <Trigger Property="IsSelected" Value="True">
-                    <Setter Property="Foreground" Value="White"/>
-                    <Setter Property="BorderThickness" Value="1"/>
-                    <Setter Property="BorderBrush" Value="Black"/>
-                </Trigger>
-            </Style.Triggers>
-        </Style>
     </Page.Resources>
 
     <Grid Background="#FFC7BDBD" Margin="0,0,0,10">
 
-        <Grid HorizontalAlignment="Stretch"  VerticalAlignment="Top"  Background="#FF7D7777" Height="50" >
-            <local2:CustomButton Style="{StaticResource GeneralButton}" SetAbility="{Binding SelectedUser}" x:Name="DeleteBtn"  Content="Delete user"   HorizontalAlignment="Left" Margin="246,10,0,0" VerticalAlignment="Top" Height="33" Width="130" FontSize="16"
-                                 Command="{ Binding DeleteCommand }" CommandParameter="{ Binding ElementName=usersList, Path=SelectedItems }"  Tag="{StaticResource TrashCanSVG}"/>
+        <Grid HorizontalAlignment="Stretch"
+              VerticalAlignment="Top"
+              Background="#FF7D7777"
+              Height="50" >
 
-            <TextBox HorizontalAlignment="Left" Margin="76,10,0,0" FontSize="22" TextWrapping="Wrap" Name="txtFilter" TextChanged="txtFilter_TextChanged" VerticalAlignment="Top" Width="165" Height="33"/>
-            <Label Content="Search:" HorizontalAlignment="Left" Margin="15,10,0,0" VerticalAlignment="Top" Height="33" Width="61" FontSize="16" Background="#FFCAB3B3"/>
+            <local4:CustomButton Style="{StaticResource GeneralButtonSVG}"
+                                 SetAbility="{Binding SelectedUser}"
+                                 x:Name="DeleteBtn"
+                                 Content="Delete user"
+                                 HorizontalAlignment="Left"
+                                 Margin="246,10,0,0"
+                                 VerticalAlignment="Top"
+                                 Height="33"
+                                 Width="130" 
+                                 FontSize="16"
+                                 Command="{ Binding DeleteCommand }"
+                                 CommandParameter="{ Binding ElementName=usersList, Path=SelectedItems }"
+                                 Tag="{StaticResource TrashCanSVG}"/>
+
+            <TextBox HorizontalAlignment="Left" 
+                     Margin="76,10,0,0" 
+                     FontSize="22" 
+                     TextWrapping="Wrap"
+                     Name="txtFilter"
+                     TextChanged="txtFilter_TextChanged"
+                     VerticalAlignment="Top"
+                     Width="165"
+                     Height="33"/>
+            
+            <Label Content="Search:"
+                   HorizontalAlignment="Left"
+                   Margin="15,10,0,0"
+                   VerticalAlignment="Top" 
+                   Height="33"
+                   Width="61"
+                   FontSize="16"
+                   Background="#FFCAB3B3"/>
             <!--  <fa:ImageAwesome Icon="Refresh" Spin="false" VerticalAlignment="Top" HorizontalAlignment="Left" Height="47" Width="53" Margin="10,128,0,0" /> -->
         </Grid>
 
         <ListView ItemsSource="{DynamicResource ResourceKey=users}" SelectedItem="{Binding SelectedUser, Mode=Default}"  ItemContainerStyleSelector="{DynamicResource myStyleSelector}"  SelectionMode="Extended"  GridViewColumnHeader.Click="GridViewColumnHeaderClickedHandler"  Name="usersList" HorizontalAlignment="Stretch"  Margin="0,50,0,0" Background="#FFC3B1B1" >
             <ListView.View >
                 <GridView  ColumnHeaderContainerStyle="{StaticResource MyHeaderStyle}"  >
-                    <GridViewColumn CellTemplateSelector="{StaticResource TestTemplate}" DisplayMemberBinding="{Binding Name}">Name</GridViewColumn>
+                    <GridViewColumn DisplayMemberBinding="{Binding Name}">Name</GridViewColumn>
                     <GridViewColumn DisplayMemberBinding="{Binding SurName}" Width="100">Surname</GridViewColumn>
                     <GridViewColumn DisplayMemberBinding="{Binding CreatedOn, Converter={StaticResource DateConverter}}">CreatedOn</GridViewColumn>
                     <GridViewColumn DisplayMemberBinding="{Binding Decription}">Description</GridViewColumn>
