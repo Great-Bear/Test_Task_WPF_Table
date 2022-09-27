@@ -3,17 +3,17 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:WpfApp1"
+        xmlns:local="clr-namespace:WpfApp1" xmlns:local2="clr-namespace:WpfApp1.Classes.DependencyProperty"
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
     <Grid Background="#FFE2E2E2">
         <Frame Name="frame"  Margin="150,0,0,0" NavigationUIVisibility="Hidden" />
 
-        <Button Name="ListUsersBtn" Tag="{StaticResource ListSVG}" Content="List_Users"  HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Height="33" Width="135" FontSize="14"/>
+        <Button Style="{StaticResource GeneralButton}" Name="ListUsersBtn" Tag="{StaticResource ListSVG}" Content="List_Users"  HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Height="33" Width="135" FontSize="14"/>
 
-        <Button Name="AddUserBtn" Content="Add_User" Tag="{StaticResource PlusSVG}" HorizontalAlignment="Left" Margin="10,51,0,0" VerticalAlignment="Top" Height="33" Width="135" FontSize="14" />
+        <Button Style="{StaticResource GeneralButton}" Name="AddUserBtn" Content="Add_User" Tag="{StaticResource PlusSVG}" HorizontalAlignment="Left" Margin="10,51,0,0" VerticalAlignment="Top" Height="33" Width="135" FontSize="14" />
 
-        <Button Name="EditUserBtn" Content="Edit_User" Tag="{StaticResource EditSVG}" IsEnabled="False" HorizontalAlignment="Left" Margin="10,89,0,0" VerticalAlignment="Top" Height="33" Width="135" FontSize="14"/>
+        <local2:CustomButton SetAbility="{Binding SelectedUser}" Style="{StaticResource GeneralButton}" x:Name="EditUserBtn" Content="Edit_User" Tag="{StaticResource EditSVG}" HorizontalAlignment="Left" Margin="10,89,0,0" VerticalAlignment="Top" Height="33" Width="135" FontSize="14"/>
        
 
 

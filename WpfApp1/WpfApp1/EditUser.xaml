@@ -46,7 +46,7 @@
 
         <Button Name="SaveBtn" Content="Save" Command="{ Binding EditCommand }"
                 CommandParameter="{ Binding SelectedUser, Mode = Default }" HorizontalAlignment="Left" Margin="300,192,0,0" VerticalAlignment="Top" Height="44" Width="78"/>
-        <Button Name="ResetBtn" Content="Reset" HorizontalAlignment="Left" Margin="152,192,0,0" VerticalAlignment="Top" Height="44" Width="90"/>
+        <Button  Name="ResetBtn" Content="Reset" HorizontalAlignment="Left" Margin="152,192,0,0" VerticalAlignment="Top" Height="44" Width="90"/>
     </Grid>
 
 

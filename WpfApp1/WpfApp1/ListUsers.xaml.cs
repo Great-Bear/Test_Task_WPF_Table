@@ -30,17 +30,11 @@ namespace WpfApp1
             CollectionView view = (CollectionView)CollectionViewSource.GetDefaultView(usersList.ItemsSource);
             view.Filter = UserFilter;
 
-            var ButtonActive = new ButtonActive();
+            var CustomButton = new CustomButton();
 
 
-            var a = new Binding
-            {
-                Path = new PropertyPath(nameof(ButtonActive.IsSpinning)),
-                Source = this,
-                Converter = new BooleanToVisibilityConverter()
-            };
-            DeleteBtn.SetBinding(VisibilityProperty, a);
-
+            DeleteBtn = CustomButton;
+            
 
         }
 

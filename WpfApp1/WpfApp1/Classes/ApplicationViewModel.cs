@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Linq;
+using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
@@ -13,7 +14,7 @@ using Test_Task_WPF_Table.Classes;
 
 namespace WpfApp1.Classes
 {
-    public class ApplicationViewModel
+    public class ApplicationViewModel : INotifyPropertyChanged
     {
         ApplicationContext db = new ApplicationContext();
         RelayCommand? addCommand;
@@ -21,9 +22,17 @@ namespace WpfApp1.Classes
         RelayCommand? deleteCommand;
         public ObservableCollection<User> Users { get; set; }
 
-        public User SelectedUser { get; set; } = new User();
+        private User _selectedUser;
 
-        public User SelectedUsers { get; set; } = new User();
+        public User SelectedUser
+        {
+            get { return _selectedUser; }
+            set
+            {
+                _selectedUser = value;
+                OnPropertyChanged("SelectedUser");
+            }
+        }
 
 
         public ApplicationViewModel()
@@ -38,17 +47,27 @@ namespace WpfApp1.Classes
         {
             get
             {
+             
                 return deleteCommand ??
                   (deleteCommand = new RelayCommand((selectedItems) =>
                   {
-                      
-                      var selectedUsers = selectedItems as ICollection<User>;
+                      // Delete code
+                      /*
+                            var selectedUsers = selectedItems as ICollection<User>;
 
-                      db.Users.RemoveRange(selectedUsers);
-                      db.SaveChangesAsync();
+                            db.Users.RemoveRange(selectedUsers);
+                            db.SaveChangesAsync();
+                        */
+
+                      // If delete completed
+                      SelectedUser = null;
                       
+
+
                   }));
-            }
+                    
+
+                  }
         }
 
 
@@ -87,11 +106,18 @@ namespace WpfApp1.Classes
                     {
                         var modifiedUser = selectedItem as User;                       
                         db.Entry(modifiedUser).State = EntityState.Modified;
-                        db.SaveChanges();                    
+                        db.SaveChanges();
+                        SelectedUser = null;
                     }));
             }
         }
 
+        public event PropertyChangedEventHandler PropertyChanged;
+        public void OnPropertyChanged([CallerMemberName] string prop = "")
+        {
+            if (PropertyChanged != null)
+                PropertyChanged(this, new PropertyChangedEventArgs(prop));
+        }
 
     }
 }
