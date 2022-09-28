@@ -8,6 +8,7 @@ using WpfApp1.ClassesConverter;
 using System.ComponentModel;
 
 using WpfApp1.ClassesConverter.DependencyProperty;
+using WpfApp1.Classes.ViewModels;
 
 namespace WpfApp1
 {
@@ -16,27 +17,18 @@ namespace WpfApp1
     /// </summary>
     public partial class ListUsers : Page
     {
-        public ApplicationViewModel ApplicationContext { get; set; }
-        public ListUsers(ApplicationViewModel _applicationContext)
+        public ListUsers()
         {
             InitializeComponent();
-            //  DataContext = _applicationContext;
+            ListUserViewModel listUserViewModel = new ListUserViewModel();
 
-            ApplicationContext = _applicationContext;
-            usersList.ItemsSource = _applicationContext.Users;
-
-            DataContext = ApplicationContext;
+            usersList.ItemsSource = listUserViewModel.Users;
+            DataContext = listUserViewModel;
 
             CollectionView view = (CollectionView)CollectionViewSource.GetDefaultView(usersList.ItemsSource);
             view.Filter = UserFilter;
-
-            var CustomButton = new CustomButton();
-
-
-            DeleteBtn = CustomButton;
-            
-
         }
+
 
         private bool UserFilter(object item)
         {
@@ -58,7 +50,6 @@ namespace WpfApp1
         void GridViewColumnHeaderClickedHandler(object sender,
                                             RoutedEventArgs e)
         {
-            
             var headerClicked = e.OriginalSource as GridViewColumnHeader;
             ListSortDirection direction;
 
@@ -108,7 +99,6 @@ namespace WpfApp1
                     _lastDirection = direction;
                 }
             }
-            
         }
 
         private void Sort(string sortBy, ListSortDirection direction)

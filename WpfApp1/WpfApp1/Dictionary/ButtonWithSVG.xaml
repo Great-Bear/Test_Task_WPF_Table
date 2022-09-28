@@ -16,7 +16,7 @@
                         <Grid>
                             <Path x:Name="PathIcon" Width="20" Height="20" Stretch="Fill" Fill="#4C87B3" HorizontalAlignment="Left" Data="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=Tag}"></Path>
 
-                            <Border BorderBrush="White" HorizontalAlignment="Right" >
+                            <Border BorderBrush="White" HorizontalAlignment="Right"  >
                                 <ContentPresenter x:Name="MyContentPresenter"  Content="{TemplateBinding Content}" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0,0,0,0" />
                             </Border>
                         </Grid>

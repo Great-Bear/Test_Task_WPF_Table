@@ -25,20 +25,6 @@
               Background="#FF7D7777"
               Height="50" >
 
-            <local4:CustomButton Style="{StaticResource GeneralButtonSVG}"
-                                 SetAbility="{Binding SelectedUser}"
-                                 x:Name="DeleteBtn"
-                                 Content="Delete user"
-                                 HorizontalAlignment="Left"
-                                 Margin="246,10,0,0"
-                                 VerticalAlignment="Top"
-                                 Height="33"
-                                 Width="130" 
-                                 FontSize="16"
-                                 Command="{ Binding DeleteCommand }"
-                                 CommandParameter="{ Binding ElementName=usersList, Path=SelectedItems }"
-                                 Tag="{StaticResource TrashCanSVG}"/>
-
             <TextBox HorizontalAlignment="Left" 
                      Margin="76,10,0,0" 
                      FontSize="22" 
@@ -48,7 +34,7 @@
                      VerticalAlignment="Top"
                      Width="165"
                      Height="33"/>
-            
+
             <Label Content="Search:"
                    HorizontalAlignment="Left"
                    Margin="15,10,0,0"
@@ -57,10 +43,55 @@
                    Width="61"
                    FontSize="16"
                    Background="#FFCAB3B3"/>
+
+            <Button Style="{StaticResource GeneralButtonSVG}"
+                Name="AddUserBtn"
+                Content="Add_User"
+                Tag="{StaticResource PlusSVG}"
+                HorizontalAlignment="Left"
+                Margin="251,10,0,0"
+                VerticalAlignment="Top"
+                Height="33"
+                Width="135"
+                FontSize="14" />
+            
+            <local4:CustomButton SetAbility="{ Binding ElementName=usersList, Path=SelectedItem }"
+                             Style="{StaticResource GeneralButtonSVG}"
+                             x:Name="EditUserBtn" Content="Edit_User"
+                             Tag="{StaticResource EditSVG}"
+                             HorizontalAlignment="Left"
+                             Margin="391,10,0,0"
+                             VerticalAlignment="Top"
+                             Height="33"
+                             Width="135"
+                             FontSize="14"/>
+            
+            <local4:CustomButton Style="{StaticResource GeneralButtonSVG}"
+                                 SetAbility="{ Binding ElementName=usersList, Path=SelectedItem }"
+                                 x:Name="DeleteBtn"
+                                 Content="Delete user"
+                                 HorizontalAlignment="Left"
+                                 Margin="531,10,0,0"
+                                 VerticalAlignment="Top"
+                                 Height="33"
+                                 Width="135" 
+                                 FontSize="16"
+                                 Command="{ Binding DeleteCommand }"
+                                 CommandParameter="{Binding ElementName=usersList, Path=SelectedItems}"
+                                 Tag="{StaticResource TrashCanSVG}"/>
             <!--  <fa:ImageAwesome Icon="Refresh" Spin="false" VerticalAlignment="Top" HorizontalAlignment="Left" Height="47" Width="53" Margin="10,128,0,0" /> -->
         </Grid>
 
-        <ListView ItemsSource="{DynamicResource ResourceKey=users}" SelectedItem="{Binding SelectedUser, Mode=Default}"  ItemContainerStyleSelector="{DynamicResource myStyleSelector}"  SelectionMode="Extended"  GridViewColumnHeader.Click="GridViewColumnHeaderClickedHandler"  Name="usersList" HorizontalAlignment="Stretch"  Margin="0,50,0,0" Background="#FFC3B1B1" >
+        <ListView ItemsSource="{DynamicResource ResourceKey=users}"
+                  ItemContainerStyleSelector="{DynamicResource myStyleSelector}"  
+                  SelectedItem="{Binding SelectedUser}"
+                  SelectionMode="Extended"  
+                  GridViewColumnHeader.Click="GridViewColumnHeaderClickedHandler"  
+                  Name="usersList" 
+                  HorizontalAlignment="Stretch"  
+                  Margin="0,50,0,0" 
+                  Background="#FFC3B1B1"
+>
             <ListView.View >
                 <GridView  ColumnHeaderContainerStyle="{StaticResource MyHeaderStyle}"  >
                     <GridViewColumn DisplayMemberBinding="{Binding Name}">Name</GridViewColumn>
@@ -78,8 +109,5 @@
                 </col:ArrayList>
             </ListView.Resources>
         </ListView>
-
-
-
     </Grid>
 </Page>

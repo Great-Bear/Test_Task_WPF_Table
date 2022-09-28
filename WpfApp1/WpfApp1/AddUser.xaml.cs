@@ -14,6 +14,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using Test_Task_WPF_Table.Classes;
+using WpfApp1.Classes.ViewModels;
 using WpfApp1.ClassesConverter;
 
 namespace WpfApp1
@@ -24,37 +25,10 @@ namespace WpfApp1
     /// 
     public partial class AddUser : Page
     {
-
-        public User NewUser { get; set; } = new User();
-        public ApplicationViewModel ApplicationContext { get; set; }
-        public AddUser(ApplicationViewModel _applicationContext)
+        public AddUser()
         {
             InitializeComponent();
-
-            SaveBtn.Click += SaveUserClick;
-            ResetBtn.Click += ResetUserClick;
-
-            ApplicationContext = _applicationContext;
-
-            DataContext = this;
+            DataContext = new AddUserViewModel();
         }
-
-        private void SaveUserClick(object sender, RoutedEventArgs e)
-        {
-            ResetForm();
-        }
-
-        private void ResetUserClick(object sender, RoutedEventArgs e)
-        {
-            ResetForm();
-        }
-
-        private void ResetForm()
-        {
-            NameTbx.Text = String.Empty;
-            SurNameTbx.Text = String.Empty;
-            DescriptionTbx.Text = String.Empty;
-        }
-
     }
 }

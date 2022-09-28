@@ -9,38 +9,25 @@ using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
-using System.Windows.Data;
 using Test_Task_WPF_Table.Classes;
+using WpfApp1.ClassesConverter;
 
-namespace WpfApp1.ClassesConverter
+namespace WpfApp1.Classes.ViewModels
 {
-    public class ApplicationViewModel : INotifyPropertyChanged
+    public class ListUserViewModel : BasicViewModel, INotifyPropertyChanged
     {
-        ApplicationContext db = new ApplicationContext();
-       
-        RelayCommand? editCommand;
-        RelayCommand? deleteCommand;
         public ObservableCollection<User> Users { get; set; }
 
-        private User _selectedUser;
+        public User SelectedUser { get; set; }
 
-        public User SelectedUser
-        {
-            get { return _selectedUser; }
-            set
-            {
-                _selectedUser = value;
-                OnPropertyChanged();
-            }
-        }
-
-
-        public ApplicationViewModel()
+        public ListUserViewModel()
         {
             db.Users.Load();
             Users = db.Users.Local.ToObservableCollection();
+
         }
-        // команда удаления
+
+        RelayCommand? deleteCommand;
         public RelayCommand DeleteCommand
         {
             get
@@ -48,32 +35,17 @@ namespace WpfApp1.ClassesConverter
                 return deleteCommand ??
                   (deleteCommand = new RelayCommand((selectedItems) =>
                   {
+
                     var selectedUsersIE = (selectedItems as IEnumerable).Cast<User>();
 
-                    while(selectedUsersIE.Count() > 0)
+                    while (selectedUsersIE.Count() > 0)
                     {
                         db.Users.Remove(selectedUsersIE.FirstOrDefault());
                     }
+
                     db.SaveChangesAsync();
-
-                      SelectedUser = null;
+                    SelectedUser = null;
                   }));
-            }
-        }
-
-
-        public RelayCommand EditCommand
-        {
-            get
-            {
-                return editCommand ??
-                    (editCommand = new RelayCommand((selectedItem) =>
-                    {
-                        var modifiedUser = selectedItem as User;
-                        db.Entry(modifiedUser).State = EntityState.Modified;
-                        db.SaveChanges();
-                        SelectedUser = null;
-                    }));
             }
         }
 
@@ -83,6 +55,5 @@ namespace WpfApp1.ClassesConverter
             if (PropertyChanged != null)
                 PropertyChanged(this, new PropertyChangedEventArgs(prop));
         }
-
     }
 }

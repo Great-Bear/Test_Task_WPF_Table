@@ -15,6 +15,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using Test_Task_WPF_Table.Classes;
+using WpfApp1.Classes.ViewModels;
 using WpfApp1.ClassesConverter;
 
 namespace WpfApp1
@@ -24,34 +25,20 @@ namespace WpfApp1
     /// </summary>
     public partial class MainWindow : Window
     {
-        public ApplicationViewModel applicationContext { get; set; }
         public MainWindow()
         {
             InitializeComponent();
-         
-            AddUserBtn.Click += AddUserClick;
             ListUsersBtn.Click += ListUsersClick;
-            applicationContext = new ApplicationViewModel();
-            EditUserBtn.Click += EditUserClick;
+            DataContext = new MainWindowViewModel();
 
-            DataContext = applicationContext;
-
-            frame.Navigate(new ListUsers(applicationContext));
+            var ViewModel = DataContext as MainWindowViewModel;
+            frame.Navigate(new ListUsers());
         }
 
-        private void AddUserClick(object sender, RoutedEventArgs e)
-        {
-            frame.Navigate(new AddUser(applicationContext));
-        }
         private void ListUsersClick(object sender, RoutedEventArgs e)
         {
-            frame.Navigate(new ListUsers(applicationContext));
+            var ViewModel = DataContext as MainWindowViewModel;
+            frame.Navigate(new ListUsers());
         }
-
-        private void EditUserClick(object sender, RoutedEventArgs e)
-        {
-            frame.Navigate(new EditUser(applicationContext));
-        }
-
     }
 }

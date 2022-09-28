@@ -12,7 +12,7 @@
         <Label Content="Add User" HorizontalAlignment="Left" Margin="368,23,0,0" VerticalAlignment="Top" Height="34" Width="77" FontSize="14"/>
 
         <Label Content="Enter Name" HorizontalAlignment="Left" Margin="270,60,0,0" VerticalAlignment="Top" Height="25" Width="95" FontSize="14"/>
-        <TextBox  Name="NameTbx" HorizontalAlignment="Left" Text="{ Binding NewUser.Name }" Margin="410,60,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="150" Height="25"/>
+        <TextBox  Name="NameTbx" HorizontalAlignment="Left" Text="{ Binding NewUser.Name, Mode=Default}" Margin="410,60,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="150" Height="25"/>
 
         <Label Content="Enter SurName" HorizontalAlignment="Left" Margin="270,100,0,0" VerticalAlignment="Top" Height="25" Width="118" FontSize="14"/>
         <TextBox Name="SurNameTbx" HorizontalAlignment="Left" Text="{ Binding NewUser.SurName, Mode=Default }" Margin="410,100,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="150" Height="25"/>
@@ -36,7 +36,7 @@
                FontSize="14"/>
         
         <DatePicker HorizontalAlignment="Left"
-                    SelectedDate="{Binding NewUser.SubcriedTo}"
+                    SelectedDate="{Binding NewUser.SubcriedTo, Mode=Default}"
                     VerticalAlignment="Top"
                     Margin="410,180,0,0"
                     Width="150"
@@ -45,8 +45,7 @@
         <Button Style="{StaticResource GeneralButton}"
                 Name="SaveBtn"
                 Content="Save"
-                Command="{Binding ApplicationContext.AddCommand}"
-                CommandParameter="{ Binding NewUser, Mode=Default }"
+                Command="{Binding AddCommand}"
                 HorizontalAlignment="Left"
                 Margin="412,225,0,0"
                 VerticalAlignment="Top"
@@ -56,6 +55,7 @@
         <Button Style="{StaticResource GeneralButton}"
                 Name="ResetBtn"
                 Content="Reset"
+                Command="{Binding ClearUserCommand}"
                 HorizontalAlignment="Left"
                 Margin="316,225,0,0"
                 VerticalAlignment="Top"

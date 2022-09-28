@@ -12,20 +12,17 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
-using WpfApp1.Classes.ViewModels;
-using WpfApp1.ClassesConverter;
 
 namespace WpfApp1
 {
     /// <summary>
-    /// Логика взаимодействия для EditUser.xaml
+    /// Логика взаимодействия для UserControll.xaml
     /// </summary>
-    public partial class EditUser : Page
+    public partial class UserControll : Page
     {
-        public EditUser()
+        public UserControll()
         {
             InitializeComponent();
-            DataContext = new EditUserViewModel();
         }
     }
 }

@@ -18,10 +18,6 @@ namespace Test_Task_WPF_Table.Classes
 
         public User()
         {
-            Name = string.Empty;
-            SurName = string.Empty;
-            Decription = string.Empty;
-            CreatedOn = DateTime.Now;
             SubcriedTo = DateTime.Now.AddDays(1);
         }
     }
