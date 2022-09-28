@@ -28,7 +28,7 @@
 
         <TextBox Style="{StaticResource CustomTextBox}" 
                  Name="NameTbx" 
-                 Text="{Binding SelectedUser.Name, Mode=Default}"  
+                 Text="{Binding NewUser.Name, Mode=Default}"  
                  Tag="Enter Name"   
                  VerticalAlignment="Top" 
                  HorizontalAlignment="Left"  
@@ -36,7 +36,7 @@
 
         <TextBox Style="{StaticResource CustomTextBox}" 
                  Name="SurNameTbx" 
-                 Text="{Binding SelectedUser.SurName, Mode=Default}"  
+                 Text="{Binding NewUser.SurName, Mode=Default}"  
                  Tag="Enter SurName"   
                  VerticalAlignment="Top" 
                  HorizontalAlignment="Left"  
@@ -44,7 +44,7 @@
 
         <TextBox Style="{StaticResource CustomTextBox}" 
                  Name="DescriptionTbx" 
-                 Text="{Binding SelectedUser.Decription, Mode=Default}"  
+                 Text="{Binding NewUser.Decription, Mode=Default}"  
                  Tag="Enter Description"   
                  VerticalAlignment="Top" 
                  HorizontalAlignment="Left"  
@@ -53,6 +53,7 @@
         <Button Style="{StaticResource ResourceKey=GeneralButton}" 
                 Name="ResetBtn"
                 Content="Reset"
+                Command="{Binding ClearUserCommand}"
                 HorizontalAlignment="Left"
                 Margin="196,185,0,0"
                 VerticalAlignment="Top" />
@@ -60,8 +61,7 @@
         <Button Style="{StaticResource ResourceKey=GeneralButton}" 
                 Name="SaveBtn"
                 Content="Save"
-                Command="{ Binding EditCommand }"
-                CommandParameter="{ Binding SelectedUser, Mode = Default }"
+               Command="{Binding EditCommand}"
                 HorizontalAlignment="Left"
                 Margin="291,185,0,0"
                 VerticalAlignment="Top" />

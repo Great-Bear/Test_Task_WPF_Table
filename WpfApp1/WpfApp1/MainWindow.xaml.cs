@@ -32,13 +32,13 @@ namespace WpfApp1
             DataContext = new MainWindowViewModel();
 
             var ViewModel = DataContext as MainWindowViewModel;
-            frame.Navigate(new ListUsers());
+            frame.Navigate(new UserControll());
         }
 
         private void ListUsersClick(object sender, RoutedEventArgs e)
         {
             var ViewModel = DataContext as MainWindowViewModel;
-            frame.Navigate(new ListUsers());
+            frame.Navigate(new UserControll());
         }
     }
 }

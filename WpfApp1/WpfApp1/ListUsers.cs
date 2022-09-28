@@ -2,11 +2,9 @@
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;
-
 using Test_Task_WPF_Table.Classes;
 using WpfApp1.ClassesConverter;
 using System.ComponentModel;
-
 using WpfApp1.ClassesConverter.DependencyProperty;
 using WpfApp1.Classes.ViewModels;
 
@@ -17,13 +15,14 @@ namespace WpfApp1
     /// </summary>
     public partial class ListUsers : Page
     {
-        public ListUsers()
+        public ListUsers(UserControllViewModel userControll)
         {
             InitializeComponent();
-            ListUserViewModel listUserViewModel = new ListUserViewModel();
+            ListUserViewModel listUserViewModel = new ListUserViewModel(userControll);
 
             usersList.ItemsSource = listUserViewModel.Users;
             DataContext = listUserViewModel;
+
 
             CollectionView view = (CollectionView)CollectionViewSource.GetDefaultView(usersList.ItemsSource);
             view.Filter = UserFilter;

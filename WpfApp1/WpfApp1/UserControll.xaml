@@ -1,14 +1,71 @@
 ﻿<Page x:Class="WpfApp1.UserControll"
-      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+       xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
-      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
-      xmlns:local="clr-namespace:WpfApp1"
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+      xmlns:col="clr-namespace:System.Collections;assembly=mscorlib" 
+      xmlns:local="clr-namespace:Test_Task_WPF_Table.Classes"  
+      xmlns:local4="clr-namespace:WpfApp1.ClassesConverter.DependencyProperty" 
+      xmlns:local3="clr-namespace:WpfApp1.ClassesConverter" 
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="800"
       Title="UserControll">
 
-    <Grid>
-        
+    <Page.Resources>
+
+        <local3:DateConverter x:Key="DateConverter" />
+        <local3:ListViewItemStyleSelector x:Key="myStyleSelector"/>
+        <local4:CustomButton x:Key="CustomButton"/>
+
+    </Page.Resources>
+
+    <Grid Background="#FFC7BDBD" Margin="0,0,0,10">
+
+        <Grid HorizontalAlignment="Stretch"
+              VerticalAlignment="Top"
+              Background="#FF7D7777"
+              Height="50" >
+
+            <Button Style="{StaticResource GeneralButtonSVG}"
+                Name="AddUserBtn"
+                Content="Add_User"
+                Tag="{StaticResource PlusSVG}"
+                HorizontalAlignment="Left"
+                Margin="10,7,0,0"
+                VerticalAlignment="Top"
+                Height="33"
+                Width="135"
+                FontSize="14" Click="AddUserBtn_Click" />
+
+            <local4:CustomButton SetAbility="{ Binding SelectedUser }"
+                             Style="{StaticResource GeneralButtonSVG}"
+                             x:Name="EditUserBtn" Content="Edit_User"
+                             Tag="{StaticResource EditSVG}"
+                             HorizontalAlignment="Left"
+                             Margin="150,7,0,0"
+                             VerticalAlignment="Top"
+                             Height="33"
+                             Width="135"
+                             FontSize="14" Click="EditUserBtn_Click"/>
+
+            <local4:CustomButton Style="{StaticResource GeneralButtonSVG}"
+                                 SetAbility="{ Binding SelectedUser }"
+                                 x:Name="DeleteBtn"
+                                 Content="Delete user"
+                                 HorizontalAlignment="Left"
+                                 Margin="290,7,0,0"
+                                 VerticalAlignment="Top"
+                                 Height="33"
+                                 Width="135" 
+                                 FontSize="16"
+                                 Command="{ Binding DeleteCommand }"
+                                 Tag="{StaticResource TrashCanSVG}"/>
+            <!--  <fa:ImageAwesome Icon="Refresh" Spin="false" VerticalAlignment="Top" HorizontalAlignment="Left" Height="47" Width="53" Margin="10,128,0,0" /> -->
+        </Grid>
+
+        <Frame Name="frame"
+               Margin="0,50,0,0"
+               NavigationUIVisibility="Hidden" />
+
     </Grid>
 </Page>

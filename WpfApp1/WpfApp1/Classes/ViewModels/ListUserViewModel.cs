@@ -14,46 +14,18 @@ using WpfApp1.ClassesConverter;
 
 namespace WpfApp1.Classes.ViewModels
 {
-    public class ListUserViewModel : BasicViewModel, INotifyPropertyChanged
+    public class ListUserViewModel : BasicViewModel
     {
         public ObservableCollection<User> Users { get; set; }
 
-        public User SelectedUser { get; set; }
+        public UserControllViewModel UserControllViewModel { get; set; }
 
-        public ListUserViewModel()
+        public ListUserViewModel(UserControllViewModel userControll)
         {
             db.Users.Load();
             Users = db.Users.Local.ToObservableCollection();
-
-        }
-
-        RelayCommand? deleteCommand;
-        public RelayCommand DeleteCommand
-        {
-            get
-            {
-                return deleteCommand ??
-                  (deleteCommand = new RelayCommand((selectedItems) =>
-                  {
-
-                    var selectedUsersIE = (selectedItems as IEnumerable).Cast<User>();
-
-                    while (selectedUsersIE.Count() > 0)
-                    {
-                        db.Users.Remove(selectedUsersIE.FirstOrDefault());
-                    }
-
-                    db.SaveChangesAsync();
-                    SelectedUser = null;
-                  }));
-            }
-        }
-
-        public event PropertyChangedEventHandler PropertyChanged;
-        public void OnPropertyChanged([CallerMemberName] string prop = "")
-        {
-            if (PropertyChanged != null)
-                PropertyChanged(this, new PropertyChangedEventArgs(prop));
+            UserControllViewModel = userControll;
+            UserControllViewModel.Users = Users;
         }
     }
 }

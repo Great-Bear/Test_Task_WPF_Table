@@ -7,47 +7,72 @@
       d:DesignHeight="450" d:DesignWidth="800"
       Title="AddUser">
 
+    <Page.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="\Dictionary\TextBox.xaml"/>
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </Page.Resources>
 
     <Grid Background="White" >
-        <Label Content="Add User" HorizontalAlignment="Left" Margin="368,23,0,0" VerticalAlignment="Top" Height="34" Width="77" FontSize="14"/>
+        <Label Content="Add User" HorizontalAlignment="Left" Margin="312,23,0,0" VerticalAlignment="Top" Height="34" Width="77" FontSize="14"/>
 
-        <Label Content="Enter Name" HorizontalAlignment="Left" Margin="270,60,0,0" VerticalAlignment="Top" Height="25" Width="95" FontSize="14"/>
-        <TextBox  Name="NameTbx" HorizontalAlignment="Left" Text="{ Binding NewUser.Name, Mode=Default}" Margin="410,60,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="150" Height="25"/>
+        <TextBox Style="{StaticResource CustomTextBox}"
+                 Name="NameTbx"
+                 Tag="Enter Name"
+                 HorizontalAlignment="Left"
+                 Text="{ Binding NewUser.Name, Mode=Default}"
+                 Margin="204,57,0,0"
+                 TextWrapping="Wrap"
+                 VerticalAlignment="Top"
+                />
 
-        <Label Content="Enter SurName" HorizontalAlignment="Left" Margin="270,100,0,0" VerticalAlignment="Top" Height="25" Width="118" FontSize="14"/>
-        <TextBox Name="SurNameTbx" HorizontalAlignment="Left" Text="{ Binding NewUser.SurName, Mode=Default }" Margin="410,100,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="150" Height="25"/>
 
-        <Label Content="Enter Description" HorizontalAlignment="Left" Margin="270,140,0,0" VerticalAlignment="Top" Height="25" Width="132" FontSize="14"/>
+        <TextBox Name="SurNameTbx"
+                 Style="{StaticResource CustomTextBox}"
+                 Tag="Enter SurName"
+                 HorizontalAlignment="Left"
+                 Text="{ Binding NewUser.SurName, Mode=Default }"
+                 Margin="204,95,0,0"
+                 TextWrapping="Wrap"
+                 VerticalAlignment="Top"
+                />
+
+
         <TextBox Name="DescriptionTbx" 
                  HorizontalAlignment="Left" 
+                 Tag="Enter Description"
+                 Style="{StaticResource CustomTextBox}"
                  Text="{ Binding NewUser.Decription, Mode=Default }" 
-                 Margin="410,140,0,0" 
+                 Margin="204,140,0,0" 
                  TextWrapping="Wrap" 
                  VerticalAlignment="Top" 
-                 Width="150" 
-                 Height="25"/>
+                />
 
         <Label Content="Surbscribe To"
                HorizontalAlignment="Left"
-               Margin="270,180,0,0"
+               Margin="214,180,0,0"
                VerticalAlignment="Top"
                Height="25"
                Width="132"
                FontSize="14"/>
-        
+
         <DatePicker HorizontalAlignment="Left"
                     SelectedDate="{Binding NewUser.SubcriedTo, Mode=Default}"
                     VerticalAlignment="Top"
-                    Margin="410,180,0,0"
+                    Margin="354,180,0,0"
                     Width="150"
                     Height="25"/>
+
+
 
         <Button Style="{StaticResource GeneralButton}"
                 Name="SaveBtn"
                 Content="Save"
                 Command="{Binding AddCommand}"
                 HorizontalAlignment="Left"
-                Margin="412,225,0,0"
+                Margin="356,225,0,0"
                 VerticalAlignment="Top"
                 Height="43"
                 Width="78"/>
@@ -57,7 +82,7 @@
                 Content="Reset"
                 Command="{Binding ClearUserCommand}"
                 HorizontalAlignment="Left"
-                Margin="316,225,0,0"
+                Margin="260,225,0,0"
                 VerticalAlignment="Top"
                 Height="43"
                 Width="90"/>

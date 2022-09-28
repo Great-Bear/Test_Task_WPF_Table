@@ -1,10 +1,12 @@
-﻿using System;
+﻿using Microsoft.EntityFrameworkCore;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
 using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
 using Test_Task_WPF_Table.Classes;
 using WpfApp1.ClassesConverter;
 
@@ -13,6 +15,11 @@ namespace WpfApp1.Classes.ViewModels
     public class EditUserViewModel : BasicViewModel, INotifyPropertyChanged
     {
         private User _newUser;
+
+        public EditUserViewModel(User selectedUser)
+        {
+            NewUser = selectedUser;
+        }
 
         public User NewUser
         {
@@ -24,30 +31,32 @@ namespace WpfApp1.Classes.ViewModels
             }
         }
 
-        RelayCommand? addCommand;
+        RelayCommand? editCommand;
 
-        public RelayCommand AddCommand
+        public RelayCommand EditCommand
         {
             get
             {
-                return addCommand ??
-                    (addCommand = new RelayCommand((obj) =>
+                return editCommand ??
+                    (editCommand = new RelayCommand((obj) =>
                     {
                         NewUser.CreatedOn = DateTime.Now;
-                        db.Users.AddAsync(NewUser);
+                        db.Entry(NewUser).State = EntityState.Modified;
                         db.SaveChangesAsync();
                         ClearUser();
                     }));
             }
         }
 
+        RelayCommand? clearUserCommand;
         public RelayCommand ClearUserCommand
         {
             get
             {
-                return addCommand ??
-                    (addCommand = new RelayCommand((obj) =>
+                return clearUserCommand ??
+                    (clearUserCommand = new RelayCommand((obj) =>
                     {
+                        MessageBox.Show(NewUser.Name);
                         ClearUser();
                     }));
             }

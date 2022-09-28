@@ -32,7 +32,7 @@
                      Name="txtFilter"
                      TextChanged="txtFilter_TextChanged"
                      VerticalAlignment="Top"
-                     Width="165"
+                     Width="250"
                      Height="33"/>
 
             <Label Content="Search:"
@@ -44,47 +44,13 @@
                    FontSize="16"
                    Background="#FFCAB3B3"/>
 
-            <Button Style="{StaticResource GeneralButtonSVG}"
-                Name="AddUserBtn"
-                Content="Add_User"
-                Tag="{StaticResource PlusSVG}"
-                HorizontalAlignment="Left"
-                Margin="251,10,0,0"
-                VerticalAlignment="Top"
-                Height="33"
-                Width="135"
-                FontSize="14" />
-            
-            <local4:CustomButton SetAbility="{ Binding ElementName=usersList, Path=SelectedItem }"
-                             Style="{StaticResource GeneralButtonSVG}"
-                             x:Name="EditUserBtn" Content="Edit_User"
-                             Tag="{StaticResource EditSVG}"
-                             HorizontalAlignment="Left"
-                             Margin="391,10,0,0"
-                             VerticalAlignment="Top"
-                             Height="33"
-                             Width="135"
-                             FontSize="14"/>
-            
-            <local4:CustomButton Style="{StaticResource GeneralButtonSVG}"
-                                 SetAbility="{ Binding ElementName=usersList, Path=SelectedItem }"
-                                 x:Name="DeleteBtn"
-                                 Content="Delete user"
-                                 HorizontalAlignment="Left"
-                                 Margin="531,10,0,0"
-                                 VerticalAlignment="Top"
-                                 Height="33"
-                                 Width="135" 
-                                 FontSize="16"
-                                 Command="{ Binding DeleteCommand }"
-                                 CommandParameter="{Binding ElementName=usersList, Path=SelectedItems}"
-                                 Tag="{StaticResource TrashCanSVG}"/>
+           
             <!--  <fa:ImageAwesome Icon="Refresh" Spin="false" VerticalAlignment="Top" HorizontalAlignment="Left" Height="47" Width="53" Margin="10,128,0,0" /> -->
         </Grid>
 
         <ListView ItemsSource="{DynamicResource ResourceKey=users}"
                   ItemContainerStyleSelector="{DynamicResource myStyleSelector}"  
-                  SelectedItem="{Binding SelectedUser}"
+                  SelectedItem="{Binding UserControllViewModel.SelectedUser, Mode=Default}"
                   SelectionMode="Extended"  
                   GridViewColumnHeader.Click="GridViewColumnHeaderClickedHandler"  
                   Name="usersList" 

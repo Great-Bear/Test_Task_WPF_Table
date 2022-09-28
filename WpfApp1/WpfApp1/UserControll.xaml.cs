@@ -12,17 +12,30 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using Test_Task_WPF_Table.Classes;
+using WpfApp1.Classes.ViewModels;
 
 namespace WpfApp1
 {
-    /// <summary>
-    /// Логика взаимодействия для UserControll.xaml
-    /// </summary>
     public partial class UserControll : Page
     {
+
         public UserControll()
         {
             InitializeComponent();
+            var userControllViewModel = new UserControllViewModel();
+            DataContext = userControllViewModel;
+            frame.Navigate(new ListUsers(userControllViewModel));
+        }
+
+        private void AddUserBtn_Click(object sender, RoutedEventArgs e)
+        {
+            frame.Navigate(new AddUser());
+        }
+
+        private void EditUserBtn_Click(object sender, RoutedEventArgs e)
+        {
+            frame.Navigate(new EditUser( ((UserControllViewModel)DataContext).SelectedUser ));
         }
     }
 }
