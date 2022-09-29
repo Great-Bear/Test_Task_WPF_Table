@@ -26,7 +26,7 @@
               Height="50" >
 
             <TextBox HorizontalAlignment="Left" 
-                     Margin="76,10,0,0" 
+                     Margin="66,0,0,0" 
                      FontSize="22" 
                      TextWrapping="Wrap"
                      Name="txtFilter"
@@ -37,14 +37,14 @@
 
             <Label Content="Search:"
                    HorizontalAlignment="Left"
-                   Margin="15,10,0,0"
+                   Margin="5,0,0,0"
                    VerticalAlignment="Top" 
                    Height="33"
                    Width="61"
                    FontSize="16"
                    Background="#FFCAB3B3"/>
 
-           
+
             <!--  <fa:ImageAwesome Icon="Refresh" Spin="false" VerticalAlignment="Top" HorizontalAlignment="Left" Height="47" Width="53" Margin="10,128,0,0" /> -->
         </Grid>
 
@@ -53,9 +53,8 @@
                   SelectedItem="{Binding UserControllViewModel.SelectedUser, Mode=Default}"
                   SelectionMode="Extended"  
                   GridViewColumnHeader.Click="GridViewColumnHeaderClickedHandler"  
-                  Name="usersList" 
-                  HorizontalAlignment="Stretch"  
-                  Margin="0,50,0,0" 
+                  Name="usersList"  
+                  Margin="0,40,0,10" 
                   Background="#FFC3B1B1"
 >
             <ListView.View >

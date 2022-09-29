@@ -16,7 +16,7 @@
         </ResourceDictionary>
     </Page.Resources>
 
-    <Grid Background="White" Margin="10,0,0,10" >
+    <Grid Background="White" Margin="0,0,0,10" >
 
         <Label Content="Edit User" 
                HorizontalAlignment="Left" 

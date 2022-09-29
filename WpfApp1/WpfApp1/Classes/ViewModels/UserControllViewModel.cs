@@ -57,8 +57,8 @@ namespace WpfApp1.Classes.ViewModels
                            db.Users.Remove(selectedUsersIE.FirstOrDefault());
                        }*/
 
+                      db.Users.Remove(SelectedUser);
                       Users.Remove(SelectedUser);
-
                       db.SaveChangesAsync();
                       SelectedUser = null;
                   }));

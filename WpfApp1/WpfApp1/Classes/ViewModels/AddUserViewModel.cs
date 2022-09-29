@@ -45,13 +45,13 @@ namespace WpfApp1.Classes.ViewModels
                     }));
             }
         }
-
+        RelayCommand? clearUser;
         public RelayCommand ClearUserCommand
         {
             get
             {
-                return addCommand ??
-                    (addCommand = new RelayCommand((obj) =>
+                return clearUser ??
+                    (clearUser = new RelayCommand((obj) =>
                     {
                         ClearUser();
                     }));

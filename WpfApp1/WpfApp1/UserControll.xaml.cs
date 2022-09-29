@@ -25,7 +25,9 @@ namespace WpfApp1
             InitializeComponent();
             var userControllViewModel = new UserControllViewModel();
             DataContext = userControllViewModel;
-            frame.Navigate(new ListUsers(userControllViewModel));
+              frame.Navigate(new ListUsers(userControllViewModel));
+            //  frame.Navigate(new AddUser());
+           
         }
 
         private void AddUserBtn_Click(object sender, RoutedEventArgs e)
@@ -36,6 +38,9 @@ namespace WpfApp1
         private void EditUserBtn_Click(object sender, RoutedEventArgs e)
         {
             frame.Navigate(new EditUser( ((UserControllViewModel)DataContext).SelectedUser ));
+
+            // SelectedUser = null нужно чтобы пропало выделение кнопки Edit и Delete
+            ((UserControllViewModel)DataContext).SelectedUser = null;
         }
     }
 }

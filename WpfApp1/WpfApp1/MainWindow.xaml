@@ -5,8 +5,10 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:WpfApp1"
         xmlns:local2="clr-namespace:WpfApp1.ClassesConverter.DependencyProperty"
+       
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
+
     <Grid Background="#FFE2E2E2">
         <Frame Name="frame"
                Margin="150,0,0,0"

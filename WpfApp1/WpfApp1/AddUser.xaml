@@ -22,12 +22,12 @@
                  Name="NameTbx"
                  Tag="Enter Name"
                  HorizontalAlignment="Left"
-                 Text="{ Binding NewUser.Name, Mode=Default}"
+                 Text="{ Binding NewUser.Name, Mode=Default }"            
                  Margin="204,57,0,0"
                  TextWrapping="Wrap"
                  VerticalAlignment="Top"
                 />
-
+        <!--DataContext="{ Binding NewUser, Mode=Default}"-->
 
         <TextBox Name="SurNameTbx"
                  Style="{StaticResource CustomTextBox}"
@@ -44,7 +44,7 @@
                  HorizontalAlignment="Left" 
                  Tag="Enter Description"
                  Style="{StaticResource CustomTextBox}"
-                 Text="{ Binding NewUser.Decription, Mode=Default }" 
+                 Text="{ Binding NewUser.Decription, Mode=Default }"
                  Margin="204,140,0,0" 
                  TextWrapping="Wrap" 
                  VerticalAlignment="Top" 
@@ -86,6 +86,33 @@
                 VerticalAlignment="Top"
                 Height="43"
                 Width="90"/>
+
+        <TextBox HorizontalAlignment="Left" Text="{ Binding NewUser.Name, Mode=Default}"  Margin="290,273,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
+
+        <TextBox HorizontalAlignment="Left" DataContext="{Binding NewUser}" Margin="290,296,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120">
+            <TextBox.Text>
+                <Binding Mode="Default" Path="Name" >
+                    <Binding.ValidationRules>
+                        <DataErrorValidationRule />
+                    </Binding.ValidationRules>
+                </Binding>
+            </TextBox.Text>
+
+            <TextBox.Style>
+                <Style>
+                    <Style.Triggers>
+                        <Trigger Property="Validation.HasError" Value="True">
+                            <Setter Property="Control.Background" Value="red" />
+                            <Setter Property="Control.ToolTip"
+                                                Value="Error" />
+                        </Trigger>
+                        <Trigger Property="Validation.HasError" Value="False">
+                            <Setter Property="Control.Background" Value="Blue" />
+                        </Trigger>
+                    </Style.Triggers>
+                </Style>
+            </TextBox.Style>
+        </TextBox>
 
     </Grid>
 </Page>
