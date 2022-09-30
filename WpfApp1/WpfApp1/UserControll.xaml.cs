@@ -25,8 +25,8 @@ namespace WpfApp1
             InitializeComponent();
             var userControllViewModel = new UserControllViewModel();
             DataContext = userControllViewModel;
-              frame.Navigate(new ListUsers(userControllViewModel));
-            //  frame.Navigate(new AddUser());
+            //  frame.Navigate(new ListUsers(userControllViewModel));
+              frame.Navigate(new AddUser());
            
         }
 

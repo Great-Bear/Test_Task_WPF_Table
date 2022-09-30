@@ -7,15 +7,16 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
 using Test_Task_WPF_Table.Classes;
+using WpfApp1.Classes.DbContext.Models;
 using WpfApp1.ClassesConverter;
 
 namespace WpfApp1.Classes.ViewModels
 {
     public class AddUserViewModel : BasicViewModel, INotifyPropertyChanged
     {
-        private User _newUser;
+        private UserValidate _newUser;
 
-        public User NewUser
+        public UserValidate NewUser
         {
             get { return _newUser; }
             set
@@ -29,7 +30,9 @@ namespace WpfApp1.Classes.ViewModels
 
         public AddUserViewModel()
         {
-            NewUser = new User();
+            NewUser = new UserValidate();
+            NewUser.Name = "Test value Binding";
+
         }
         public RelayCommand AddCommand
         {
@@ -60,7 +63,7 @@ namespace WpfApp1.Classes.ViewModels
 
         private void ClearUser()
         {
-            NewUser = new User();
+            NewUser = new UserValidate();
         }
 
         public event PropertyChangedEventHandler PropertyChanged;
