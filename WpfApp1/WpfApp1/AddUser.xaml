@@ -30,7 +30,6 @@
                                          Width="323"
                                          HorizontalAlignment="Left"
                                          VerticalAlignment="Top"
-                                        
                                          
                                          >
                                     <TextBox.Text>
