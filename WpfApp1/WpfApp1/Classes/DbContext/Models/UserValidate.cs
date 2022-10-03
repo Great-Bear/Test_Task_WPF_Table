@@ -12,7 +12,6 @@ namespace WpfApp1.Classes.DbContext.Models
     {
         public string Error => throw new NotImplementedException();
 
-
         public string this[string columnName]
         {
             get
@@ -24,11 +23,18 @@ namespace WpfApp1.Classes.DbContext.Models
                     case "Name":
                         if (Name.Length > 2)
                         {
-                            error = "Имя должно быть меньше 20 символов";
+                            error = "Имя должно быть меньше 2 символов";
+                        }
+                        else if(Name.Length == 0)
+                        {
+                            error = "Поле не может быть пустым";
                         }
                         break;
                     case "SurName":
-                        //Обработка ошибок для свойства Name
+                        if (SurName.Length > 2)
+                        {
+                            error = "Фамилия должно быть меньше 2 символов";
+                        }
                         break;
                     case "Decription":
                         //Обработка ошибок для свойства Position

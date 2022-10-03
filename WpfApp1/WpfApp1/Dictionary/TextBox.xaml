@@ -3,95 +3,50 @@
 
     <ControlTemplate x:Key="validationFailed" >
         <StackPanel Orientation="Horizontal">
-            <Border BorderBrush="Violet" BorderThickness="2">
+            <Border >
                 <AdornedElementPlaceholder />
             </Border>
-            <TextBlock Foreground="Red" FontSize="26" FontWeight="Bold">!</TextBlock>
+            <TextBlock HorizontalAlignment="Center"
+                       VerticalAlignment="Center"
+                       Foreground="Red"
+                       FontSize="26"
+                       FontWeight="Bold">!</TextBlock>
         </StackPanel>
     </ControlTemplate>
 
     <Style x:Key="CustomTextBox" TargetType="TextBox">
-        <Setter Property="Control.Foreground" Value="White" />
-        <Setter Property="Control.FontSize" Value="15" />
-        <Setter Property="Control.BorderThickness" Value="10"/>
-        <Setter Property="Control.MinWidth" Value="150" ></Setter>
+        <Setter Property="Foreground" Value="White" />
+        <Setter Property="FontSize" Value="15" />
+        <Setter Property="MinWidth" Value="150" ></Setter>
+        <Setter Property="Validation.ErrorTemplate" Value="{StaticResource validationFailed}"></Setter>
 
         <Setter Property="Control.Template">
             <Setter.Value>
-                <ControlTemplate >
-                    <Grid Width="300" Height="33" HorizontalAlignment="Left" VerticalAlignment="Center">
-                        <Border  Height="32" Width="130" CornerRadius="15 0 0 15"  Background="#373737" HorizontalAlignment="Left">
+                <ControlTemplate  >
+                    <Grid Width="380" Height="80" >
+                        <Border Height="32" Width="130" CornerRadius="15 0 0 15"  Background="#373737" HorizontalAlignment="Left">
                             <Label Foreground="White" Content="{TemplateBinding Tag}" HorizontalAlignment="Center"></Label>
-
                         </Border>
                         <TextBox Height="32"
-                                 Width="170"
-                                 Text="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=Text, UpdateSourceTrigger=PropertyChanged}"
+                                 Width="250"
+                                 Text="{Binding RelativeSource={RelativeSource TemplatedParent},
+                                 Path=Text,
+                                 UpdateSourceTrigger=PropertyChanged}"
                                  Background="#FFEDE2E2"
                                  Margin="130 0 0 0"
                                  Name="TxtT"
                                  BorderBrush="Gray"
-                                 
-                                 
-                                 >
-
-                                <!-- <TextBox
-                                 Height="32" Width="170"
-                                 DataContext="{TemplateBinding DataContext}"
-                                 Margin="130 0 0 0"
-                                 BorderBrush="Gray"
-                                 FontSize="20"
-                            > -->
-
-                                <!--  <TextBox.Text>
-                                <Binding RelativeSource="{RelativeSource TemplatedParent}" Path="Text" Mode="Default" UpdateSourceTrigger="PropertyChanged" NotifyOnValidationError="True">
-                                    <Binding.ValidationRules>
-                                        <DataErrorValidationRule />
-                                    </Binding.ValidationRules>
-                                </Binding>
-                            </TextBox.Text>-->
-
-                                <TextBox.Style>
-                                    <Style TargetType="TextBox">
-                                        <Style.Triggers>
-                                        <DataTrigger Binding="{ Binding RelativeSource={RelativeSource TemplatedParent}, Path=(Validation.HasError), UpdateSourceTrigger=PropertyChanged }" Value="True">
-                                            <Setter Property="Control.Foreground" Value="Red" />
-                                            <Setter Property="Control.Background" Value="Red" />
-
-                                            <Setter Property="Control.ToolTip"
-                                                Value="{Binding RelativeSource={RelativeSource Self},
-                                                    Path=(Validation.Errors)[0].ErrorContent}"  />
-                                        </DataTrigger>
-
-
-                                        <DataTrigger Binding="{ Binding RelativeSource={RelativeSource TemplatedParent}, Path=(Validation.HasError), UpdateSourceTrigger=PropertyChanged }" Value="False">
-                                            <Setter Property="Control.Foreground" Value="Blue" />
-                                            <Setter Property="Control.Background" Value="Blue" />
-
-
-                                        </DataTrigger>
-                                        <!--<Trigger  Property="{Binding ElementName=TxtT, Path=Tag}" Value="Enter Name">
-                                                <Setter Property="Control.Foreground" Value="Red" />
-                                                <Setter Property="Control.Background" Value="Red" />
-
-                                                <Setter Property="Control.ToolTip"
-                                                Value="{Binding RelativeSource={RelativeSource Self},
-                                                    Path=(Validation.Errors)[0].ErrorContent}"  />
-                                            </Trigger>
-                                            <Trigger Property="Validation.HasError" Value="False">
-                                                <Setter Property="Control.Foreground" Value="Blue" />
-                                            </Trigger>-->
-                                        </Style.Triggers>
-                                    </Style>
-                                </TextBox.Style>
-                            </TextBox>
+                                 FontSize="18">
+                        </TextBox>
+                        
+                        <Label Margin="0 50 0 0 " Content="{ Binding RelativeSource={RelativeSource TemplatedParent},
+                                                                Path=(Validation.Errors)[0].ErrorContent,
+                                                                UpdateSourceTrigger=PropertyChanged }" Foreground="Red" ></Label>
                     </Grid>
 
                 </ControlTemplate>
             </Setter.Value>
         </Setter>
     </Style>
-
-
 
 </ResourceDictionary>

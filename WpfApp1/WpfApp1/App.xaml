@@ -11,6 +11,7 @@
                 <ResourceDictionary Source="\Dictionary\ButtonWithSVG.xaml"/>
                 <ResourceDictionary Source="\Dictionary\Button.xaml"/>
                 <ResourceDictionary Source="\Dictionary\ListView.xaml"/>
+                <ResourceDictionary Source="\Dictionary\TextBox.xaml"></ResourceDictionary>
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
     </Application.Resources>

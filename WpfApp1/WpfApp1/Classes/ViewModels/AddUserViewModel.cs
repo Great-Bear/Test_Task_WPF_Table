@@ -6,6 +6,7 @@ using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
+using System.Windows.Data;
 using Test_Task_WPF_Table.Classes;
 using WpfApp1.Classes.DbContext.Models;
 using WpfApp1.ClassesConverter;
@@ -26,14 +27,17 @@ namespace WpfApp1.Classes.ViewModels
             }
         }
 
-        RelayCommand? addCommand;
-
         public AddUserViewModel()
         {
             NewUser = new UserValidate();
-            NewUser.Name = "Test value Binding";
-
+            NewUser.Name = "N";
+            NewUser.SurName = "S";
+            NewUser.Decription = "D";
+            NewUser.CreatedOn = DateTime.Now;
+            NewUser.SubcriedTo = DateTime.Now;
         }
+
+        RelayCommand addCommand;
         public RelayCommand AddCommand
         {
             get
@@ -43,11 +47,14 @@ namespace WpfApp1.Classes.ViewModels
                     {
                         NewUser.CreatedOn = DateTime.Now;
                         db.Users.AddAsync(NewUser);
+                        
+                        
                         db.SaveChangesAsync();
                         ClearUser();
                     }));
             }
         }
+
         RelayCommand? clearUser;
         public RelayCommand ClearUserCommand
         {
