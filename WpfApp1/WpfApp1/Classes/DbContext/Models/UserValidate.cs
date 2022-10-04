@@ -10,7 +10,7 @@ namespace WpfApp1.Classes.DbContext.Models
 {
     public class UserValidate : User,  IDataErrorInfo
     {
-        public string Error => throw new NotImplementedException();
+        public string Error => string.Empty;
 
         public string this[string columnName]
         {
@@ -21,23 +21,56 @@ namespace WpfApp1.Classes.DbContext.Models
                 switch (columnName)
                 {
                     case "Name":
-                        if (Name.Length > 2)
+                        if (Name != null)
                         {
-                            error = "Имя должно быть меньше 2 символов";
+                            if (Name.Length > 50)
+                            {
+                                error = "Имя должно быть меньше 2 символов";
+                            }
+                            else if (Name.Length == 0)
+                            {
+                                error = "Поле не может быть пустым";
+                            }
                         }
-                        else if(Name.Length == 0)
+                        else
                         {
-                            error = "Поле не может быть пустым";
+                            error = " ";
                         }
+
                         break;
                     case "SurName":
-                        if (SurName.Length > 2)
+                        if (SurName != null)
                         {
-                            error = "Фамилия должно быть меньше 2 символов";
+                            if (SurName.Length > 50)
+                            {
+                                error = "Фамилия должно быть меньше 2 символов";
+                            }
+                            else if (SurName.Length == 0)
+                            {
+                                error = "Поле не может быть пустым";
+                            }
+                        }
+                        else
+                        {
+                            error = " ";
                         }
                         break;
                     case "Decription":
-                        //Обработка ошибок для свойства Position
+                        if (Decription != null) 
+                        { 
+                            if (Decription.Length > 100)
+                            {
+                                error = "Фамилия должно быть меньше 2 символов";
+                            }
+                            else if (Decription.Length == 0)
+                            {
+                                error = "Поле не может быть пустым";
+                            }
+                        }
+                        else
+                        {
+                            error = " ";
+                        }
                         break;
                 }
                 return error;

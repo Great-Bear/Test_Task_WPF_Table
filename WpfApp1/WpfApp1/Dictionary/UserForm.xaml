@@ -5,9 +5,10 @@
                     xmlns:MultipleConverter="clr-namespace:WpfApp1.Classes.Helpers.Converter.MultipleConvertor" >
 
 
-    <!--<local3:InverseBoolConverter x:Key="InverseBoolConverter" />
+    <local3:InverseBoolConverter x:Key="InverseBoolConverter" />
     <MultipleConverter:IsErrorMultiple x:Key="IsErrorMultiple" />
-    <ResourceDictionary Source="\Dictionary\TextBox.xaml" x:Key="TE" />
+
+    
 
     <Style x:Key="UserForm" TargetType="{x:Type userForm1:UserForm}">
         <Setter Property="Template">
@@ -20,71 +21,164 @@
                                  VerticalAlignment="Top"
                                  Margin="0,19,0,0"  Height="34" Width="70" FontSize="14"/>
 
-                        <TextBox Style="{StaticResource CustomTextBox}"
-                                         Tag="Enter Name"
-                                         Margin="200,40,0,0" 
-                                         TextWrapping="Wrap"
-                                         Width="380"
-                                         Height="75" HorizontalAlignment="Left" VerticalAlignment="Top" 
-                                         Name="btnTest"
-                                         >
+                        <Label Content="{ Binding FeedBackMessage, Mode=Default, UpdateSourceTrigger=Default}"
+                               HorizontalAlignment="Left"
+                               VerticalAlignment="Top" Opacity="0">
 
+                            <Label.Style>
+                                <Style TargetType="Label">
+                                    <Setter Property="Control.Background" Value="Green"></Setter>
+                                    <Setter Property="Control.Padding" Value="20"></Setter>
+                                   
+                                    <Style.Triggers>
+                                        <DataTrigger  Binding="{Binding CanShowMessage,
+                                                Mode=Default,
+                                                UpdateSourceTrigger=PropertyChanged}"
+                                                Value="False" >
+                                            <!--Логику анимации переделаю-->
+                                            <DataTrigger.EnterActions>
+                                                <BeginStoryboard>
+                                                    <Storyboard>
+                                                        <DoubleAnimation BeginTime="0:0:0" Storyboard.TargetProperty="Opacity"
+                                                            From="1.0" To="0.0" Duration="0:0:0.5" />
+                                                    </Storyboard>
+                                                </BeginStoryboard>
+                                            </DataTrigger.EnterActions>
+                                            <DataTrigger.ExitActions>
+                                                <BeginStoryboard>
+                                                    <Storyboard>
+                                                        <DoubleAnimation BeginTime="0:0:0" Storyboard.TargetProperty="Opacity"
+                                                            From="0.0" To="1" Duration="0:0:0.0"/>
+                                                    </Storyboard>
+                                                </BeginStoryboard>
+                                            </DataTrigger.ExitActions>
+                                        </DataTrigger>
+
+
+                                    </Style.Triggers>
+                                </Style>
+                            </Label.Style>
+                        </Label>
+
+                        <TextBox HorizontalAlignment="Center" VerticalAlignment="Center" 
+                                 >
                             <TextBox.Text>
-                                <Binding RelativeSource="{RelativeSource TemplatedParent}" Path="User.Name" Mode="Default" UpdateSourceTrigger="PropertyChanged" NotifyOnValidationError="True" ValidatesOnNotifyDataErrors="True" ValidatesOnDataErrors="True" >
-                                    <Binding.ValidationRules>
-                                        <DataErrorValidationRule ValidatesOnTargetUpdated="True"  />
-                                    </Binding.ValidationRules>
+                                <Binding RelativeSource="{RelativeSource TemplatedParent}"
+                                             Path="FeedBackMessage"
+                                             Mode="Default"
+                                             UpdateSourceTrigger="PropertyChanged">
                                 </Binding>
                             </TextBox.Text>
                         </TextBox>
 
-                        <TextBox Style="{StaticResource CustomTextBox}"
-                                         Tag="Enter SurName"
-                                         Margin="200,97,0,0" 
-                                         TextWrapping="Wrap"
-                                         Width="380" 
-                                         Height="75"
-                                         HorizontalAlignment="Left"
-                                         VerticalAlignment="Top"
-                                         Name="btnTest2"
-                                         >
+                        <Grid Name="GridPanel">
+                            <TextBox Style="{StaticResource CustomTextBox}"
+                                             Tag="Enter Name"
+                                             Margin="200,40,0,0"
+                                             TextWrapping="Wrap"
+                                             Width="380"
+                                             Height="75" HorizontalAlignment="Left" VerticalAlignment="Top"
+                                             x:Name="btnTest"
+                                             >
 
-                            <TextBox.Text>
-                                <Binding RelativeSource="{RelativeSource TemplatedParent}" Path="User.SurName" Mode="Default" UpdateSourceTrigger="PropertyChanged" ValidatesOnDataErrors="True" >
-                                    <Binding.ValidationRules>
-                                        <DataErrorValidationRule ValidatesOnTargetUpdated="True" />
-                                    </Binding.ValidationRules>
-                                </Binding>
+                                <TextBox.Text>
+                                    <Binding RelativeSource="{RelativeSource TemplatedParent}"
+                                             Path="User.Name"
+                                             Mode="Default"
+                                             UpdateSourceTrigger="PropertyChanged"
+                                             ValidatesOnDataErrors="True"
+                                             >
+                                        <Binding.ValidationRules>
+                                            <DataErrorValidationRule ValidatesOnTargetUpdated="True"  />
+                                        </Binding.ValidationRules>
+                                    </Binding>
+                                </TextBox.Text>
+                            </TextBox>
+
+                            <TextBox Style="{StaticResource CustomTextBox}"
+                                             Tag="Enter SurName"
+                                             Margin="200,97,0,0"
+                                             TextWrapping="Wrap"
+                                             Width="380"
+                                             Height="75"
+                                             HorizontalAlignment="Left"
+                                             VerticalAlignment="Top"
+                                             x:Name="btnTest2"
+                                             >
+                                <TextBox.Text>
+                                    <Binding RelativeSource="{RelativeSource TemplatedParent}"
+                                             Path="User.SurName"
+                                             Mode="Default"
+                                             UpdateSourceTrigger="PropertyChanged"
+                                             ValidatesOnDataErrors="True" >
+                                        <Binding.ValidationRules>
+                                            <DataErrorValidationRule ValidatesOnTargetUpdated="True" />
+                                        </Binding.ValidationRules>
+                                    </Binding>
+                                </TextBox.Text>
+                            </TextBox>
+
+                            <TextBox Style="{StaticResource CustomTextBox}"
+                                    Tag="Enter Describe"
+                                    Margin="200,159,0,0"
+                                    TextWrapping="Wrap"
+                                    Width="380"
+                                    Height="75"
+                                    HorizontalAlignment="Left"
+                                    VerticalAlignment="Top"
+                                     >
+
+                                <TextBox.Text>
+                                    <Binding RelativeSource="{RelativeSource TemplatedParent}"
+                                             Path="User.Decription"
+                                             Mode="Default"
+                                             UpdateSourceTrigger="PropertyChanged"
+                                             ValidatesOnDataErrors="True" >
+                                        <Binding.ValidationRules>
+                                            <DataErrorValidationRule ValidatesOnTargetUpdated="True" />
+                                        </Binding.ValidationRules>
+                                    </Binding>
+                                </TextBox.Text>
+                            </TextBox>
+
+                           </Grid>
+                        <!--<TextBox HorizontalAlignment="Center" VerticalAlignment="Center">
+                            <TextBox.Text >
+                                <MultiBinding Converter="{StaticResource IsErrorMultiple}" >
+                                    <Binding ElementName="btnTest"
+                                             Path="(Validation.HasError)"
+                                             Mode="Default"
+                                             UpdateSourceTrigger="PropertyChanged" />
+                                    <Binding ElementName="btnTest2"
+                                             Path="(Validation.HasError)"
+                                             Mode="Default"
+                                             UpdateSourceTrigger="PropertyChanged"/>
+
+                                </MultiBinding>
                             </TextBox.Text>
-                        </TextBox>
-
-                        <TextBox Style="{StaticResource CustomTextBox}"
-                                         Tag="Enter Describe"
-                                         Margin="200,159,0,0" 
-                                         TextWrapping="Wrap" Width="380" Height="75" HorizontalAlignment="Left" VerticalAlignment="Top">
-
-                            <TextBox.Text>
-                                <Binding RelativeSource="{RelativeSource TemplatedParent}" Path="User.Decription" Mode="Default" UpdateSourceTrigger="PropertyChanged" ValidatesOnDataErrors="True" >
-                                    <Binding.ValidationRules>
-                                        <DataErrorValidationRule ValidatesOnTargetUpdated="True" />
-                                    </Binding.ValidationRules>
-                                </Binding>
-                            </TextBox.Text>
-                        </TextBox>
+                        </TextBox>-->
 
                         <Button Style="{StaticResource GeneralButton}"
-                                    Name="SaveBtn"
-                                    Content="Save"
-                                    Margin="396,239,0,0"
-                                    Height="44"
-                                    Width="90"
-                                    Command="{Binding RelativeSource={RelativeSource TemplatedParent},
-                                    Path=RightButtonCommand}"
-                                    HorizontalAlignment="Left" VerticalAlignment="Top">
+                                Name="SaveBtn"
+                                Content="Save"
+                                Margin="396,239,0,0"
+                                Height="44"
+                                Width="90"
+                                Command="{Binding RelativeSource={RelativeSource TemplatedParent},
+                                Path=RightButtonCommand}"
+                                HorizontalAlignment="Left" VerticalAlignment="Top">
+ 
                             <Button.IsEnabled>
-                                <MultiBinding Converter="{StaticResource IsErrorMultiple}">
-                                    <Binding ElementName="btnTest" Path="(Validation.HasError)" Mode="Default" UpdateSourceTrigger="PropertyChanged"/>
-                                    <Binding ElementName="btnTest2" Path="(Validation.HasError)" Mode="Default" UpdateSourceTrigger="PropertyChanged"/>
+                                <MultiBinding Converter="{StaticResource IsErrorMultiple}" >
+                                    <Binding ElementName="btnTest"
+                                             Path="(Validation.HasError)"
+                                             Mode="Default"
+                                             UpdateSourceTrigger="PropertyChanged" />
+                                    <Binding ElementName="btnTest2"
+                                             Path="(Validation.HasError)"
+                                             Mode="Default"
+                                             UpdateSourceTrigger="PropertyChanged"/>
+
                                 </MultiBinding>
                             </Button.IsEnabled>
                         </Button>
@@ -104,6 +198,6 @@
                 </ControlTemplate>
             </Setter.Value>
         </Setter>
-    </Style>-->
+    </Style>
 
 </ResourceDictionary>

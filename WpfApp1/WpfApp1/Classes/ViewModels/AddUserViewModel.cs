@@ -7,6 +7,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Data;
+using System.Windows.Threading;
 using Test_Task_WPF_Table.Classes;
 using WpfApp1.Classes.DbContext.Models;
 using WpfApp1.ClassesConverter;
@@ -26,15 +27,33 @@ namespace WpfApp1.Classes.ViewModels
                 OnPropertyChanged();
             }
         }
+        private string _feedBackMessage ;
+        public string FeedBackMessage
+        {
+            get => _feedBackMessage;
+            set
+            {
+                _feedBackMessage = value;
+                OnPropertyChanged();
+            }
+        }
+
+        private bool _canShowMessage;
+        public bool CanShowMessage 
+        {
+            get => _canShowMessage;
+            set
+            {
+                _canShowMessage = value;
+                OnPropertyChanged();
+            }
+        }
+
 
         public AddUserViewModel()
         {
             NewUser = new UserValidate();
-            NewUser.Name = "N";
-            NewUser.SurName = "S";
-            NewUser.Decription = "D";
-            NewUser.CreatedOn = DateTime.Now;
-            NewUser.SubcriedTo = DateTime.Now;
+            FeedBackMessage = "dfs";
         }
 
         RelayCommand addCommand;
@@ -45,14 +64,24 @@ namespace WpfApp1.Classes.ViewModels
                 return addCommand ??
                     (addCommand = new RelayCommand((obj) =>
                     {
+                        FeedBackMessage = "Added Successfully";
+                        var timer = new DispatcherTimer();
+                        timer.Tick += new EventHandler(timer_Tick);
+                        timer.Interval = new TimeSpan(0, 0, 1);
+                        timer.Start();
+
                         NewUser.CreatedOn = DateTime.Now;
-                        db.Users.AddAsync(NewUser);
-                        
-                        
-                        db.SaveChangesAsync();
+                        db.Users.Add((User)NewUser);
+                        db.SaveChanges();
                         ClearUser();
                     }));
             }
+        }
+     
+        private void timer_Tick(object sender, EventArgs e)
+        {
+            CanShowMessage = false;
+            ((DispatcherTimer)sender).Stop();
         }
 
         RelayCommand? clearUser;
@@ -70,6 +99,15 @@ namespace WpfApp1.Classes.ViewModels
 
         private void ClearUser()
         {
+            // Временно этое код будет тут
+                FeedBackMessage = "Added Successfully";
+                CanShowMessage = true;
+                var timer = new DispatcherTimer();
+                timer.Tick += new EventHandler(timer_Tick);
+                timer.Interval = new TimeSpan(0, 0, 1);
+                timer.Start();
+            //
+
             NewUser = new UserValidate();
         }
 

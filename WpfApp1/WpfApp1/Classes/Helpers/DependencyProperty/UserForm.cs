@@ -18,6 +18,35 @@ namespace WpfApp1.Classes.Helpers.DependencyProperty
     {
         public string Title { get; set; }
 
+        public static readonly System.Windows.DependencyProperty dependencyFeedBackMessage =
+          System.Windows.DependencyProperty.Register("FeedBackMessage", typeof(string), typeof(UserForm),
+              new PropertyMetadata(null, new PropertyChangedCallback(ChangeFeedBackMessage)));
+        public string FeedBackMessage
+        {
+            get => (string)GetValue(dependencyFeedBackMessage);
+            set { SetValue(dependencyFeedBackMessage, value); }
+        }
+        private static void ChangeFeedBackMessage(DependencyObject d, DependencyPropertyChangedEventArgs e)
+        {
+            (d as UserForm).FeedBackMessage = (string)e.NewValue;
+        }
+
+
+        public static readonly System.Windows.DependencyProperty dependencyCanShowMessage =
+         System.Windows.DependencyProperty.Register("CanShowMessage", typeof(bool), typeof(UserForm),
+             new PropertyMetadata(false, new PropertyChangedCallback(ChangeCanShowMessage)));
+        public bool CanShowMessage
+        {
+            get => (bool)GetValue(dependencyCanShowMessage);
+            set { SetValue(dependencyCanShowMessage, value); }
+        }
+        private static void ChangeCanShowMessage(DependencyObject d, DependencyPropertyChangedEventArgs e)
+        {
+            (d as UserForm).CanShowMessage = (bool)e.NewValue;
+        }
+
+
+
         public static readonly System.Windows.DependencyProperty dependencyRightButtonCommand =
           System.Windows.DependencyProperty.Register("RightButtonCommand", typeof(RelayCommand), typeof(UserForm),
               new PropertyMetadata(null, new PropertyChangedCallback(ChangeRightCommand)));
@@ -66,11 +95,11 @@ namespace WpfApp1.Classes.Helpers.DependencyProperty
 
 
         public event PropertyChangedEventHandler PropertyChanged;
-            public void OnPropertyChanged([CallerMemberName] string prop = "")
-            {
-                if (PropertyChanged != null)
-                    PropertyChanged(this, new PropertyChangedEventArgs(prop));
-            }
+        public void OnPropertyChanged([CallerMemberName] string prop = "")
+        {
+            if (PropertyChanged != null)
+                PropertyChanged(this, new PropertyChangedEventArgs(prop));
+        }
 
     }
 }
