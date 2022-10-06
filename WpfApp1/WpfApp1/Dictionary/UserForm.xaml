@@ -8,7 +8,7 @@
     <local3:InverseBoolConverter x:Key="InverseBoolConverter" />
     <MultipleConverter:IsErrorMultiple x:Key="IsErrorMultiple" />
 
-    
+
 
     <Style x:Key="UserForm" TargetType="{x:Type userForm1:UserForm}">
         <Setter Property="Template">
@@ -29,29 +29,22 @@
                                 <Style TargetType="Label">
                                     <Setter Property="Control.Background" Value="Green"></Setter>
                                     <Setter Property="Control.Padding" Value="20"></Setter>
-                                   
+                                    <Setter Property="Opacity" Value="0"></Setter>
                                     <Style.Triggers>
                                         <DataTrigger  Binding="{Binding CanShowMessage,
                                                 Mode=Default,
                                                 UpdateSourceTrigger=PropertyChanged}"
-                                                Value="False" >
-                                            <!--Логику анимации переделаю-->
+                                                Value="True" >
                                             <DataTrigger.EnterActions>
                                                 <BeginStoryboard>
                                                     <Storyboard>
                                                         <DoubleAnimation BeginTime="0:0:0" Storyboard.TargetProperty="Opacity"
-                                                            From="1.0" To="0.0" Duration="0:0:0.5" />
+                                                            From="0.0" To="1" Duration="0:0:0.0" />
+                                                        <DoubleAnimation BeginTime="0:0:1" Storyboard.TargetProperty="Opacity"
+                                                            From="1" To="0.0" Duration="0:0:0.5" />
                                                     </Storyboard>
                                                 </BeginStoryboard>
                                             </DataTrigger.EnterActions>
-                                            <DataTrigger.ExitActions>
-                                                <BeginStoryboard>
-                                                    <Storyboard>
-                                                        <DoubleAnimation BeginTime="0:0:0" Storyboard.TargetProperty="Opacity"
-                                                            From="0.0" To="1" Duration="0:0:0.0"/>
-                                                    </Storyboard>
-                                                </BeginStoryboard>
-                                            </DataTrigger.ExitActions>
                                         </DataTrigger>
 
 
@@ -59,17 +52,6 @@
                                 </Style>
                             </Label.Style>
                         </Label>
-
-                        <TextBox HorizontalAlignment="Center" VerticalAlignment="Center" 
-                                 >
-                            <TextBox.Text>
-                                <Binding RelativeSource="{RelativeSource TemplatedParent}"
-                                             Path="FeedBackMessage"
-                                             Mode="Default"
-                                             UpdateSourceTrigger="PropertyChanged">
-                                </Binding>
-                            </TextBox.Text>
-                        </TextBox>
 
                         <Grid Name="GridPanel">
                             <TextBox Style="{StaticResource CustomTextBox}"
@@ -140,34 +122,19 @@
                                     </Binding>
                                 </TextBox.Text>
                             </TextBox>
+                        </Grid>
 
-                           </Grid>
-                        <!--<TextBox HorizontalAlignment="Center" VerticalAlignment="Center">
-                            <TextBox.Text >
-                                <MultiBinding Converter="{StaticResource IsErrorMultiple}" >
-                                    <Binding ElementName="btnTest"
-                                             Path="(Validation.HasError)"
-                                             Mode="Default"
-                                             UpdateSourceTrigger="PropertyChanged" />
-                                    <Binding ElementName="btnTest2"
-                                             Path="(Validation.HasError)"
-                                             Mode="Default"
-                                             UpdateSourceTrigger="PropertyChanged"/>
-
-                                </MultiBinding>
-                            </TextBox.Text>
-                        </TextBox>-->
 
                         <Button Style="{StaticResource GeneralButton}"
                                 Name="SaveBtn"
                                 Content="Save"
-                                Margin="396,239,0,0"
+                                Margin="406,245,0,0"
                                 Height="44"
                                 Width="90"
                                 Command="{Binding RelativeSource={RelativeSource TemplatedParent},
                                 Path=RightButtonCommand}"
                                 HorizontalAlignment="Left" VerticalAlignment="Top">
- 
+
                             <Button.IsEnabled>
                                 <MultiBinding Converter="{StaticResource IsErrorMultiple}" >
                                     <Binding ElementName="btnTest"
@@ -188,11 +155,9 @@
                                     Content="Reset"
                                     Command="{Binding RelativeSource={RelativeSource TemplatedParent},
                                     Path=LeftButtonCommand}"
-                                    Margin="300,239,0,0"
-                                    VerticalAlignment="Top"
-                                    HorizontalAlignment="Left"
+                                    Margin="310,245,0,0"
                                     Height="44"
-                                    Width="90"/>
+                                    Width="90" HorizontalAlignment="Left" VerticalAlignment="Top"/>
                     </Grid>
 
                 </ControlTemplate>

@@ -28,6 +28,10 @@ namespace WpfApp1
             view.Filter = UserFilter;
         }
 
+        void SelectionChangedUser(object sender, RoutedEventArgs e) 
+        {
+            ((ListUserViewModel)DataContext).UserControllViewModel.SelectedUsers = ((ListBox)sender).SelectedItems;             
+        }
 
         private bool UserFilter(object item)
         {

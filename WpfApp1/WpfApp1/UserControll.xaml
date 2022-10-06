@@ -49,7 +49,7 @@
                              FontSize="14" Click="EditUserBtn_Click"/>
 
             <local4:CustomButton Style="{StaticResource GeneralButtonSVG}"
-                                 SetAbility="{ Binding SelectedUser }"                                 
+                                 SetAbility="{ Binding SelectedUser }"
                                  x:Name="DeleteBtn"
                                  Content="Delete user"
                                  HorizontalAlignment="Left"

@@ -30,6 +30,16 @@ namespace WpfApp1.Classes.ViewModels
             }
         }
 
+        private IList _selectedUsers;
+        public IList SelectedUsers
+        {
+            get => _selectedUsers;
+            set
+            {
+                _selectedUsers = value;
+            }
+        }
+
         public UserControllViewModel()
         {
         }
@@ -50,17 +60,16 @@ namespace WpfApp1.Classes.ViewModels
                   (deleteCommand = new RelayCommand((obj) =>
                   {
 
-                      /* var selectedUsersIE = (selectedItems as IEnumerable).Cast<User>();
+                      var selectedUsersIE = SelectedUsers.Cast<User>();
 
-                       while (selectedUsersIE.Count() > 0)
-                       {
-                           db.Users.Remove(selectedUsersIE.FirstOrDefault());
-                       }*/
+                      while(selectedUsersIE.Count() > 0)
+                      {
+                          var item = selectedUsersIE.FirstOrDefault();
+                          Users.Remove(item);
+                          db.Users.Remove(item);
+                      }
 
-                      db.Users.Remove(SelectedUser);
-                      Users.Remove(SelectedUser);
                       db.SaveChangesAsync();
-                      SelectedUser = null;
                   }));
             }
         }

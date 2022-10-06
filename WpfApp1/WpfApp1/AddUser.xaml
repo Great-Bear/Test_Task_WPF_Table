@@ -2,11 +2,8 @@
       xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
-      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" xmlns:local="clr-namespace:Test_Task_WPF_Table.Classes"
-      xmlns:userForm="WpfApp1.Classes.Helpers.DependencyProperty"
-      xmlns:local3="clr-namespace:WpfApp1.ClassesConverter"
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:userForm1="clr-namespace:WpfApp1.Classes.Helpers.DependencyProperty"
-      xmlns:MultipleConverter="clr-namespace:WpfApp1.Classes.Helpers.Converter.MultipleConvertor" 
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="800"
       Title="AddUser">
@@ -15,8 +12,16 @@
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
                 <ResourceDictionary Source="\Dictionary\UserForm.xaml"/>
+                <ResourceDictionary Source="\Dictionary\DatePicker.xaml"/>
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
+
+
+
+
+
+
+
     </Page.Resources>
 
     <Grid Background="White" >
@@ -31,5 +36,10 @@
             FeedBackMessage="{Binding FeedBackMessage}"
             CanShowMessage="{Binding CanShowMessage}"/>
 
+
+        <DatePicker Style="{StaticResource DatePikerCustom}"
+                  Margin="0,294,0,0"
+                  HorizontalAlignment="Center"
+                  VerticalAlignment="Top" Width="316"/>
     </Grid>
 </Page>

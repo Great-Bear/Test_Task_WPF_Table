@@ -65,6 +65,7 @@ namespace WpfApp1.Classes.ViewModels
                     (addCommand = new RelayCommand((obj) =>
                     {
                         FeedBackMessage = "Added Successfully";
+                        CanShowMessage = true;
                         var timer = new DispatcherTimer();
                         timer.Tick += new EventHandler(timer_Tick);
                         timer.Interval = new TimeSpan(0, 0, 1);
@@ -77,7 +78,6 @@ namespace WpfApp1.Classes.ViewModels
                     }));
             }
         }
-     
         private void timer_Tick(object sender, EventArgs e)
         {
             CanShowMessage = false;
@@ -99,15 +99,6 @@ namespace WpfApp1.Classes.ViewModels
 
         private void ClearUser()
         {
-            // Временно этое код будет тут
-                FeedBackMessage = "Added Successfully";
-                CanShowMessage = true;
-                var timer = new DispatcherTimer();
-                timer.Tick += new EventHandler(timer_Tick);
-                timer.Interval = new TimeSpan(0, 0, 1);
-                timer.Start();
-            //
-
             NewUser = new UserValidate();
         }
 

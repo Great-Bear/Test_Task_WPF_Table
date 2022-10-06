@@ -51,6 +51,7 @@
         <ListView ItemsSource="{DynamicResource ResourceKey=users}"
                   ItemContainerStyleSelector="{DynamicResource myStyleSelector}"  
                   SelectedItem="{Binding UserControllViewModel.SelectedUser, Mode=Default}"
+                  SelectionChanged="SelectionChangedUser"
                   SelectionMode="Extended"  
                   GridViewColumnHeader.Click="GridViewColumnHeaderClickedHandler"  
                   Name="usersList"  
