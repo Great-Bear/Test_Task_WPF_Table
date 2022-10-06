@@ -1,7 +1,11 @@
 ﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
                     >
-
+    <ResourceDictionary x:Key="CustomCalendar">
+        <ResourceDictionary.MergedDictionaries>
+            <ResourceDictionary Source="\Dictionary\Calendar\CalendarItemStyleCustom.xaml"></ResourceDictionary>
+        </ResourceDictionary.MergedDictionaries>
+    </ResourceDictionary>
 
     <!--Control colors.-->
     <Color x:Key="WindowColor">#FFE8EDF9</Color>
@@ -46,6 +50,56 @@
     <Color x:Key="NavButtonFrameColor">#FF3843C4</Color>
 
 
+    <Style x:Key="DatePickerTextBoxStyle1" TargetType="{x:Type DatePickerTextBox}">
+        <Setter Property="Foreground" Value="{DynamicResource {x:Static SystemColors.WindowTextBrushKey}}"/>
+        <Setter Property="Background" Value="{DynamicResource {x:Static SystemColors.WindowBrushKey}}"/>
+        <Setter Property="ScrollViewer.PanningMode" Value="VerticalFirst"/>
+        <Setter Property="Margin" Value="0"></Setter>
+        <Setter Property="Stylus.IsFlicksEnabled" Value="False"/>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type DatePickerTextBox}">
+                    <Grid Margin="0" >
+                        <Grid.Resources>
+                            <SolidColorBrush x:Key="WatermarkBrush" Color="#FFAAAAAA"/>
+                        </Grid.Resources>
+                        <Border x:Name="Border"
+                                Margin="0"
+                                Height="32"
+                                Background="{TemplateBinding Background}"
+                                BorderBrush="{TemplateBinding BorderBrush}"
+                                BorderThickness="{TemplateBinding BorderThickness}"
+                                Opacity="1"
+                                Padding="10 3 10 0"
+                                HorizontalAlignment="Stretch">
+                            <Grid x:Name="WatermarkContent"
+                                  HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
+                                  VerticalAlignment="{TemplateBinding VerticalContentAlignment}">
+                                <Border x:Name="watermark_decorator">
+                                    <ContentControl x:Name="PART_Watermark"
+                                                    Focusable="False"
+                                                    IsHitTestVisible="False"
+                                                    Opacity="0"
+                                                    Padding="2"
+                                                    />
+                                </Border>
+                                <ScrollViewer x:Name="PART_ContentHost"
+                                              HorizontalContentAlignment="{TemplateBinding HorizontalContentAlignment}"
+                                              Margin="0"
+                                              VerticalContentAlignment="{TemplateBinding VerticalContentAlignment}"/>
+                                <Border x:Name="FocusVisual"
+                                        BorderBrush="#FF45D6FA"
+                                        CornerRadius="1"
+                                        IsHitTestVisible="False"
+                                        Opacity="0"/>
+                            </Grid>
+                        </Border>
+                    </Grid>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
     <!--In this example, an implecit style for Calendar is defined elsewhere
   in the application.  DatePickerCalendarStyle is based on the implicit
   style so that the DatePicker will use the application's calendar style.-->
@@ -62,31 +116,31 @@
                     <Grid Margin="0">
                         <Grid Background="#FFEDE2E2"
                             FlowDirection="LeftToRight"
-                            Height="30"
-                            Width="30">
+                            Height="32"
+                            Width="32">
                             <Path Fill="Black"
-                              HorizontalAlignment="Center"
-                                  VerticalAlignment="Center"
-                                  RenderTransformOrigin="0.5,0.5"
-                                  Margin="4,3,4,3"
-                                  Stretch="Fill"
-                                  Data=" M482.513,83.942c-7.225-7.233-15.797-10.85-25.694-10.85h-36.541v-27.41c0-12.56-4.477-23.315-13.422-32.261
-		                                C397.906,4.475,387.157,0,374.591,0h-18.268c-12.565,0-23.318,4.475-32.264,13.422c-8.949,8.945-13.422,19.701-13.422,32.261v27.41
-		                                h-109.63v-27.41c0-12.56-4.475-23.315-13.422-32.261C178.64,4.475,167.886,0,155.321,0H137.05
-		                                c-12.562,0-23.317,4.475-32.264,13.422c-8.945,8.945-13.421,19.701-13.421,32.261v27.41H54.823c-9.9,0-18.464,3.617-25.697,10.85
-		                                c-7.233,7.232-10.85,15.8-10.85,25.697v365.453c0,9.89,3.617,18.456,10.85,25.693c7.232,7.231,15.796,10.849,25.697,10.849h401.989
-		                                c9.897,0,18.47-3.617,25.694-10.849c7.234-7.234,10.852-15.804,10.852-25.693V109.639
-		                                C493.357,99.739,489.743,91.175,482.513,83.942z M137.047,475.088H54.823v-82.23h82.224V475.088z M137.047,374.59H54.823v-91.358
-		                                h82.224V374.59z M137.047,264.951H54.823v-82.223h82.224V264.951z M130.627,134.333c-1.809-1.809-2.712-3.946-2.712-6.423V45.686
-		                                c0-2.474,0.903-4.617,2.712-6.423c1.809-1.809,3.946-2.712,6.423-2.712h18.271c2.474,0,4.617,0.903,6.423,2.712
-		                                c1.809,1.807,2.714,3.949,2.714,6.423v82.224c0,2.478-0.909,4.615-2.714,6.423c-1.807,1.809-3.946,2.712-6.423,2.712H137.05
-		                                C134.576,137.046,132.436,136.142,130.627,134.333z M246.683,475.088h-91.365v-82.23h91.365V475.088z M246.683,374.59h-91.365
-		                                v-91.358h91.365V374.59z M246.683,264.951h-91.365v-82.223h91.365V264.951z M356.323,475.088h-91.364v-82.23h91.364V475.088z
-		                                M356.323,374.59h-91.364v-91.358h91.364V374.59z M356.323,264.951h-91.364v-82.223h91.364V264.951z M349.896,134.333
-		                                c-1.807-1.809-2.707-3.946-2.707-6.423V45.686c0-2.474,0.9-4.617,2.707-6.423c1.808-1.809,3.949-2.712,6.427-2.712h18.268
-		                                c2.478,0,4.617,0.903,6.427,2.712c1.808,1.807,2.707,3.949,2.707,6.423v82.224c0,2.478-0.903,4.615-2.707,6.423
-		                                c-1.807,1.809-3.949,2.712-6.427,2.712h-18.268C353.846,137.046,351.697,136.142,349.896,134.333z M456.812,475.088h-82.228v-82.23
-		                                h82.228V475.088z M456.812,374.59h-82.228v-91.358h82.228V374.59z M456.812,264.951h-82.228v-82.223h82.228V264.951z" />
+                                HorizontalAlignment="Center"
+                                VerticalAlignment="Center"
+                                RenderTransformOrigin="0.5,0.5"
+                                Margin="4,3,4,3"
+                                Stretch="Fill"
+                                Data=" M482.513,83.942c-7.225-7.233-15.797-10.85-25.694-10.85h-36.541v-27.41c0-12.56-4.477-23.315-13.422-32.261
+		                            C397.906,4.475,387.157,0,374.591,0h-18.268c-12.565,0-23.318,4.475-32.264,13.422c-8.949,8.945-13.422,19.701-13.422,32.261v27.41
+		                            h-109.63v-27.41c0-12.56-4.475-23.315-13.422-32.261C178.64,4.475,167.886,0,155.321,0H137.05
+		                            c-12.562,0-23.317,4.475-32.264,13.422c-8.945,8.945-13.421,19.701-13.421,32.261v27.41H54.823c-9.9,0-18.464,3.617-25.697,10.85
+		                            c-7.233,7.232-10.85,15.8-10.85,25.697v365.453c0,9.89,3.617,18.456,10.85,25.693c7.232,7.231,15.796,10.849,25.697,10.849h401.989
+		                            c9.897,0,18.47-3.617,25.694-10.849c7.234-7.234,10.852-15.804,10.852-25.693V109.639
+		                            C493.357,99.739,489.743,91.175,482.513,83.942z M137.047,475.088H54.823v-82.23h82.224V475.088z M137.047,374.59H54.823v-91.358
+		                            h82.224V374.59z M137.047,264.951H54.823v-82.223h82.224V264.951z M130.627,134.333c-1.809-1.809-2.712-3.946-2.712-6.423V45.686
+		                            c0-2.474,0.903-4.617,2.712-6.423c1.809-1.809,3.946-2.712,6.423-2.712h18.271c2.474,0,4.617,0.903,6.423,2.712
+		                            c1.809,1.807,2.714,3.949,2.714,6.423v82.224c0,2.478-0.909,4.615-2.714,6.423c-1.807,1.809-3.946,2.712-6.423,2.712H137.05
+		                            C134.576,137.046,132.436,136.142,130.627,134.333z M246.683,475.088h-91.365v-82.23h91.365V475.088z M246.683,374.59h-91.365
+		                            v-91.358h91.365V374.59z M246.683,264.951h-91.365v-82.223h91.365V264.951z M356.323,475.088h-91.364v-82.23h91.364V475.088z
+		                            M356.323,374.59h-91.364v-91.358h91.364V374.59z M356.323,264.951h-91.364v-82.223h91.364V264.951z M349.896,134.333
+		                            c-1.807-1.809-2.707-3.946-2.707-6.423V45.686c0-2.474,0.9-4.617,2.707-6.423c1.808-1.809,3.949-2.712,6.427-2.712h18.268
+		                            c2.478,0,4.617,0.903,6.427,2.712c1.808,1.807,2.707,3.949,2.707,6.423v82.224c0,2.478-0.903,4.615-2.707,6.423
+		                            c-1.807,1.809-3.949,2.712-6.427,2.712h-18.268C353.846,137.046,351.697,136.142,349.896,134.333z M456.812,475.088h-82.228v-82.23
+		                            h82.228V475.088z M456.812,374.59h-82.228v-91.358h82.228V374.59z M456.812,264.951h-82.228v-82.223h82.228V264.951z" />
                         </Grid>
                     </Grid>
                     <ControlTemplate.Triggers>
@@ -95,7 +149,7 @@
                         </Trigger>
                     </ControlTemplate.Triggers>
                 </ControlTemplate>
-              
+
             </Setter.Value>
         </Setter>
     </Style>
@@ -108,62 +162,63 @@
         <Setter Property="SelectedDateFormat"
           Value="Short" />
         <Setter Property="Padding" Value="0"/>
-        
+
         <Setter Property="CalendarStyle"
-          Value="{DynamicResource DatePickerCalendarStyle}" />
+          Value="{StaticResource CalendarStyle1}" />
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type DatePicker}">
                     <Border BorderThickness="{TemplateBinding BorderThickness}"
                             Padding="{TemplateBinding Padding}">
-                        <Border.BorderBrush>
-                            <LinearGradientBrush EndPoint="0.5,1"
-                                 StartPoint="0.5,0">
-                                <GradientStop Color="{DynamicResource BorderLightColor}"
-                            Offset="0" />
-                                <GradientStop Color="{DynamicResource BorderDarkColor}"
-                            Offset="1" />
-                            </LinearGradientBrush>
-                        </Border.BorderBrush>
-
 
                         <Grid x:Name="PART_Root"
                             HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
                             VerticalAlignment="{TemplateBinding VerticalContentAlignment}">
                             <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="*" />
-                                <ColumnDefinition Width="Auto" />
-                                <ColumnDefinition Width="Auto" />
+                                <ColumnDefinition Width="auto" />
+                                <ColumnDefinition Width="auto" />
                             </Grid.ColumnDefinitions>
 
                             <Border Grid.Column="0"
                                     CornerRadius="15 0 0 15"
-                                    Background="#373737">
+                                    Background="#373737"
+                                    Height="32"
+                                    MaxWidth="130"
+                                    HorizontalAlignment="Left" Margin="0">
                                 <Label Foreground="White"
                                        Content="Choice Data"
-                                       HorizontalAlignment="Center"
-                                       FontSize="16"/>
+                                        HorizontalContentAlignment="Center"
+                                       FontSize="16" Width="130"/>
                             </Border>
 
+                            <Border Grid.Column="1" BorderBrush="Black" BorderThickness="1" Margin="0" >
+                                <Grid>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="*" />
+                                        <ColumnDefinition Width="auto" />
+                                    </Grid.ColumnDefinitions>
 
-                                <Button x:Name="PART_Button"
-                                    Grid.Column="2"
-                                    Foreground="{TemplateBinding Foreground}"
-                                    Focusable="False"
-                                    Style="{StaticResource DropDownButtonStyle}"/>
+                                    <DatePickerTextBox x:Name="PART_TextBox"
+                                       Grid.Column="0"
+                                       HorizontalAlignment="Stretch"
+                                       Padding="10 0 10 0"
+                                       Width="150"
+                                       Style="{DynamicResource DatePickerTextBoxStyle1}"
+                                       Text="05.10.2022"
+                                       Foreground="{TemplateBinding Foreground}"
+                                       Focusable="{TemplateBinding Focusable}"
+                                       FontSize="18"
+                                       Background="#FFEDE2E2"/>
 
-                                <DatePickerTextBox x:Name="PART_TextBox"
-                                   Text="05.10.2022"
-                                   Grid.Column="1"
-                                   Foreground="{TemplateBinding Foreground}"
-                                   Focusable="{TemplateBinding Focusable}"
-                                   HorizontalContentAlignment="Center"
-                                   FontSize="18"
-                                   Height="30"
-                                   Background="#FFEDE2E2"
-
-                                   Padding="10 0 10 0"/>
-
+                                    <Button x:Name="PART_Button"
+                                                HorizontalAlignment="Right"
+                                        Grid.Column="1"
+                                        Foreground="{TemplateBinding Foreground}"
+                                        Focusable="False"
+                                        Style="{StaticResource DropDownButtonStyle}"/>
+                                </Grid>
+                            </Border>
+  
                             <Grid x:Name="PART_DisabledVisual"
                                   Grid.ColumnSpan="2"
                                   Grid.Column="0"
@@ -178,7 +233,7 @@
                                      Fill="#A5FFFFFF"
                                      RadiusY="1"
                                      Grid.Row="0"
-                                     RadiusX="1" />
+                                     RadiusX="1" Grid.ColumnSpan="2" Margin="136,-7,-383,7" />
                                 <Rectangle Grid.Column="1"
                                 Fill="#A5FFFFFF"
                                 Height="18"

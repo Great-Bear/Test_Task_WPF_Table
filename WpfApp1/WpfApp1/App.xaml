@@ -11,12 +11,14 @@
                 <ResourceDictionary Source="\Dictionary\ButtonWithSVG.xaml"/>
                 <ResourceDictionary Source="\Dictionary\Button.xaml"/>
                 <ResourceDictionary Source="\Dictionary\ListView.xaml"/>
-                <ResourceDictionary Source="\Dictionary\TextBox.xaml"></ResourceDictionary>
+                <ResourceDictionary Source="\Dictionary\TextBox.xaml"/>
+                <ResourceDictionary Source="\Dictionary\Calendar\CalendarItemStyleCustom.xaml"/>
+                <ResourceDictionary Source="\Dictionary\DatePicker.xaml"/>
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
     </Application.Resources>
 
-           
+
 
 
 </Application>

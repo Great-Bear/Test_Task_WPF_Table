@@ -14,7 +14,7 @@ using WpfApp1.ClassesConverter;
 
 namespace WpfApp1.Classes.Helpers.DependencyProperty
 {
-    public class UserForm : Button, INotifyPropertyChanged
+    public class UserForm : Control, INotifyPropertyChanged
     {
         public string Title { get; set; }
 
@@ -30,7 +30,6 @@ namespace WpfApp1.Classes.Helpers.DependencyProperty
         {
             (d as UserForm).FeedBackMessage = (string)e.NewValue;
         }
-
 
         public static readonly System.Windows.DependencyProperty dependencyCanShowMessage =
          System.Windows.DependencyProperty.Register("CanShowMessage", typeof(bool), typeof(UserForm),

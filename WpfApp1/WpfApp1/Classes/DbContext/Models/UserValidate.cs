@@ -23,13 +23,13 @@ namespace WpfApp1.Classes.DbContext.Models
                     case "Name":
                         if (Name != null)
                         {
-                            if (Name.Length > 50)
+                            if (Name.Length > 10)
                             {
-                                error = "Имя должно быть меньше 2 символов";
+                                error = "Name must be less than 10 symbol";
                             }
                             else if (Name.Length == 0)
                             {
-                                error = "Поле не может быть пустым";
+                                error = "Name can`t be empty";
                             }
                         }
                         else
@@ -41,13 +41,13 @@ namespace WpfApp1.Classes.DbContext.Models
                     case "SurName":
                         if (SurName != null)
                         {
-                            if (SurName.Length > 50)
+                            if (SurName.Length > 10)
                             {
-                                error = "Фамилия должно быть меньше 2 символов";
+                                error = "SurName must be less than 10 symbol";
                             }
                             else if (SurName.Length == 0)
                             {
-                                error = "Поле не может быть пустым";
+                                error = "SurName can`t be empty";
                             }
                         }
                         else
@@ -56,15 +56,15 @@ namespace WpfApp1.Classes.DbContext.Models
                         }
                         break;
                     case "Decription":
-                        if (Decription != null) 
-                        { 
-                            if (Decription.Length > 100)
+                        if (Decription != null)
+                        {
+                            if (Decription.Length > 10)
                             {
-                                error = "Фамилия должно быть меньше 2 символов";
+                                error = "Decription must be less than 10 symbol";
                             }
                             else if (Decription.Length == 0)
                             {
-                                error = "Поле не может быть пустым";
+                                error = "Describe can`t be empty";
                             }
                         }
                         else

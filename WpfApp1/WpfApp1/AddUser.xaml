@@ -13,19 +13,12 @@
             <ResourceDictionary.MergedDictionaries>
                 <ResourceDictionary Source="\Dictionary\UserForm.xaml"/>
                 <ResourceDictionary Source="\Dictionary\DatePicker.xaml"/>
+                <ResourceDictionary Source="\Dictionary\Calendar\CalendarItemStyleCustom.xaml"></ResourceDictionary>
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
-
-
-
-
-
-
-
     </Page.Resources>
 
     <Grid Background="White" >
-
         <userForm1:UserForm 
             User="{Binding NewUser}"
             Title="Add User"
@@ -35,11 +28,5 @@
             Style="{StaticResource UserForm}"
             FeedBackMessage="{Binding FeedBackMessage}"
             CanShowMessage="{Binding CanShowMessage}"/>
-
-
-        <DatePicker Style="{StaticResource DatePikerCustom}"
-                  Margin="0,294,0,0"
-                  HorizontalAlignment="Center"
-                  VerticalAlignment="Top" Width="316"/>
     </Grid>
 </Page>
