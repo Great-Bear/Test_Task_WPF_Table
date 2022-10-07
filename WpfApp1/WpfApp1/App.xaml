@@ -14,11 +14,24 @@
                 <ResourceDictionary Source="\Dictionary\TextBox.xaml"/>
                 <ResourceDictionary Source="\Dictionary\Calendar\CalendarItemStyleCustom.xaml"/>
                 <ResourceDictionary Source="\Dictionary\DatePicker.xaml"/>
+                <ResourceDictionary Source="\Dictionary\Page.xaml"/>
+                <ResourceDictionary Source="\Dictionary\ButtonAnimation.xaml"/>
             </ResourceDictionary.MergedDictionaries>
+
+            <Style TargetType="Page">
+                <Style.Triggers>
+                    <EventTrigger RoutedEvent="Page.Loaded">
+                        <EventTrigger.Actions>
+                            <BeginStoryboard>
+                                <Storyboard>
+                                    <DoubleAnimation Duration="0:0:.35" Storyboard.TargetProperty="Opacity" From="0" To="1" />
+                                </Storyboard>
+                            </BeginStoryboard>
+                        </EventTrigger.Actions>
+                    </EventTrigger>
+                </Style.Triggers>
+            </Style>
+
         </ResourceDictionary>
     </Application.Resources>
-
-
-
-
 </Application>

@@ -27,6 +27,7 @@
                             <Setter Property="Background" Value="#E59400" />
                             <Setter Property="Foreground" Value="White" />
                             <Setter TargetName="PathIcon" Property="Fill" Value="Black" />
+                            <Setter Property="Cursor" Value="Hand"/>
                         </Trigger>
 
                         <Trigger Property="IsPressed" Value="True">
@@ -39,7 +40,6 @@
                             <Setter Property="Foreground" Value="White" />
                             <Setter TargetName="PathIcon" Property="Fill" Value="Black" />
                         </Trigger>
-
                     </ControlTemplate.Triggers>
 
                 </ControlTemplate>

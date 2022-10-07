@@ -13,8 +13,8 @@ namespace Test_Task_WPF_Table.Classes
     {
         public int Id { get; set; }
         private string _name;
-        public string Name 
-        { 
+        public string Name
+        {
             get
             {
                 return _name;
@@ -72,6 +72,16 @@ namespace Test_Task_WPF_Table.Classes
         public User()
         {
             SubcriedTo = DateTime.Now.AddDays(1);
+        }
+
+        public User(User initItem)
+        {
+            Id = initItem.Id;
+            Name = initItem.Name;
+            SurName = initItem.SurName;
+            Decription = initItem.Decription;
+            CreatedOn = initItem.CreatedOn;
+            SubcriedTo = initItem.SubcriedTo;
         }
 
         public event PropertyChangedEventHandler PropertyChanged;

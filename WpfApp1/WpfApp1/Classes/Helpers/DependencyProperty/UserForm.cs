@@ -16,7 +16,18 @@ namespace WpfApp1.Classes.Helpers.DependencyProperty
 {
     public class UserForm : Control, INotifyPropertyChanged
     {
-        public string Title { get; set; }
+        public static readonly System.Windows.DependencyProperty dependencyTitle =
+          System.Windows.DependencyProperty.Register("Title", typeof(string), typeof(UserForm),
+              new PropertyMetadata(null, new PropertyChangedCallback(ChangeTitle)));
+        public string Title
+        {
+            get => (string)GetValue(dependencyTitle);
+            set { SetValue(dependencyTitle, value); }
+        }
+        private static void ChangeTitle(DependencyObject d, DependencyPropertyChangedEventArgs e)
+        {
+            (d as UserForm).FeedBackMessage = (string)e.NewValue;
+        }
 
         public static readonly System.Windows.DependencyProperty dependencyFeedBackMessage =
           System.Windows.DependencyProperty.Register("FeedBackMessage", typeof(string), typeof(UserForm),

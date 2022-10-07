@@ -14,15 +14,18 @@
         </ResourceDictionary.MergedDictionaries>
     </ResourceDictionary>
 
-
     <Style x:Key="UserForm" TargetType="{x:Type userForm1:UserForm}">
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type userForm1:UserForm}">
                     <Grid Name="container" Background="#FFC3B1B1">
-
-                        <Label Name="valItem" 
-                               Content="Add User"
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="auto"></RowDefinition>
+                            <RowDefinition Height="*"></RowDefinition>
+                        </Grid.RowDefinitions>
+                        <Label Name="valItem"
+                               Grid.Row="0"
+                               Content="{ Binding Title, Mode=Default, UpdateSourceTrigger=Default}"
                                HorizontalAlignment="Stretch"
                                HorizontalContentAlignment="Center"
                                VerticalAlignment="Top"
@@ -32,55 +35,55 @@
                                Background="#FF4A4A4A"
                                Foreground="#FFDED3D3"/>
 
-                        <Label Content="{ Binding FeedBackMessage, Mode=Default, UpdateSourceTrigger=Default}"
+                        <StackPanel HorizontalAlignment="Left" Grid.Row="1">
+                            <Label Content="{ Binding FeedBackMessage, Mode=Default, UpdateSourceTrigger=Default}"
                                HorizontalAlignment="Left"
-                               VerticalAlignment="Top" Opacity="0">
-
-                            <Label.Style>
-                                <Style TargetType="Label">
-                                    <Setter Property="Control.Background" Value="Green"></Setter>
-                                    <Setter Property="Control.Padding" Value="20"></Setter>
-                                    <Setter Property="Opacity" Value="0"></Setter>
-                                    <Style.Triggers>
-                                        <DataTrigger  Binding="{Binding CanShowMessage,
+                               VerticalAlignment="Top"
+                               Padding="15"
+                               Background="Green"
+                               Opacity="0">
+                                <Label.Style>
+                                    <Style TargetType="Label">
+                                        <Style.Triggers>
+                                            <DataTrigger  Binding="{Binding CanShowMessage,
                                                 Mode=Default,
                                                 UpdateSourceTrigger=PropertyChanged}"
                                                 Value="True" >
-                                            <DataTrigger.EnterActions>
-                                                <BeginStoryboard>
-                                                    <Storyboard>
-                                                        <DoubleAnimation BeginTime="0:0:0" Storyboard.TargetProperty="Opacity"
+                                                <DataTrigger.EnterActions>
+                                                    <BeginStoryboard>
+                                                        <Storyboard>
+                                                            <DoubleAnimation BeginTime="0:0:0" Storyboard.TargetProperty="Opacity"
                                                             From="0.0" To="1" Duration="0:0:0.0" />
-                                                        <DoubleAnimation BeginTime="0:0:1" Storyboard.TargetProperty="Opacity"
+                                                            <DoubleAnimation BeginTime="0:0:1" Storyboard.TargetProperty="Opacity"
                                                             From="1" To="0.0" Duration="0:0:0.5" />
-                                                    </Storyboard>
-                                                </BeginStoryboard>
-                                            </DataTrigger.EnterActions>
-                                        </DataTrigger>
-
-
-                                    </Style.Triggers>
-                                </Style>
-                            </Label.Style>
-                        </Label>
-
-                        <Grid Name="GridPanel">
+                                                        </Storyboard>
+                                                    </BeginStoryboard>
+                                                </DataTrigger.EnterActions>
+                                            </DataTrigger>
+                                        </Style.Triggers>
+                                    </Style>
+                                </Label.Style>
+                            </Label>
+                        </StackPanel>
+                        <StackPanel  HorizontalAlignment="Center"
+                                     Height="400"
+                                     Grid.Row="1"
+                                     VerticalAlignment="Top"
+                                     Margin="0 20 0 0">
                             <TextBox Style="{StaticResource CustomTextBox}"
-                                             Tag="Enter Name"
-                                             Margin="200,40,0,0"
-                                             TextWrapping="Wrap"
-                                             Width="380"
-                                             Height="75" HorizontalAlignment="Left" VerticalAlignment="Top"
-                                             x:Name="btnTest"
-                                             >
+                                        Tag="Enter Name"
+                                        TextWrapping="Wrap"
+                                        Width="380"
+                                        Height="56"
+                                        HorizontalAlignment="Left"
+                                        x:Name="btnTest">
 
                                 <TextBox.Text>
                                     <Binding RelativeSource="{RelativeSource TemplatedParent}"
                                              Path="User.Name"
                                              Mode="Default"
                                              UpdateSourceTrigger="PropertyChanged"
-                                             ValidatesOnDataErrors="True"
-                                             >
+                                             ValidatesOnDataErrors="True">
                                         <Binding.ValidationRules>
                                             <DataErrorValidationRule ValidatesOnTargetUpdated="True"  />
                                         </Binding.ValidationRules>
@@ -90,14 +93,10 @@
 
                             <TextBox Style="{StaticResource CustomTextBox}"
                                              Tag="Enter SurName"
-                                             Margin="200,97,0,0"
                                              TextWrapping="Wrap"
                                              Width="380"
-                                             Height="75"
-                                             HorizontalAlignment="Left"
-                                             VerticalAlignment="Top"
-                                             x:Name="btnTest2"
-                                             >
+                                             Height="56"
+                                             x:Name="btnTest2">
                                 <TextBox.Text>
                                     <Binding RelativeSource="{RelativeSource TemplatedParent}"
                                              Path="User.SurName"
@@ -113,14 +112,10 @@
 
                             <TextBox Style="{StaticResource CustomTextBox}"
                                     Tag="Enter Describe"
-                                    Margin="200,159,0,0"
                                     TextWrapping="Wrap"
                                     Width="380"
-                                    Height="75"
-                                    HorizontalAlignment="Left"
-                                    VerticalAlignment="Top"
-                                      x:Name="btnTest3"
-                                     >
+                                    x:Name="btnTest3"
+                                    Height="56">
 
                                 <TextBox.Text>
                                     <Binding RelativeSource="{RelativeSource TemplatedParent}"
@@ -134,54 +129,61 @@
                                     </Binding>
                                 </TextBox.Text>
                             </TextBox>
-                        </Grid>
 
-                        <DatePicker Style="{StaticResource DatePikerCustom}"
+
+                            <DatePicker Style="{StaticResource DatePikerCustom}"
                                         Height="34"
-                                        VerticalAlignment="Top"
                                         HorizontalAlignment="Left"
-                                        Margin="200,229,0,0"
                                         SelectedDate="{Binding RelativeSource={RelativeSource TemplatedParent},
                                                         Path=User.SubcriedTo,
                                                         Mode=Default,
-                                                        UpdateSourceTrigger=PropertyChanged}"/>
+                                                        UpdateSourceTrigger=PropertyChanged}"
+                                        Width="380"/>
 
-                        <Button Style="{StaticResource GeneralButton}"
-                                Name="SaveBtn"
-                                Content="Save"
-                                Margin="400,280,0,0"
-                                Height="44"
-                                Width="90"
-                                Command="{Binding RelativeSource={RelativeSource TemplatedParent},
-                                Path=RightButtonCommand}" HorizontalAlignment="Left" VerticalAlignment="Top">
+                            <Grid Margin="0 10 0 0">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition></ColumnDefinition>
+                                    <ColumnDefinition Width="*"></ColumnDefinition>
+                                </Grid.ColumnDefinitions>
 
-                            <Button.IsEnabled>
-                                <MultiBinding Converter="{StaticResource IsErrorMultiple}" >
-                                    <Binding ElementName="btnTest"
+                                <Button Style="{StaticResource GeneralButton}"
+                                    Name="ResetBtn"
+                                    Content="Reset"
+                                    Height="44"
+                                    Width="90"
+                                    Grid.Column="0"
+                                        HorizontalAlignment="Right"
+                                    Command="{Binding RelativeSource={RelativeSource TemplatedParent},
+                                    Path=LeftButtonCommand}"/>
+
+                                <Button Style="{StaticResource GeneralButton}"
+                                        Name="SaveBtn"
+                                        Content="Save"
+                                        Height="44"
+                                        Width="90"
+                                        Grid.Column="1"
+                                         HorizontalAlignment="Stretch"
+                                        Command="{Binding RelativeSource={RelativeSource TemplatedParent},
+                                        Path=RightButtonCommand}">
+                                    <Button.IsEnabled>
+                                        <MultiBinding Converter="{StaticResource IsErrorMultiple}" >
+                                            <Binding ElementName="btnTest"
                                              Path="(Validation.HasError)"
                                              Mode="Default"
                                              UpdateSourceTrigger="PropertyChanged" />
-                                    <Binding ElementName="btnTest2"
+                                            <Binding ElementName="btnTest2"
                                              Path="(Validation.HasError)"
                                              Mode="Default"
                                              UpdateSourceTrigger="PropertyChanged"/>
-                                    <Binding ElementName="btnTest3"
+                                            <Binding ElementName="btnTest3"
                                              Path="(Validation.HasError)"
                                              Mode="Default"
                                              UpdateSourceTrigger="PropertyChanged"/>
-
-                                </MultiBinding>
-                            </Button.IsEnabled>
-                        </Button>
-
-                        <Button Style="{StaticResource GeneralButton}"
-                                    Name="ResetBtn"
-                                    Content="Reset"
-                                    Command="{Binding RelativeSource={RelativeSource TemplatedParent},
-                                    Path=LeftButtonCommand}"
-                                    Margin="304,280,0,0"
-                                    Height="44"
-                                    Width="90" HorizontalAlignment="Left" VerticalAlignment="Top"/>
+                                        </MultiBinding>
+                                    </Button.IsEnabled>
+                                </Button>
+                            </Grid>
+                        </StackPanel>
                     </Grid>
                 </ControlTemplate>
             </Setter.Value>

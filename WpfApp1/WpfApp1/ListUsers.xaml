@@ -1,22 +1,33 @@
 ﻿<Page x:Class="WpfApp1.ListUsers"
       xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-      xmlns:col="clr-namespace:System.Collections;assembly=mscorlib" 
-      xmlns:local="clr-namespace:Test_Task_WPF_Table.Classes"  
-      xmlns:local4="clr-namespace:WpfApp1.ClassesConverter.DependencyProperty" 
-      xmlns:local3="clr-namespace:WpfApp1.ClassesConverter" 
-      mc:Ignorable="d" 
+      xmlns:col="clr-namespace:System.Collections;assembly=mscorlib"
+      xmlns:local="clr-namespace:Test_Task_WPF_Table.Classes"
+      xmlns:local4="clr-namespace:WpfApp1.ClassesConverter.DependencyProperty"
+      xmlns:local3="clr-namespace:WpfApp1.ClassesConverter"
+      mc:Ignorable="d"
       d:DesignHeight="450" d:DesignWidth="800"
       Title="ListUsers">
     <Page.Resources>
-
         <local3:DateConverter x:Key="DateConverter" />
         <local3:ListViewItemStyleSelector x:Key="myStyleSelector"/>
         <local4:CustomButton x:Key="CustomButton"/>
-
     </Page.Resources>
+
+    <!--Через словарь стили не работают а если явно в каждом элементе то всё ок-->
+    <Page.Triggers>
+        <EventTrigger RoutedEvent="Page.Loaded">
+            <EventTrigger.Actions>
+                <BeginStoryboard>
+                    <Storyboard>
+                        <DoubleAnimation Duration="0:0:.35" Storyboard.TargetProperty="Opacity" From="0" To="1" />
+                    </Storyboard>
+                </BeginStoryboard>
+            </EventTrigger.Actions>
+        </EventTrigger>
+    </Page.Triggers>
 
     <Grid Background="#FFC7BDBD" Margin="0,0,0,10">
 
@@ -25,9 +36,9 @@
               Background="#FF7D7777"
               Height="50" >
 
-            <TextBox HorizontalAlignment="Left" 
-                     Margin="66,0,0,0" 
-                     FontSize="22" 
+            <TextBox HorizontalAlignment="Left"
+                     Margin="66,0,0,0"
+                     FontSize="22"
                      TextWrapping="Wrap"
                      Name="txtFilter"
                      TextChanged="txtFilter_TextChanged"
@@ -38,7 +49,7 @@
             <Label Content="Search:"
                    HorizontalAlignment="Left"
                    Margin="5,0,0,0"
-                   VerticalAlignment="Top" 
+                   VerticalAlignment="Top"
                    Height="33"
                    Width="61"
                    FontSize="16"
@@ -49,13 +60,13 @@
         </Grid>
 
         <ListView ItemsSource="{DynamicResource ResourceKey=users}"
-                  ItemContainerStyleSelector="{DynamicResource myStyleSelector}"  
+                  ItemContainerStyleSelector="{DynamicResource myStyleSelector}"
                   SelectedItem="{Binding UserControllViewModel.SelectedUser, Mode=Default}"
                   SelectionChanged="SelectionChangedUser"
-                  SelectionMode="Extended"  
-                  GridViewColumnHeader.Click="GridViewColumnHeaderClickedHandler"  
-                  Name="usersList"  
-                  Margin="0,40,0,10" 
+                  SelectionMode="Extended"
+                  GridViewColumnHeader.Click="GridViewColumnHeaderClickedHandler"
+                  Name="usersList"
+                  Margin="0,40,0,10"
                   Background="#FFC3B1B1"
 >
             <ListView.View >

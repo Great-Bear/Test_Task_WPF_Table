@@ -26,8 +26,8 @@ namespace WpfApp1
             var userControllViewModel = new UserControllViewModel();
             DataContext = userControllViewModel;
              frame.Navigate(new ListUsers(userControllViewModel));
-            //  frame.Navigate(new AddUser());
-           
+            // frame.Navigate(new RadiaGradientTest());
+
         }
 
         private void AddUserBtn_Click(object sender, RoutedEventArgs e)

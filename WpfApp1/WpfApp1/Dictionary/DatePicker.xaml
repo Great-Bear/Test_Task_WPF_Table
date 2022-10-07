@@ -122,7 +122,7 @@
                                 HorizontalAlignment="Center"
                                 VerticalAlignment="Center"
                                 RenderTransformOrigin="0.5,0.5"
-                                Margin="4,3,4,3"
+                                Margin="4,2,4,4"
                                 Stretch="Fill"
                                 Data=" M482.513,83.942c-7.225-7.233-15.797-10.85-25.694-10.85h-36.541v-27.41c0-12.56-4.477-23.315-13.422-32.261
 		                            C397.906,4.475,387.157,0,374.591,0h-18.268c-12.565,0-23.318,4.475-32.264,13.422c-8.949,8.945-13.422,19.701-13.422,32.261v27.41
@@ -176,7 +176,7 @@
                             VerticalAlignment="{TemplateBinding VerticalContentAlignment}">
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition Width="auto" />
-                                <ColumnDefinition Width="auto" />
+                                <ColumnDefinition Width="*" />
                             </Grid.ColumnDefinitions>
 
                             <Border Grid.Column="0"
@@ -191,7 +191,7 @@
                                        FontSize="16" Width="130"/>
                             </Border>
 
-                            <Border Grid.Column="1" BorderBrush="Black" BorderThickness="1" Margin="0" >
+                            <Border Grid.Column="1" BorderBrush="Gray" BorderThickness="1" Margin="0" >
                                 <Grid>
                                     <Grid.ColumnDefinitions>
                                         <ColumnDefinition Width="*" />
@@ -201,8 +201,8 @@
                                     <DatePickerTextBox x:Name="PART_TextBox"
                                        Grid.Column="0"
                                        HorizontalAlignment="Stretch"
+                                       HorizontalContentAlignment="Center"
                                        Padding="10 0 10 0"
-                                       Width="150"
                                        Style="{DynamicResource DatePickerTextBoxStyle1}"
                                        Text="05.10.2022"
                                        Foreground="{TemplateBinding Foreground}"
@@ -211,14 +211,14 @@
                                        Background="#FFEDE2E2"/>
 
                                     <Button x:Name="PART_Button"
-                                                HorizontalAlignment="Right"
+                                        HorizontalAlignment="Right"
                                         Grid.Column="1"
                                         Foreground="{TemplateBinding Foreground}"
                                         Focusable="False"
                                         Style="{StaticResource DropDownButtonStyle}"/>
                                 </Grid>
                             </Border>
-  
+
                             <Grid x:Name="PART_DisabledVisual"
                                   Grid.ColumnSpan="2"
                                   Grid.Column="0"

@@ -76,5 +76,14 @@ namespace WpfApp1.Classes.DbContext.Models
                 return error;
             }
         }
+
+        public UserValidate(User baseItem) : base(baseItem)
+        {
+
+        }
+        public UserValidate()
+        {
+
+        }
     }
 }

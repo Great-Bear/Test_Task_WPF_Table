@@ -16,8 +16,8 @@ namespace WpfApp1.Classes.ViewModels
 {
     public class AddUserViewModel : BasicViewModel, INotifyPropertyChanged
     {
+        public string Title { get; set; }
         private UserValidate _newUser;
-
         public UserValidate NewUser
         {
             get { return _newUser; }
@@ -39,7 +39,7 @@ namespace WpfApp1.Classes.ViewModels
         }
 
         private bool _canShowMessage;
-        public bool CanShowMessage 
+        public bool CanShowMessage
         {
             get => _canShowMessage;
             set
@@ -53,7 +53,7 @@ namespace WpfApp1.Classes.ViewModels
         public AddUserViewModel()
         {
             NewUser = new UserValidate();
-            FeedBackMessage = "dfs";
+            Title = "Add User";
         }
 
         RelayCommand addCommand;
@@ -72,7 +72,7 @@ namespace WpfApp1.Classes.ViewModels
                         timer.Start();
 
                         NewUser.CreatedOn = DateTime.Now;
-                        db.Users.Add((User)NewUser);
+                        db.Users.Add(NewUser);
                         db.SaveChanges();
                         ClearUser();
                     }));
