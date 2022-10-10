@@ -60,7 +60,14 @@
                                  FontSize="16"
                                  Command="{ Binding DeleteCommand }"
                                  Tag="{StaticResource TrashCanSVG}"/>
-           
+            <Button Content="Button"
+                    Style="{StaticResource ButtonAnimation}"
+                    HorizontalAlignment="Left"
+                    Margin="435,10,0,0"
+                    VerticalAlignment="Top"
+                    Height="33"
+                    Width="135"/>
+
 
 
             <!--  <fa:ImageAwesome Icon="Refresh" Spin="false" VerticalAlignment="Top" HorizontalAlignment="Left" Height="47" Width="53" Margin="10,128,0,0" /> -->

@@ -9,13 +9,25 @@
       Title="RadiaGradientTest">
 
     <Grid Background="White">
+
+        <Border CornerRadius="10"
+                Padding="10 0 10 0"
+                Margin="290,61,344,297" >
+            <Border.Background>
+                <RadialGradientBrush >
+                    <GradientStop x:Name="GradientStop1" Color="Red" Offset="0"></GradientStop>
+                    <GradientStop x:Name="GradientStop2" Color="Blue" Offset="1"></GradientStop>
+                </RadialGradientBrush>
+            </Border.Background>
+        </Border>
+
         <Button 
                 Style="{StaticResource ButtonAnimation}"
                 Content="Button" 
                 HorizontalAlignment="Center" 
                 VerticalAlignment="Center" 
-                Height="90" 
-                Width="179"/>
+                Height="48" 
+                Width="150"/>
 
 
     </Grid>

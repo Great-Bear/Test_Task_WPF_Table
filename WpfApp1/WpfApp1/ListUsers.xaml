@@ -36,26 +36,15 @@
               Background="#FF7D7777"
               Height="50" >
 
-            <TextBox HorizontalAlignment="Left"
-                     Margin="66,0,0,0"
-                     FontSize="22"
+            <TextBox Style="{StaticResource CustomTextBox}"
+                     Margin="10,0,0,0"
+                     FontSize="15"
+                     Tag="Search by name:"
                      TextWrapping="Wrap"
                      Name="txtFilter"
                      TextChanged="txtFilter_TextChanged"
-                     VerticalAlignment="Top"
-                     Width="250"
+                     Width="322"
                      Height="33"/>
-
-            <Label Content="Search:"
-                   HorizontalAlignment="Left"
-                   Margin="5,0,0,0"
-                   VerticalAlignment="Top"
-                   Height="33"
-                   Width="61"
-                   FontSize="16"
-                   Background="#FFCAB3B3"/>
-
-
             <!--  <fa:ImageAwesome Icon="Refresh" Spin="false" VerticalAlignment="Top" HorizontalAlignment="Left" Height="47" Width="53" Margin="10,128,0,0" /> -->
         </Grid>
 
