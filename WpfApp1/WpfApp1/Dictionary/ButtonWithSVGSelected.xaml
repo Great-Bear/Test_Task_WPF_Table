@@ -2,7 +2,9 @@
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
 
 
-    <Style TargetType="{x:Type Button}" x:Key="GeneralButtonSVG">
+
+
+    <Style TargetType="{x:Type Button}" x:Key="GeneralButtonSVGSelected">
         <Setter Property="Background" Value="#373737" />
         <Setter Property="Foreground" Value="White" />
         <Setter Property="FontSize" Value="15" />
@@ -17,15 +19,15 @@
                             <Path x:Name="PathIcon" Width="20" Height="20" Stretch="Fill" Fill="#4C87B3" HorizontalAlignment="Left" Data="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=Tag}"></Path>
 
                             <Border BorderBrush="White" HorizontalAlignment="Right"  >
-                                <ContentPresenter x:Name="MyContentPresenter"  Content="{TemplateBinding Content}" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0,0,0,0" />
+                                <ContentPresenter x:Name="MyContentPresenter"  Content="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=IsSelected }" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0,0,0,0" />
                             </Border>
                         </Grid>
                         <Border.Background>
-                            <RadialGradientBrush RadiusX="0.5" RadiusY="0.8" >
-                                    <GradientStop x:Name="GradientStop1" Color="#373737" Offset="0"></GradientStop>
-                                    <GradientStop x:Name="GradientStop2" Color="#373737" Offset="1"></GradientStop>
-                                </RadialGradientBrush>
-                            </Border.Background>
+                            <RadialGradientBrush x:Name="RadialGradient" RadiusX="0.5" RadiusY="0.8" >
+                                <GradientStop x:Name="GradientStop1" Color="#373737" Offset="0"></GradientStop>
+                                <GradientStop x:Name="GradientStop2" Color="#373737" Offset="1"></GradientStop>
+                            </RadialGradientBrush>
+                        </Border.Background>
                     </Border>
 
                     <ControlTemplate.Triggers>
@@ -99,22 +101,31 @@
                             <Setter Property="Cursor" Value="Hand"/>
                         </Trigger>
 
-                       
 
                         <Trigger Property="IsEnabled" Value="False">
                             <Setter Property="Foreground" Value="White" />
                             <Setter TargetName="PathIcon" Property="Fill" Value="Black" />
                             <Setter TargetName="BackBorder" Property="Background" Value="#FFB5B0B0" />
                         </Trigger>
+
+                        <!--<DataTrigger Binding="{Binding RelativeSource={RelativeSource Self}, Path=IsSelected }" Value="True">
+                            <DataTrigger.Setters>
+                                <Setter TargetName="RadialGradient" Property="">
+                                    <Setter.Value>
+                                        <LinearGradientBrush>
+                                            <GradientStop Color="Black" Offset="0.44"/>
+                                            <GradientStop Color="Green" Offset="0.727"/>
+                                        </LinearGradientBrush>
+                                    </Setter.Value>
+                                </Setter>
+                            </DataTrigger.Setters>
+                        
+                        </DataTrigger>-->
+
                     </ControlTemplate.Triggers>
 
                 </ControlTemplate>
             </Setter.Value>
         </Setter>
     </Style>
-
-
-
-
-
 </ResourceDictionary>

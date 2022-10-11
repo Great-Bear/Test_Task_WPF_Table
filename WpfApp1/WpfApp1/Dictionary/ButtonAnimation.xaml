@@ -11,14 +11,8 @@
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type Button}">
-                    <Border CornerRadius="4" Background="{TemplateBinding Background}" Padding="10 0 10 0"  >
+                    <Border CornerRadius="4" Padding="10 0 10 0"  >
                         <Grid>
-                            <Grid.Background>
-                                <RadialGradientBrush RadiusX="0.5" RadiusY="0.8" >
-                                    <GradientStop x:Name="GradientStop1" Color="#373737" Offset="0"></GradientStop>
-                                    <GradientStop x:Name="GradientStop2" Color="#373737" Offset="1"></GradientStop>
-                                </RadialGradientBrush>
-                            </Grid.Background>
                             <Border CornerRadius="10"  Padding="10 0 10 0">
                                 <ContentPresenter x:Name="MyContentPresenter"
                                                   Content="{TemplateBinding Content}"
@@ -26,6 +20,13 @@
                                                   VerticalAlignment="Center"></ContentPresenter>
                             </Border>
                         </Grid>
+                        <Border.Background>
+                            <RadialGradientBrush RadiusX="0.5" RadiusY="0.8" >
+                                <GradientStop x:Name="GradientStop1" Color="#373737" Offset="0"></GradientStop>
+                                <GradientStop x:Name="GradientStop2" Color="#373737" Offset="1"></GradientStop>
+                            </RadialGradientBrush>
+                        </Border.Background>
+
                     </Border>
 
                     <ControlTemplate.Triggers>
@@ -47,12 +48,14 @@
                                 </BeginStoryboard>
                             </MultiTrigger.EnterActions>
                             <MultiTrigger.ExitActions>
+
+                                <SkipStoryboardToFill BeginStoryboardName="PressedStory"></SkipStoryboardToFill>
+
                                 <BeginStoryboard>
-                                    <Storyboard FillBehavior="Stop">
+                                    <Storyboard FillBehavior="Stop"  >
                                         <ColorAnimation
                                             Storyboard.TargetName="GradientStop2"
                                             Storyboard.TargetProperty="Color"
-                                            From="#FF9A9696"
                                             To="#373737"
                                             Duration="0:0:0.2"/>
                                     </Storyboard>
@@ -62,13 +65,14 @@
 
                         <Trigger Property="IsPressed" Value="True">
                             <Trigger.EnterActions>
-                                <BeginStoryboard>
+                                <BeginStoryboard Name="PressedStory">
                                     <Storyboard FillBehavior="Stop">
                                         <ColorAnimation
                                             Storyboard.TargetName="GradientStop2"
                                             Storyboard.TargetProperty="Color"
                                             From="#FF9A9696"
                                             To="#FF636360"
+                                            BeginTime="0:0:0.2"
                                             Duration="0:0:0.3"/>
 
                                         <DoubleAnimation
@@ -85,7 +89,6 @@
                                             To="#FF9A9696"
                                             BeginTime="0:0:0.3"
                                             Duration="0:0:0.3"/>
-
 
                                     </Storyboard>
                                 </BeginStoryboard>

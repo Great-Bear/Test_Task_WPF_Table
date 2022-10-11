@@ -14,15 +14,86 @@
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type Button}">
-                    <Border CornerRadius="10" Background="{TemplateBinding Background}" Padding="10 0 10 0" >
+                    <Border CornerRadius="10" Padding="10 0 10 0" >
                         <Grid>
                             <Border BorderBrush="White" HorizontalAlignment="Center"  >
                                 <ContentPresenter x:Name="MyContentPresenter"  Content="{TemplateBinding Content}" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0,0,0,0" />
                             </Border>
                         </Grid>
+                        <Border.Background>
+                            <RadialGradientBrush RadiusX="0.5" RadiusY="0.8" >
+                                <GradientStop x:Name="GradientStop1" Color="#373737" Offset="0"></GradientStop>
+                                <GradientStop x:Name="GradientStop2" Color="#373737" Offset="1"></GradientStop>
+                            </RadialGradientBrush>
+                        </Border.Background>
                     </Border>
-
                     <ControlTemplate.Triggers>
+                        <MultiTrigger>
+                            <MultiTrigger.Conditions>
+                                <Condition Property="IsMouseOver" Value="True" />
+                                <Condition Property="IsPressed" Value="False" />
+                            </MultiTrigger.Conditions>
+                            <MultiTrigger.EnterActions>
+                                <BeginStoryboard>
+                                    <Storyboard >
+                                        <ColorAnimation
+                                            Storyboard.TargetName="GradientStop2"
+                                            Storyboard.TargetProperty="Color"
+                                            From="#373737"
+                                            To="#FF9A9696"
+                                            Duration="0:0:0.2"/>
+                                    </Storyboard>
+                                </BeginStoryboard>
+                            </MultiTrigger.EnterActions>
+                            <MultiTrigger.ExitActions>
+
+                                <SkipStoryboardToFill BeginStoryboardName="PressedStory"></SkipStoryboardToFill>
+
+                                <BeginStoryboard>
+                                    <Storyboard FillBehavior="Stop"  >
+                                        <ColorAnimation
+                                            Storyboard.TargetName="GradientStop2"
+                                            Storyboard.TargetProperty="Color"
+                                            To="#373737"
+                                            Duration="0:0:0.2"/>
+                                    </Storyboard>
+                                </BeginStoryboard>
+                            </MultiTrigger.ExitActions>
+                        </MultiTrigger>
+
+                        <Trigger Property="IsPressed" Value="True">
+                            <Trigger.EnterActions>
+                                <BeginStoryboard Name="PressedStory">
+                                    <Storyboard FillBehavior="Stop">
+                                        <ColorAnimation
+                                            Storyboard.TargetName="GradientStop2"
+                                            Storyboard.TargetProperty="Color"
+                                            From="#FF9A9696"
+                                            To="#FF636360"
+                                            BeginTime="0:0:0.2"
+                                            Duration="0:0:0.3"/>
+
+                                        <DoubleAnimation
+                                             Storyboard.TargetName="GradientStop2"
+                                             Storyboard.TargetProperty="Offset"
+                                             From="0"
+                                             To="1"
+                                             Duration="0:0:0.3"/>
+
+                                        <ColorAnimation
+                                            Storyboard.TargetName="GradientStop2"
+                                            Storyboard.TargetProperty="Color"
+                                            From="#FF636360"
+                                            To="#FF9A9696"
+                                            BeginTime="0:0:0.3"
+                                            Duration="0:0:0.3"/>
+
+                                    </Storyboard>
+                                </BeginStoryboard>
+                            </Trigger.EnterActions>
+                        </Trigger>
+                        
+                        
                         <Trigger Property="IsMouseOver" Value="True">
                             <Setter Property="Background" Value="#FF352C2C" />
                             <Setter Property="Foreground" Value="White" />

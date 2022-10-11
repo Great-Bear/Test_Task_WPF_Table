@@ -16,6 +16,7 @@
                 <ResourceDictionary Source="\Dictionary\DatePicker.xaml"/>
                 <ResourceDictionary Source="\Dictionary\Page.xaml"/>
                 <ResourceDictionary Source="\Dictionary\ButtonAnimation.xaml"/>
+                <ResourceDictionary Source="\Dictionary\ButtonWithSVGSelected.xaml"></ResourceDictionary>
             </ResourceDictionary.MergedDictionaries>
 
             <Style TargetType="Page">
