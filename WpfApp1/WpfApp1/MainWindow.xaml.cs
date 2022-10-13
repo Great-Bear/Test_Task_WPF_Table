@@ -29,16 +29,24 @@ namespace WpfApp1
         {
             InitializeComponent();
             ListUsersBtn.Click += ListUsersClick;
+            SettingsBtn.Click += SettingsClick;
+
             DataContext = new MainWindowViewModel();
 
             var ViewModel = DataContext as MainWindowViewModel;
             frame.Navigate(new UserControll());
         }
 
+
         private void ListUsersClick(object sender, RoutedEventArgs e)
         {
             var ViewModel = DataContext as MainWindowViewModel;
             frame.Navigate(new UserControll());
+        }
+
+        private void SettingsClick(object sender, RoutedEventArgs e)
+        {
+            frame.Navigate(new Settings());
         }
     }
 }

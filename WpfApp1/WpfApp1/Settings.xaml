@@ -1,0 +1,16 @@
+﻿<Page x:Class="WpfApp1.Settings"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+      mc:Ignorable="d"
+      d:DesignHeight="450" d:DesignWidth="800"
+      Title="Settings" Style="{DynamicResource PageStyle}">
+
+    <Grid >
+        <TextBlock  Width="135" Height="30" TextAlignment="Center"  HorizontalAlignment="Left" VerticalAlignment="Top" Text="{DynamicResource m_LabelText}" Style="{DynamicResource TextBlockStyle}" Margin="10,124,0,0" />
+        <Button  Width="135" Height="30"  HorizontalAlignment="Left" VerticalAlignment="Top" Content="Hello WPF" Style="{DynamicResource ButtonStyle}" Margin="10,159,0,0" />
+        <ComboBox Width="135" Height="23"  HorizontalAlignment="Left" VerticalAlignment="Top" x:Name="styleBox" Margin="10,194,0,0" />
+        <ComboBox Width="135" Height="23"  HorizontalAlignment="Left" VerticalAlignment="Top" x:Name="styleBox_Language" Margin="10,222,0,0" />
+    </Grid>
+</Page>

@@ -6,7 +6,8 @@
       xmlns:userForm1="clr-namespace:WpfApp1.Classes.Helpers.DependencyProperty"
       mc:Ignorable="d"
       d:DesignHeight="450" d:DesignWidth="800"
-      Title="AddUser">
+      Title="AddUser"
+      Style="{DynamicResource PageStyle}">
 
     <Page.Resources>
         <ResourceDictionary>
@@ -18,7 +19,7 @@
         </ResourceDictionary>
     </Page.Resources>
 
-    <Grid Background="White" >
+    <Grid>
         <userForm1:UserForm
             User="{Binding NewUser}"
             Title="{Binding Title}"
