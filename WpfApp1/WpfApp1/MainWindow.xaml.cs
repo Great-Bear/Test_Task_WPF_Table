@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -32,6 +33,7 @@ namespace WpfApp1
             SettingsBtn.Click += SettingsClick;
 
             DataContext = new MainWindowViewModel();
+
 
             var ViewModel = DataContext as MainWindowViewModel;
             frame.Navigate(new UserControll());

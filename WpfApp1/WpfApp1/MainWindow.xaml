@@ -4,11 +4,12 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:dependencyproperty="clr-namespace:WpfApp1.Classes.Helpers.DependencyProperty"
+        xmlns:resources="clr-namespace:WpfApp1.Dictionary.LanguageRESX"
         mc:Ignorable="d"
         Title="MainWindow" 
         Height="450" 
         Width="800">
-    
+
     <Grid Background="LightGray">
         <Frame Name="frame"
                Margin="150,0,0,0"
@@ -39,12 +40,15 @@
 
         <Button Style="{StaticResource GeneralButtonSVG}"
                 Name="SettingsBtn"
-                Content="Settings"
                 HorizontalAlignment="Left"
                 Margin="10,86,0,0"
                 VerticalAlignment="Top"
                 Height="33"
                 Width="135"
-                FontSize="14"/>
+                FontSize="14" 
+                x:Uid="Button_1">Налаштування</Button>
+        <Label Content="{x:Static resources:Default.TestName}"
+               HorizontalAlignment="Left"
+               VerticalAlignment="Top" Margin="10,124,0,0"/>
     </Grid>
 </Window>

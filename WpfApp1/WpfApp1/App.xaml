@@ -1,8 +1,6 @@
 ﻿<Application x:Class="WpfApp1.App"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-             xmlns:DepBtn="clr-namespace:WpfApp1.ClassesConverter.DependencyProperty"
-             xmlns:local3="clr-namespace:WpfApp1.ClassesConverter"
              StartupUri="MainWindow.xaml">
     <Application.Resources>
         <ResourceDictionary>
