@@ -22,14 +22,14 @@ namespace WpfApp1.Dictionary.LanguageRESX {
     [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "17.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
-    public class EN {
+    public class FR {
         
         private static global::System.Resources.ResourceManager resourceMan;
         
         private static global::System.Globalization.CultureInfo resourceCulture;
         
         [global::System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1811:AvoidUncalledPrivateCode")]
-        internal EN() {
+        internal FR() {
         }
         
         /// <summary>
@@ -39,7 +39,7 @@ namespace WpfApp1.Dictionary.LanguageRESX {
         public static global::System.Resources.ResourceManager ResourceManager {
             get {
                 if (object.ReferenceEquals(resourceMan, null)) {
-                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("WpfApp1.Dictionary.LanguageRESX.EN", typeof(EN).Assembly);
+                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("WpfApp1.Dictionary.LanguageRESX.FR", typeof(FR).Assembly);
                     resourceMan = temp;
                 }
                 return resourceMan;
@@ -61,7 +61,16 @@ namespace WpfApp1.Dictionary.LanguageRESX {
         }
         
         /// <summary>
-        ///   Ищет локализованную строку, похожую на Any text.
+        ///   Ищет локализованную строку, похожую на Bonjoyr.
+        /// </summary>
+        public static string Header {
+            get {
+                return ResourceManager.GetString("Header", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Якийсь текст.
         /// </summary>
         public static string TestName {
             get {

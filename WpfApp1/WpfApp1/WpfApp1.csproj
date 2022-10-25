@@ -15,35 +15,48 @@
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
     <PackageReference Include="Pomelo.EntityFrameworkCore.MySql" Version="6.0.2" />
+    <PackageReference Include="WPFLocalizeExtension" Version="3.9.4" />
   </ItemGroup>
 
   <ItemGroup>
-    <Compile Update="Dictionary\LanguageRESX\Default.Designer.cs">
+    <Compile Update="Dictionary\LanguageRESX\Lang.Designer.cs">
       <DesignTime>True</DesignTime>
       <AutoGen>True</AutoGen>
-      <DependentUpon>Default.resx</DependentUpon>
+      <DependentUpon>Lang.resx</DependentUpon>
     </Compile>
-    <Compile Update="Dictionary\LanguageRESX\Default.EN.Designer.cs">
+    <Compile Update="Dictionary\LanguageRESX\Lang.EN.Designer.cs">
       <DesignTime>True</DesignTime>
       <AutoGen>True</AutoGen>
-      <DependentUpon>Default.EN.resx</DependentUpon>
+      <DependentUpon>Lang.EN.resx</DependentUpon>
     </Compile>
-    <Compile Update="Dictionary\LanguageRESX\Default.UK.Designer.cs">
+    <Compile Update="Dictionary\LanguageRESX\Lang.FR.Designer.cs">
       <DesignTime>True</DesignTime>
       <AutoGen>True</AutoGen>
-      <DependentUpon>Default.UK.resx</DependentUpon>
+      <DependentUpon>Lang.FR.resx</DependentUpon>
     </Compile>
-    <EmbeddedResource Update="Dictionary\LanguageRESX\Default.resx">
+    <Compile Update="Dictionary\LanguageRESX\Lang.UK.Designer.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Lang.UK.resx</DependentUpon>
+    </Compile>
+    <EmbeddedResource Update="Dictionary\LanguageRESX\Lang.FR.resx">
+      <LastGenOutput>Lang.FR.Designer.cs</LastGenOutput>
       <Generator>PublicResXFileCodeGenerator</Generator>
-      <LastGenOutput>Default.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <EmbeddedResource Update="Dictionary\LanguageRESX\Default.EN.resx">
+    <EmbeddedResource Update="Dictionary\LanguageRESX\Lang.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
-      <LastGenOutput>Default.EN.Designer.cs</LastGenOutput>
+      <LastGenOutput>Lang.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <EmbeddedResource Update="Dictionary\LanguageRESX\Default.UK.resx">
+    <EmbeddedResource Update="Dictionary\LanguageRESX\Lang.EN.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
-      <LastGenOutput>Default.UK.Designer.cs</LastGenOutput>
+      <LastGenOutput>Lang.EN.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Dictionary\LanguageRESX\Lang.UK.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>Lang.UK.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Resources.fr-FR.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
     </EmbeddedResource>
   </ItemGroup>
 

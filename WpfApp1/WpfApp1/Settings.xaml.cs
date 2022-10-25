@@ -29,10 +29,10 @@ namespace WpfApp1
             styleBox.ItemsSource = styles;
             styleBox.SelectedItem = "dark";
 
-            List<string> language = new List<string> { "EN", "UA" };
-            styleBox_Language.SelectionChanged += LanguageChange;
+            List<string> language = new List<string> { "EN", "UK" };
             styleBox_Language.ItemsSource = language;
             styleBox_Language.SelectedItem = "EN";
+            styleBox_Language.SelectionChanged += LanguageChange;
         }
 
         private void ThemeChange(object sender, SelectionChangedEventArgs e)
@@ -47,12 +47,17 @@ namespace WpfApp1
 
         private void LanguageChange(object sender, SelectionChangedEventArgs e)
         {
-            string style = styleBox_Language.SelectedItem as string;
-            var uri = new Uri(@"\Dictionary\Language\" + style + ".xaml", UriKind.Relative);
+           string style = styleBox_Language.SelectedItem as string;
+              /* var uri = new Uri(@"\Dictionary\Language\" + style + ".xaml", UriKind.Relative);
 
-            ResourceDictionary resourceDict = Application.LoadComponent(uri) as ResourceDictionary;
-            Application.Current.Resources.Clear();
-            Application.Current.Resources.MergedDictionaries.Add(resourceDict);
+             ResourceDictionary resourceDict = Application.LoadComponent(uri) as ResourceDictionary;
+             Application.Current.Resources.Clear();
+             Application.Current.Resources.MergedDictionaries.Add(resourceDict);*/
+
+            System.Threading.Thread.CurrentThread.CurrentUICulture = new System.Globalization.CultureInfo("UK");
+
+           // MainWindow.Frame.Navigate(new Settings());
+           
         }
 
     }

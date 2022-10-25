@@ -3,6 +3,7 @@
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+      xmlns:resources="clr-namespace:WpfApp1.Dictionary.LanguageRESX"
       mc:Ignorable="d"
       d:DesignHeight="450" d:DesignWidth="800"
       Title="Settings" Style="{DynamicResource PageStyle}">
@@ -12,5 +13,17 @@
         <Button  Width="135" Height="30"  HorizontalAlignment="Left" VerticalAlignment="Top" Content="Hello WPF" Style="{DynamicResource ButtonStyle}" Margin="10,159,0,0" />
         <ComboBox Width="135" Height="23"  HorizontalAlignment="Left" VerticalAlignment="Top" x:Name="styleBox" Margin="10,194,0,0" />
         <ComboBox Width="135" Height="23"  HorizontalAlignment="Left" VerticalAlignment="Top" x:Name="styleBox_Language" Margin="10,222,0,0" />
+        <Label Content="{x:Static resources:Lang.TestName}"
+               HorizontalAlignment="Left"
+               VerticalAlignment="Top" Margin="10,124,0,0" Width="135" Height="30"/>
+
+        <ComboBox Name="phonesList" Height="46" StaysOpenOnEdit="True" IsEditable="True"  VerticalAlignment="Top">
+            <TextBlock>LG Nexus 5X</TextBlock>
+            <TextBlock>Huawai Nexus 6P</TextBlock>
+            <TextBlock>iPhone 6S</TextBlock>
+            <TextBlock>iPhone 6S Plus</TextBlock>
+            <TextBlock>Microsoft Lumia 950</TextBlock>
+        </ComboBox>
+
     </Grid>
 </Page>

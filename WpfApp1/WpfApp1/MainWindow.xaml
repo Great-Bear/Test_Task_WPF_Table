@@ -5,9 +5,14 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:dependencyproperty="clr-namespace:WpfApp1.Classes.Helpers.DependencyProperty"
         xmlns:resources="clr-namespace:WpfApp1.Dictionary.LanguageRESX"
+        xmlns:lex="http://wpflocalizeextension.codeplex.com"
+        lex:LocalizeDictionary.DesignCulture="fr"
+        lex:LocalizeDictionary.OutputMissingKeys="True"
+        lex:ResxLocalizationProvider.DefaultAssembly="WpfApp1"
+        lex:ResxLocalizationProvider.DefaultDictionary="Dictionary.LanguageRESX.Lang"
         mc:Ignorable="d"
-        Title="MainWindow" 
-        Height="450" 
+        Title="MainWindow"
+        Height="450"
         Width="800">
 
     <Grid Background="LightGray">
@@ -45,10 +50,23 @@
                 VerticalAlignment="Top"
                 Height="33"
                 Width="135"
-                FontSize="14" 
+                FontSize="14"
                 x:Uid="Button_1">Налаштування</Button>
-        <Label Content="{x:Static resources:Default.TestName}"
+        <Label Content="{lex:Loc TestName}"
                HorizontalAlignment="Left"
                VerticalAlignment="Top" Margin="10,124,0,0"/>
+
+        <Label Content="{lex:Loc Header}"
+               HorizontalAlignment="Left"
+               VerticalAlignment="Top" Margin="10,155,0,0"/>
+        <ComboBox ItemsSource="{Binding Source={x:Static lex:LocalizeDictionary.Instance},
+                                Path=MergedAvailableCultures}"
+                                SelectedItem="{Binding Source={x:Static lex:LocalizeDictionary.Instance},
+                                Path=Culture}"
+                                Name="lexLocalizatoin"
+                                DisplayMemberPath="NativeName"
+                                HorizontalAlignment="Left"
+                                VerticalAlignment="Top"
+                                Margin="10,181,0,0" Width="135" />
     </Grid>
 </Window>

@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Globalization;
 using System.Linq;
+using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
@@ -18,6 +19,7 @@ using System.Windows.Shapes;
 using Test_Task_WPF_Table.Classes;
 using WpfApp1.Classes.ViewModels;
 using WpfApp1.ClassesConverter;
+using WPFLocalizeExtension.Extensions;
 
 namespace WpfApp1
 {
@@ -26,6 +28,7 @@ namespace WpfApp1
     /// </summary>
     public partial class MainWindow : Window
     {
+        public static Frame Frame;
         public MainWindow()
         {
             InitializeComponent();
@@ -34,11 +37,19 @@ namespace WpfApp1
 
             DataContext = new MainWindowViewModel();
 
-
+            Frame = frame;
             var ViewModel = DataContext as MainWindowViewModel;
             frame.Navigate(new UserControll());
+
+
+            lexLocalizatoin.SelectionChanged += LexLocalizatoin_SelectionChanged;
+
         }
 
+        private void LexLocalizatoin_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            //MessageBox.Show(GetLocalizedValue<string>("TestName"));
+        }
 
         private void ListUsersClick(object sender, RoutedEventArgs e)
         {
@@ -50,5 +61,12 @@ namespace WpfApp1
         {
             frame.Navigate(new Settings());
         }
+
+        public static T GetLocalizedValue<T>(string key)
+        {
+            return LocExtension.GetLocalizedValue<T>
+            (Assembly.GetCallingAssembly().GetName().Name + @"\Dictionary\LanguageRESX\Default" + key);
+        }
+
     }
 }

@@ -7,6 +7,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.Windows;
 using WpfApp1.Dictionary.LanguageRESX;
+using WPFLocalizeExtension.Engine;
 
 namespace WpfApp1
 {
@@ -18,13 +19,9 @@ namespace WpfApp1
         protected override void OnStartup(StartupEventArgs e)
         {
             base.OnStartup(e);
+            LocalizeDictionary.Instance.SetCurrentThreadCulture = true;
+            System.Threading.Thread.CurrentThread.CurrentUICulture = new System.Globalization.CultureInfo("EN");
 
-            System.Threading.Thread.CurrentThread.CurrentUICulture = new System.Globalization.CultureInfo("UK");
-
-            // Default.Culture = new CultureInfo("UA");
-            // MessageBox.Show(new CultureInfo("UA").TextInfo.CultureName);
-
-            // Resource1.Culture = new CultureInfo("sv-SE");
         }
     }
 }
