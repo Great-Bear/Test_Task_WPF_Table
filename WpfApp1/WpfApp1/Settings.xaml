@@ -8,7 +8,7 @@
       d:DesignHeight="450" d:DesignWidth="800"
       Title="Settings" Style="{DynamicResource PageStyle}">
 
-    <Grid >
+    <Grid Background="White" >
         <TextBlock  Width="135" Height="30" TextAlignment="Center"  HorizontalAlignment="Left" VerticalAlignment="Top" Text="{DynamicResource m_LabelText}" Style="{DynamicResource TextBlockStyle}" Margin="10,124,0,0" />
         <Button  Width="135" Height="30"  HorizontalAlignment="Left" VerticalAlignment="Top" Content="Hello WPF" Style="{DynamicResource ButtonStyle}" Margin="10,159,0,0" />
         <ComboBox Width="135" Height="23"  HorizontalAlignment="Left" VerticalAlignment="Top" x:Name="styleBox" Margin="10,194,0,0" />
@@ -24,6 +24,74 @@
             <TextBlock>iPhone 6S Plus</TextBlock>
             <TextBlock>Microsoft Lumia 950</TextBlock>
         </ComboBox>
+
+        <Grid Background="Black" Margin="0,0,308,54">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="2.5*" />
+                <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
+            <Image Grid.Column="0" x:Name="mainImage">
+            <Image.Source>
+                <FormatConvertedBitmap Source="\Pictures\3.jpg"
+                DestinationFormat="Gray32Float" />
+            </Image.Source>
+        </Image>
+        <StackPanel Grid.Column="1">
+            <Image Source="\Pictures\1.jpg" />
+            <Image Source="\Pictures\2.jpg" />
+            <Image Source="\Pictures\4.jpg" />
+            <Image Source="\Pictures\3.jpg" />
+        </StackPanel>
+        </Grid>
+
+        <Grid
+      ClipToBounds="True" Margin="584,330,0,0">
+
+            <!-- Outer Rectangle with rounded corners. -->
+            <Rectangle x:Name="outerRectangle" HorizontalAlignment="Stretch"
+      VerticalAlignment="Stretch" Stroke="Red"
+      RadiusX="20" RadiusY="20" StrokeThickness="5" Fill="Transparent" />
+
+            <!-- Inner Rectangle with rounded corners. -->
+            <Rectangle x:Name="innerRectangle" HorizontalAlignment="Stretch"
+      VerticalAlignment="Stretch" Stroke="Transparent" StrokeThickness="20"
+      Fill="Blue" RadiusX="20" RadiusY="20" />
+
+            <!-- Glass Rectangle -->
+            <Rectangle x:Name="glassCube" HorizontalAlignment="Stretch"
+      VerticalAlignment="Stretch"
+      StrokeThickness="2" RadiusX="10" RadiusY="10" Opacity="1"
+      Fill="{StaticResource MyGlassBrushResource}"
+      RenderTransformOrigin="0.5,0.5">
+                <Rectangle.Stroke>
+                    <LinearGradientBrush StartPoint="0.5,0" EndPoint="0.5,1">
+                        <LinearGradientBrush.GradientStops>
+                            <GradientStop Offset="0.0" Color="LightBlue" />
+                            <GradientStop Offset="1.0" Color="Gray" />
+                        </LinearGradientBrush.GradientStops>
+                    </LinearGradientBrush>
+                </Rectangle.Stroke>
+                <!-- These transforms have no effect as they are declared here.
+      The reason the transforms are included is to be targets
+      for animation (see later). -->
+                <Rectangle.RenderTransform>
+                    <TransformGroup>
+                        <ScaleTransform />
+                        <RotateTransform />
+                    </TransformGroup>
+                </Rectangle.RenderTransform>
+                <!-- A BevelBitmapEffect is applied to give the button a "Beveled" look. -->
+                <Rectangle.BitmapEffect>
+                    <BevelBitmapEffect />
+                </Rectangle.BitmapEffect>
+            </Rectangle>
+
+            <!-- Present Text of the button. -->
+            <DockPanel Name="myContentPresenterDockPanel">
+                <ContentPresenter x:Name="myContentPresenter" Margin="20"
+        Content="AAA" TextBlock.Foreground="Black" />
+            </DockPanel>
+        </Grid>
 
     </Grid>
 </Page>

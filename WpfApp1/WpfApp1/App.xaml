@@ -17,6 +17,20 @@
                 <ResourceDictionary Source="\Dictionary\ButtonWithSVGSelected.xaml"></ResourceDictionary>
             </ResourceDictionary.MergedDictionaries>
 
+
+            <GradientStopCollection x:Key="MyGlassGradientStopsResource">
+                <GradientStop Color="WhiteSmoke" Offset="0.2" />
+                <GradientStop Color="Transparent" Offset="0.4" />
+                <GradientStop Color="WhiteSmoke" Offset="0.5" />
+                <GradientStop Color="Transparent" Offset="0.75" />
+                <GradientStop Color="WhiteSmoke" Offset="0.9" />
+                <GradientStop Color="Transparent" Offset="1" />
+            </GradientStopCollection>
+            <LinearGradientBrush x:Key="MyGlassBrushResource"
+    StartPoint="0,0" EndPoint="1,1" Opacity="0.75"
+    GradientStops="{StaticResource MyGlassGradientStopsResource}" />
+
+
             <Style TargetType="Page">
                 <Style.Triggers>
                     <EventTrigger RoutedEvent="Page.Loaded">
