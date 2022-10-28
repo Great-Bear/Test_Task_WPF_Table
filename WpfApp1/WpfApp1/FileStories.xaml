@@ -9,7 +9,17 @@
       Title="FileStories">
 
     <Page.Resources>
-       
+        <Style x:Key="TestStyle" TargetType="Button">
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="Button">
+                        <Button  BorderThickness="1"  >
+                            <Path Margin="5" Fill="#555555" Data="M81.9251 9.70833H38.3886L30.636 1.95571C30.2148 1.53334 29.7143 1.19836 29.1633 0.969992C28.6123 0.741628 28.0215 0.624386 27.4251 0.625002H9.25838C4.24892 0.625002 0.175049 4.69888 0.175049 9.70833V73.2917C0.175049 78.3011 4.24892 82.375 9.25838 82.375H81.9251C86.9345 82.375 91.0084 78.3011 91.0084 73.2917V18.7917C91.0084 13.7822 86.9345 9.70833 81.9251 9.70833Z"></Path>
+                        </Button>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
     </Page.Resources>
     <DockPanel>
         <Border DockPanel.Dock="Right"
@@ -28,27 +38,27 @@
                 </Grid.ColumnDefinitions>
                 <StackPanel MinHeight="25" HorizontalAlignment="Left" Orientation="Horizontal"  Width="auto">
                     <Button Margin="30 0 0 0" BorderThickness="0" Background="{Binding ElementName=Header, Path=Background}">
-                        <Path 
+                        <Path
                             Fill="#555555"
                             Data="M9 0C10.1935 0 11.3381 0.474106 12.182 1.31802C13.0259 2.16193 13.5 3.30653 13.5 4.5C13.5 5.69347 13.0259 6.83807 12.182 7.68198C11.3381 8.52589 10.1935 9 9 9C7.80653 9 6.66193 8.52589 5.81802 7.68198C4.97411 6.83807 4.5 5.69347 4.5 4.5C4.5 3.30653 4.97411 2.16193 5.81802 1.31802C6.66193 0.474106 7.80653 0 9 0ZM9 11.25C13.9725 11.25 18 13.2638 18 15.75V18H0V15.75C0 13.2638 4.0275 11.25 9 11.25Z"></Path>
                     </Button>
                     <Button Margin="5 0 0 0" BorderThickness="0" Background="{Binding ElementName=Header, Path=Background}">
-                        <Path 
+                        <Path
                             Fill="#555555"
                             Data="M9 0C10.1935 0 11.3381 0.474106 12.182 1.31802C13.0259 2.16193 13.5 3.30653 13.5 4.5C13.5 5.69347 13.0259 6.83807 12.182 7.68198C11.3381 8.52589 10.1935 9 9 9C7.80653 9 6.66193 8.52589 5.81802 7.68198C4.97411 6.83807 4.5 5.69347 4.5 4.5C4.5 3.30653 4.97411 2.16193 5.81802 1.31802C6.66193 0.474106 7.80653 0 9 0ZM9 11.25C13.9725 11.25 18 13.2638 18 15.75V18H0V15.75C0 13.2638 4.0275 11.25 9 11.25Z"></Path>
                     </Button>
                     <Button Margin="5 0 0 0" BorderThickness="0" Background="{Binding ElementName=Header, Path=Background}">
-                        <Path 
+                        <Path
                             Fill="#555555"
                             Data="M9 0C10.1935 0 11.3381 0.474106 12.182 1.31802C13.0259 2.16193 13.5 3.30653 13.5 4.5C13.5 5.69347 13.0259 6.83807 12.182 7.68198C11.3381 8.52589 10.1935 9 9 9C7.80653 9 6.66193 8.52589 5.81802 7.68198C4.97411 6.83807 4.5 5.69347 4.5 4.5C4.5 3.30653 4.97411 2.16193 5.81802 1.31802C6.66193 0.474106 7.80653 0 9 0ZM9 11.25C13.9725 11.25 18 13.2638 18 15.75V18H0V15.75C0 13.2638 4.0275 11.25 9 11.25Z"></Path>
                     </Button>
                     <Button Margin="5 0 0 0" BorderThickness="0" Background="{Binding ElementName=Header, Path=Background}">
-                        <Path 
+                        <Path
                             Fill="#555555"
                             Data="M9 0C10.1935 0 11.3381 0.474106 12.182 1.31802C13.0259 2.16193 13.5 3.30653 13.5 4.5C13.5 5.69347 13.0259 6.83807 12.182 7.68198C11.3381 8.52589 10.1935 9 9 9C7.80653 9 6.66193 8.52589 5.81802 7.68198C4.97411 6.83807 4.5 5.69347 4.5 4.5C4.5 3.30653 4.97411 2.16193 5.81802 1.31802C6.66193 0.474106 7.80653 0 9 0ZM9 11.25C13.9725 11.25 18 13.2638 18 15.75V18H0V15.75C0 13.2638 4.0275 11.25 9 11.25Z"></Path>
                     </Button>
                     <Button Margin="5 0 0 0" BorderThickness="0" Background="{Binding ElementName=Header, Path=Background}">
-                        <Path 
+                        <Path
                             Fill="#555555"
                             Data="M9 0C10.1935 0 11.3381 0.474106 12.182 1.31802C13.0259 2.16193 13.5 3.30653 13.5 4.5C13.5 5.69347 13.0259 6.83807 12.182 7.68198C11.3381 8.52589 10.1935 9 9 9C7.80653 9 6.66193 8.52589 5.81802 7.68198C4.97411 6.83807 4.5 5.69347 4.5 4.5C4.5 3.30653 4.97411 2.16193 5.81802 1.31802C6.66193 0.474106 7.80653 0 9 0ZM9 11.25C13.9725 11.25 18 13.2638 18 15.75V18H0V15.75C0 13.2638 4.0275 11.25 9 11.25Z"></Path>
                     </Button>
@@ -67,7 +77,7 @@
                     <RowDefinition Height="auto"/>
                     <RowDefinition Height="auto"/>
                 </Grid.RowDefinitions>
-                <StackPanel Orientation="Horizontal" HorizontalAlignment="Left">
+                <StackPanel Orientation="Horizontal" HorizontalAlignment="Left" Margin="0 0 0 10">
                     <Border
                         Grid.Row="0"
                         CornerRadius="2"
@@ -78,7 +88,7 @@
                         Background="White"
                         BorderThickness="0"
                         BorderBrush="Transparent">
-                            <Path 
+                            <Path
                             Fill="#555555"
                             Data="M9 0C10.1935 0 11.3381 0.474106 12.182 1.31802C13.0259 2.16193 13.5 3.30653 13.5 4.5C13.5 5.69347 13.0259 6.83807 12.182 7.68198C11.3381 8.52589 10.1935 9 9 9C7.80653 9 6.66193 8.52589 5.81802 7.68198C4.97411 6.83807 4.5 5.69347 4.5 4.5C4.5 3.30653 4.97411 2.16193 5.81802 1.31802C6.66193 0.474106 7.80653 0 9 0ZM9 11.25C13.9725 11.25 18 13.2638 18 15.75V18H0V15.75C0 13.2638 4.0275 11.25 9 11.25Z"></Path>
                         </Button>
@@ -89,7 +99,7 @@
                         BorderThickness="2"
                         BorderBrush="White"
                         HorizontalAlignment="Left">
-                        <Button  
+                        <Button
                             Background="White"
                             Padding="10 0 10 0"
                             Content="Import"
@@ -100,15 +110,24 @@
                     </Border>
                 </StackPanel>
                 <Border Grid.Row="1" BorderBrush="White" >
-                    <WrapPanel ItemHeight="auto" ItemWidth="auto" Orientation="Horizontal" Background="White">
-                        <Path Margin="5 5 5 5" Fill="#555555" Data="M81.9251 9.70833H38.3886L30.636 1.95571C30.2148 1.53334 29.7143 1.19836 29.1633 0.969992C28.6123 0.741628 28.0215 0.624386 27.4251 0.625002H9.25838C4.24892 0.625002 0.175049 4.69888 0.175049 9.70833V73.2917C0.175049 78.3011 4.24892 82.375 9.25838 82.375H81.9251C86.9345 82.375 91.0084 78.3011 91.0084 73.2917V18.7917C91.0084 13.7822 86.9345 9.70833 81.9251 9.70833Z"></Path>
-                        <Path Margin="5 5 5 5" Fill="#555555" Data="M81.9251 9.70833H38.3886L30.636 1.95571C30.2148 1.53334 29.7143 1.19836 29.1633 0.969992C28.6123 0.741628 28.0215 0.624386 27.4251 0.625002H9.25838C4.24892 0.625002 0.175049 4.69888 0.175049 9.70833V73.2917C0.175049 78.3011 4.24892 82.375 9.25838 82.375H81.9251C86.9345 82.375 91.0084 78.3011 91.0084 73.2917V18.7917C91.0084 13.7822 86.9345 9.70833 81.9251 9.70833Z"></Path>
-                        <Path Margin="5 5 5 5" Fill="#555555" Data="M81.9251 9.70833H38.3886L30.636 1.95571C30.2148 1.53334 29.7143 1.19836 29.1633 0.969992C28.6123 0.741628 28.0215 0.624386 27.4251 0.625002H9.25838C4.24892 0.625002 0.175049 4.69888 0.175049 9.70833V73.2917C0.175049 78.3011 4.24892 82.375 9.25838 82.375H81.9251C86.9345 82.375 91.0084 78.3011 91.0084 73.2917V18.7917C91.0084 13.7822 86.9345 9.70833 81.9251 9.70833Z"></Path>
-                        <Path Margin="5 5 5 5" Fill="#555555" Data="M81.9251 9.70833H38.3886L30.636 1.95571C30.2148 1.53334 29.7143 1.19836 29.1633 0.969992C28.6123 0.741628 28.0215 0.624386 27.4251 0.625002H9.25838C4.24892 0.625002 0.175049 4.69888 0.175049 9.70833V73.2917C0.175049 78.3011 4.24892 82.375 9.25838 82.375H81.9251C86.9345 82.375 91.0084 78.3011 91.0084 73.2917V18.7917C91.0084 13.7822 86.9345 9.70833 81.9251 9.70833Z"></Path>
-                        <Path Margin="5 5 5 5" Fill="#555555" Data="M81.9251 9.70833H38.3886L30.636 1.95571C30.2148 1.53334 29.7143 1.19836 29.1633 0.969992C28.6123 0.741628 28.0215 0.624386 27.4251 0.625002H9.25838C4.24892 0.625002 0.175049 4.69888 0.175049 9.70833V73.2917C0.175049 78.3011 4.24892 82.375 9.25838 82.375H81.9251C86.9345 82.375 91.0084 78.3011 91.0084 73.2917V18.7917C91.0084 13.7822 86.9345 9.70833 81.9251 9.70833Z"></Path>
-                        <Path Margin="5 5 5 5" Fill="#555555" Data="M81.9251 9.70833H38.3886L30.636 1.95571C30.2148 1.53334 29.7143 1.19836 29.1633 0.969992C28.6123 0.741628 28.0215 0.624386 27.4251 0.625002H9.25838C4.24892 0.625002 0.175049 4.69888 0.175049 9.70833V73.2917C0.175049 78.3011 4.24892 82.375 9.25838 82.375H81.9251C86.9345 82.375 91.0084 78.3011 91.0084 73.2917V18.7917C91.0084 13.7822 86.9345 9.70833 81.9251 9.70833Z"></Path>
-                        <Path Margin="5 5 5 5" Fill="#555555" Data="M81.9251 9.70833H38.3886L30.636 1.95571C30.2148 1.53334 29.7143 1.19836 29.1633 0.969992C28.6123 0.741628 28.0215 0.624386 27.4251 0.625002H9.25838C4.24892 0.625002 0.175049 4.69888 0.175049 9.70833V73.2917C0.175049 78.3011 4.24892 82.375 9.25838 82.375H81.9251C86.9345 82.375 91.0084 78.3011 91.0084 73.2917V18.7917C91.0084 13.7822 86.9345 9.70833 81.9251 9.70833Z"></Path>
-                        <Path Margin="5 5 5 5" Fill="#555555" Data="M81.9251 9.70833H38.3886L30.636 1.95571C30.2148 1.53334 29.7143 1.19836 29.1633 0.969992C28.6123 0.741628 28.0215 0.624386 27.4251 0.625002H9.25838C4.24892 0.625002 0.175049 4.69888 0.175049 9.70833V73.2917C0.175049 78.3011 4.24892 82.375 9.25838 82.375H81.9251C86.9345 82.375 91.0084 78.3011 91.0084 73.2917V18.7917C91.0084 13.7822 86.9345 9.70833 81.9251 9.70833Z"></Path>
+                    <WrapPanel Background="White" SizeChanged="WrapPanel_SizeChanged">
+
+                        <Button Style="{StaticResource TestStyle}" HorizontalAlignment="Stretch" />
+                        <Button Style="{StaticResource TestStyle}" HorizontalAlignment="Stretch" />
+                        <Button Style="{StaticResource TestStyle}" HorizontalAlignment="Stretch" />
+                        <Button Style="{StaticResource TestStyle}" HorizontalAlignment="Stretch" />
+                        <Button Style="{StaticResource TestStyle}" HorizontalAlignment="Stretch" />
+                        <Button Style="{StaticResource TestStyle}" HorizontalAlignment="Stretch" />
+                        <Button Style="{StaticResource TestStyle}" HorizontalAlignment="Stretch" />
+                        <Button Style="{StaticResource TestStyle}" HorizontalAlignment="Stretch" />
+                        <Button Style="{StaticResource TestStyle}" HorizontalAlignment="Stretch" />
+                        <Button Style="{StaticResource TestStyle}" HorizontalAlignment="Stretch" />
+                        <Button Style="{StaticResource TestStyle}" HorizontalAlignment="Stretch" />
+                        <Button Style="{StaticResource TestStyle}" HorizontalAlignment="Stretch" />
+
+
+
+
                     </WrapPanel>
                 </Border>
             </Grid>

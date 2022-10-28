@@ -24,5 +24,12 @@ namespace WpfApp1
         {
             InitializeComponent();
         }
+
+        private void WrapPanel_SizeChanged(object sender, SizeChangedEventArgs e)
+        {
+            var wrapPanel = sender as WrapPanel;
+
+           
+        }
     }
 }
