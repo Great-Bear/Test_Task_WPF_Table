@@ -30,14 +30,12 @@ namespace WpfApp1
                 new ColumnSeries
                 {
                     Title = "2015",
-                    Values = new ChartValues<double> { 10, 50, 39, 50 }
+                    Values = new ChartValues<double> { 100, 500, 390, 500, 210, 120, 900, 800, 650 },
+                    Fill = Brushes.Blue
                 }
             };
-            Labels = new[] { "Jan-22", "Feb-22", "Mar-22", "Apr-22" };
+            Labels = new[] { "Jan-22", "Feb-22", "Mar-22", "Apr-22", "Apr-23", "May-24", "Jun-25", "Jul-26", "Sep-27", };
             Formatter = value => value.ToString("N");
-            Color = Colors.Red;
-
-           
 
             DataContext = this;
         }
@@ -45,6 +43,5 @@ namespace WpfApp1
         public SeriesCollection SeriesCollection { get; set; }
         public string[] Labels { get; set; }
         public Func<double, string> Formatter { get; set; }
-        public Color Color { get; set; } 
     }
 }

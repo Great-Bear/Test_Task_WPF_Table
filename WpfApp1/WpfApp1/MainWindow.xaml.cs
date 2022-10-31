@@ -39,8 +39,7 @@ namespace WpfApp1
 
             Frame = frame;
             var ViewModel = DataContext as MainWindowViewModel;
-            frame.Navigate(new Diagrams());
-
+            frame.Navigate(new UserControll());
 
             lexLocalizatoin.SelectionChanged += LexLocalizatoin_SelectionChanged;
 

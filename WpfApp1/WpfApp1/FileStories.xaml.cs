@@ -24,12 +24,31 @@ namespace WpfApp1
         {
             InitializeComponent();
         }
-
+        public double MinWidth { get; set; } = 115;
         private void WrapPanel_SizeChanged(object sender, SizeChangedEventArgs e)
         {
             var wrapPanel = sender as WrapPanel;
 
-           
+            double CountElemnts = Math.Floor(ContainerFiles.ActualWidth / MinWidth);
+
+            if(CountElemnts > WrapPanel.Children.Count)
+            {
+                CountElemnts = WrapPanel.Children.Count;
+            }
+            if(CountElemnts == 1)
+            {
+                wrapPanel.ItemWidth = MinWidth;
+                return;
+            }
+            if(CountElemnts == 0)
+            {
+                wrapPanel.ItemWidth = MinWidth;
+                return;
+            }
+
+            double FreeWidth = ContainerFiles.ActualWidth - (CountElemnts * MinWidth);
+
+            wrapPanel.ItemWidth = MinWidth + FreeWidth / CountElemnts;
         }
     }
 }
