@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
+using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
@@ -11,32 +13,29 @@ using Test_Task_WPF_Table.Classes;
 
 namespace WpfApp1.ClassesConverter.DependencyProperty
 {
-    public class CustomButton : Button
+    public class CustomButton : Button, INotifyPropertyChanged
     {
         public static readonly System.Windows.DependencyProperty dependencyPropertyAbility =
-             System.Windows.DependencyProperty.Register("SetAbility", typeof(User), typeof(CustomButton),
-                 new PropertyMetadata(null, new PropertyChangedCallback(ChangeAbility)));
-        public User SetAbility
+             System.Windows.DependencyProperty.Register("SetAbility", typeof(bool), typeof(CustomButton),
+                 new PropertyMetadata(false, new PropertyChangedCallback(ChangeAbility)));
+        public bool SetAbility
         {
-            get => (User)GetValue(dependencyPropertyAbility);
-            set => SetValue(dependencyPropertyAbility, value);
+            get => (bool)GetValue(dependencyPropertyAbility);
+            set { 
+                SetValue(dependencyPropertyAbility, value);
+                OnPropertyChanged();
+            }
         }
 
         private static void ChangeAbility(DependencyObject d, DependencyPropertyChangedEventArgs e)
         {
-            if ( ((User)e.NewValue) == null)
-            {
-                (d as Button).IsEnabled = false;
-            }
-            else
-            {
-                (d as Button).IsEnabled = true;
-            }
+           (d as CustomButton).SetAbility = (bool)e.NewValue;
         }
-
-        public CustomButton()
+        public event PropertyChangedEventHandler PropertyChanged;
+        public void OnPropertyChanged([CallerMemberName] string prop = "")
         {
-          IsEnabled = false;
+            if (PropertyChanged != null)
+                PropertyChanged(this, new PropertyChangedEventArgs(prop));
         }
     }
 }

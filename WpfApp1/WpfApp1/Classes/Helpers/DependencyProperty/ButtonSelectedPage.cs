@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
+using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
@@ -18,12 +20,24 @@ namespace WpfApp1.Classes.Helpers.DependencyProperty
         public bool IsSelected
         {
             get => (bool)GetValue(dependencyIsSelected);
-            set => SetValue(dependencyIsSelected, value);
+            set {
+                SetValue(dependencyIsSelected, value);
+                OnPropertyChanged();
+            }
         }
 
         private static void ChangeAbility(DependencyObject d, DependencyPropertyChangedEventArgs e)
         {
             (d as ButtonSelectedPage).IsSelected = (bool)e.NewValue ;
+           
         }
+
+        public event PropertyChangedEventHandler PropertyChanged;
+        public void OnPropertyChanged([CallerMemberName] string prop = "")
+        {
+            if (PropertyChanged != null)
+                PropertyChanged(this, new PropertyChangedEventArgs(prop));
+        }
+
     }
 }

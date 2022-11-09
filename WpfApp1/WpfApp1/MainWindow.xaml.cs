@@ -32,8 +32,6 @@ namespace WpfApp1
         public MainWindow()
         {
             InitializeComponent();
-            ListUsersBtn.Click += ListUsersClick;
-            SettingsBtn.Click += SettingsClick;
 
             DataContext = new MainWindowViewModel();
 
